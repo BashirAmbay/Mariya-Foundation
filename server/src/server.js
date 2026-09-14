@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { initDatabase, db } from './db/database.js';
+import { seedData } from './db/seed.js';
 
 // Import Routes
 import authRoutes from './routes/authRoutes.js';
@@ -33,6 +34,7 @@ const __dirname = path.dirname(__filename);
 
 // Initialize SQLite database
 initDatabase();
+seedData();
 
 export const app = express();
 const PORT = process.env.PORT || 5000;
