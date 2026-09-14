@@ -67,7 +67,29 @@ app.use('/api/donations', donationRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/stats', statsRoutes);
 
-// Health Check
+// Root & Health Check
+app.get('/', (req, res) => {
+  res.json({
+    status: 'online',
+    message: 'Mariya Foundation Backend API is running successfully.',
+    endpoints: {
+      health: '/api/health',
+      programs: '/api/programs',
+      news: '/api/news',
+      impact: '/api/impact'
+    }
+  });
+});
+
+app.get('/api', (req, res) => {
+  res.json({
+    status: 'healthy',
+    organization: 'Mariya Foundation API',
+    version: '1.0.0',
+    timestamp: new Date().toISOString()
+  });
+});
+
 app.get('/api/health', (req, res) => {
   res.json({
     status: 'healthy',
