@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { BookOpen, Lock, Mail, Loader2, AlertCircle, Sparkles, ArrowRight } from 'lucide-react';
+import { BookOpen, Lock, Mail, Loader2, AlertCircle, Sparkles, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
 
@@ -9,8 +9,9 @@ export default function AdminLogin() {
   const { login, isAuthenticated } = useAuth();
   const { addToast } = useToast();
 
-  const [email, setEmail] = useState('admin@mariyafoundation.org');
-  const [password, setPassword] = useState('AdminPassword123!');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -41,7 +42,7 @@ export default function AdminLogin() {
       <div className="absolute inset-0 bg-emerald-pattern opacity-20 pointer-events-none" />
 
       <div className="max-w-md w-full relative z-10 space-y-6">
-        
+
         {/* Brand Header */}
         <div className="text-center space-y-3">
           <Link to="/" className="inline-flex items-center gap-3 group">
@@ -75,7 +76,7 @@ export default function AdminLogin() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4" autoComplete="off">
             <div>
               <label className="block text-xs font-semibold text-slate-700 mb-1">
                 Admin Email Address
@@ -84,11 +85,14 @@ export default function AdminLogin() {
                 <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="email"
+                  name="admin_email"
+                  id="admin_email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@mariyafoundation.org"
-                  className="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-800"
+                  placeholder="Enter administrator email"
+                  autoComplete="off"
+                  className="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-800 bg-white"
                 />
               </div>
             </div>
@@ -100,22 +104,27 @@ export default function AdminLogin() {
               <div className="relative">
                 <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
+                  name="admin_password"
+                  id="admin_password"
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••••••"
-                  className="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-800"
+                  placeholder="Enter your password"
+                  autoComplete="new-password"
+                  className="w-full pl-10 pr-10 py-2.5 text-sm rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-800 bg-white"
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition"
+                  title={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
               </div>
             </div>
 
-            {/* Default credentials note for quick test */}
-            <div className="p-3 bg-brand-50 border border-brand-200 rounded-xl text-[11px] text-brand-900 space-y-0.5">
-              <span className="font-bold block">Preloaded Administrator Access:</span>
-              <p>Email: <code className="font-mono font-bold">admin@mariyafoundation.org</code></p>
-              <p>Password: <code className="font-mono font-bold">AdminPassword123!</code></p>
-            </div>
 
             <button
               type="submit"
