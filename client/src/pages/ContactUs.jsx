@@ -69,7 +69,7 @@ export default function ContactUs() {
 
   return (
     <div className="space-y-20 sm:space-y-28 pb-16">
-      
+
       {/* 1. HERO BANNER */}
       <section className="relative bg-brand-950 text-white py-20 lg:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-emerald-pattern opacity-15 pointer-events-none" />
@@ -89,7 +89,7 @@ export default function ContactUs() {
       {/* 2. CONTACT DETAILS & FORM GRID */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          
+
           {/* Contact Information Sidebar */}
           <div className="lg:col-span-5 space-y-8">
             <div className="space-y-3">
@@ -139,7 +139,7 @@ export default function ContactUs() {
                 <div className="space-y-1">
                   <h4 className="text-sm font-bold text-slate-900 font-display">Telephone Contact</h4>
                   <p className="text-xs text-slate-600">
-                    +234 (0) 800 000 0000 (Placeholder)
+                    +234  806 863 9972
                   </p>
                 </div>
               </div>
@@ -153,7 +153,7 @@ export default function ContactUs() {
                   Have a quick inquiry or wish to verify sponsorship account instructions? Chat with our representative instantly on WhatsApp.
                 </p>
                 <a
-                  href="https://wa.me/2348000000000"
+                  href="https://wa.me/2348068639972"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 bg-gold-500 hover:bg-gold-400 text-brand-950 font-bold text-xs rounded-xl transition"
@@ -168,7 +168,7 @@ export default function ContactUs() {
           {/* Contact Message Form */}
           <div className="lg:col-span-7">
             <div className="bg-white rounded-3xl border border-slate-200 shadow-card p-8 sm:p-10 space-y-6">
-              
+
               <div>
                 <h3 className="text-2xl font-bold font-display text-slate-900">
                   Send Us a Message
@@ -209,7 +209,7 @@ export default function ContactUs() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  
+
                   {error && (
                     <div className="p-4 bg-rose-50 border border-rose-200 text-rose-700 text-xs rounded-xl flex items-center gap-2">
                       <AlertCircle className="w-4 h-4 flex-shrink-0" />
@@ -227,7 +227,7 @@ export default function ContactUs() {
                         required
                         value={formData.fullName}
                         onChange={e => setFormData({ ...formData, fullName: e.target.value })}
-                        placeholder="e.g. Aliyu Garba"
+
                         className="w-full px-4 py-2.5 text-sm rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-800"
                       />
                     </div>
@@ -241,7 +241,7 @@ export default function ContactUs() {
                         required
                         value={formData.email}
                         onChange={e => setFormData({ ...formData, email: e.target.value })}
-                        placeholder="aliyu@example.com"
+
                         className="w-full px-4 py-2.5 text-sm rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-800"
                       />
                     </div>

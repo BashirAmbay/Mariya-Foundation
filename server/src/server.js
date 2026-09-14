@@ -3,7 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { initDatabase } from './db/database.js';
+import { initDatabase, db } from './db/database.js';
 
 // Import Routes
 import authRoutes from './routes/authRoutes.js';
@@ -18,6 +18,13 @@ import applicationRoutes from './routes/applicationRoutes.js';
 import donationRoutes from './routes/donationRoutes.js';
 import settingsRoutes from './routes/settingsRoutes.js';
 import statsRoutes from './routes/statsRoutes.js';
+
+process.on('uncaughtException', (err) => {
+  console.error('[UNCAUGHT EXCEPTION]:', err);
+});
+process.on('unhandledRejection', (reason) => {
+  console.error('[UNHANDLED REJECTION]:', reason);
+});
 
 dotenv.config();
 
@@ -78,13 +85,34 @@ app.use((err, req, res, next) => {
 
 // Start listening only when not executed as a Vercel serverless function
 if (!process.env.VERCEL) {
-  app.listen(PORT, () => {
+  const server = app.listen(PORT, () => {
     console.log(`====================================================`);
     console.log(`  Mariya Foundation Backend Server is running!      `);
     console.log(`  API Base: http://localhost:${PORT}/api            `);
     console.log(`  Uploads:  http://localhost:${PORT}/uploads        `);
     console.log(`====================================================`);
   });
+
+  server.on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+      console.error(`\n[ERROR] Port ${PORT} is already in use by another process.`);
+      console.error(`Please stop the existing process using port ${PORT} before restarting.\n`);
+    } else {
+      console.error('\n[Server Listen Error]:', err);
+    }
+    process.exit(1);
+  });
+
+  const cleanup = () => {
+    try {
+      if (db && db.open) {
+        db.close();
+      }
+    } catch (e) {}
+  };
+
+  process.on('SIGINT', () => { cleanup(); process.exit(0); });
+  process.on('SIGTERM', () => { cleanup(); process.exit(0); });
 }
 
 export default app;
