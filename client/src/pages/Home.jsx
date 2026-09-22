@@ -66,7 +66,7 @@ export default function Home() {
 
   return (
     <div className="space-y-20 sm:space-y-28 pb-16">
-      
+
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center justify-center bg-brand-950 overflow-hidden text-white">
         {/* Background Image with Deep Overlay */}
@@ -81,9 +81,9 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center space-y-8">
-          
+
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-gold-500/20 text-gold-300 border border-gold-500/30 shadow-sm backdrop-blur-md animate-in fade-in slide-in-from-bottom-3 duration-500">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-pink-500/20 text-pink-300 border border-gold-500/30 shadow-sm backdrop-blur-md animate-in fade-in slide-in-from-bottom-3 duration-500">
             <Sparkles className="w-4 h-4 text-gold-400" />
             <span>Dedicated to Qur'anic Learning, Education & Self-Reliance</span>
           </div>
@@ -102,10 +102,10 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 animate-in fade-in slide-in-from-bottom-5 duration-700">
             <button
               onClick={() => setIsDonateOpen(true)}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 text-base font-bold text-brand-950 bg-gradient-to-r from-gold-400 via-amber-400 to-gold-500 hover:from-gold-300 hover:to-amber-300 rounded-2xl shadow-glow transition-all transform hover:-translate-y-0.5 active:translate-y-0"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md rounded-2xl transition-all"
             >
-              <Heart className="w-5 h-5 fill-brand-950" />
-              Support Our Mission
+              <Heart className="w-5 h-5" />
+              <span>Support Our Mission</span>
             </button>
             <Link
               to="/programs"
@@ -119,19 +119,19 @@ export default function Home() {
           {/* Value Pillars Badges */}
           <div className="pt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left border-t border-white/10">
             <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-              <span className="text-gold-400 font-bold block text-sm font-display">Qur'an Distribution</span>
+              <span className="text-pink-400 font-bold block text-sm font-display">Qur'an Distribution</span>
               <span className="text-[12px] text-slate-300">Supplying sacred texts & Tajweed kits</span>
             </div>
             <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-              <span className="text-gold-400 font-bold block text-sm font-display">Student Support</span>
+              <span className="text-pink-400 font-bold block text-sm font-display">Student Support</span>
               <span className="text-[12px] text-slate-300">Books, study packs & scholarships</span>
             </div>
             <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-              <span className="text-gold-400 font-bold block text-sm font-display">Vocational Skills</span>
+              <span className="text-pink-400 font-bold block text-sm font-display">Vocational Skills</span>
               <span className="text-[12px] text-slate-300">Fashion design, trades & tech hubs</span>
             </div>
             <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-              <span className="text-gold-400 font-bold block text-sm font-display">Self-Reliance</span>
+              <span className="text-pink-400 font-bold block text-sm font-display">Self-Reliance</span>
               <span className="text-[12px] text-slate-300">Micro-grants & business mentoring</span>
             </div>
           </div>
@@ -142,21 +142,21 @@ export default function Home() {
       {/* 2. FOUNDATION INTRODUCTION & MISSION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           <div className="lg:col-span-6 space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-50 text-brand-900 border border-brand-200">
               <Sparkles className="w-3.5 h-3.5 text-gold-600" />
               About Mariya Foundation
             </div>
-            
+
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-display leading-tight">
               Nurturing Minds, Building Dignity & Fostering Independence
             </h2>
-            
+
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
               <strong>Mariya Foundation</strong> is a community-focused charitable organization established to tackle two foundational pillars of social upliftment: **empowerment towards self-reliance** and **holistic educational support**.
             </p>
-            
+
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
               We believe that long-term community transformation occurs when students are equipped with knowledge and sacred scripture, while vulnerable individuals are trained with practical vocational skills that remove dependency on hand-outs.
             </p>
@@ -215,7 +215,7 @@ export default function Home() {
       {/* 3. FEATURED PROGRAMS */}
       <section className="bg-slate-50 py-16 px-4 sm:px-6 lg:px-8 border-y border-slate-200/60">
         <div className="max-w-7xl mx-auto space-y-12">
-          
+
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <SectionHeader
               badge="Our Core Programs"
@@ -288,7 +288,7 @@ export default function Home() {
       {/* 4. DUAL SPOTLIGHT: EDUCATION & EMPOWERMENT */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          
+
           {/* Education Spotlight Card */}
           <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-brand-950 via-brand-900 to-brand-800 text-white p-8 sm:p-10 flex flex-col justify-between shadow-xl">
             <div className="space-y-4 relative z-10">
@@ -366,7 +366,7 @@ export default function Home() {
       <section className="bg-brand-950 text-white py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="absolute inset-0 bg-emerald-pattern opacity-10 pointer-events-none" />
         <div className="max-w-7xl mx-auto space-y-10 relative z-10">
-          
+
           <SectionHeader
             badge="Our Community Reach"
             title="Tangible Impact from Compassionate Giving"
@@ -555,7 +555,7 @@ export default function Home() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="rounded-3xl bg-gradient-to-r from-brand-950 via-brand-900 to-emerald-950 text-white p-8 sm:p-14 shadow-2xl relative overflow-hidden border border-brand-800">
           <div className="absolute -right-10 -bottom-10 w-80 h-80 bg-gold-500/10 rounded-full blur-3xl pointer-events-none" />
-          
+
           <div className="max-w-3xl space-y-6 relative z-10">
             <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-gold-500/20 text-gold-300 border border-gold-500/30">
               <Users className="w-3.5 h-3.5" /> Be Part of the Movement

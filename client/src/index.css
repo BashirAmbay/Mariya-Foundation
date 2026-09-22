@@ -15,36 +15,38 @@
 
 /* Islamic Geometric Subtle Background Pattern */
 .bg-islamic-pattern {
-  background-color: #fdfbf7;
-  background-image: radial-gradient(#064e3b 0.65px, transparent 0.65px), radial-gradient(#d97706 0.65px, #fdfbf7 0.65px);
+  background-color: #fdfbff;
+  background-image: radial-gradient(#3b137b 0.65px, transparent 0.65px), radial-gradient(#d97706 0.65px, #fdfbff 0.65px);
   background-size: 26px 26px;
   background-position: 0 0, 13px 13px;
   background-opacity: 0.05;
 }
 
-.bg-emerald-pattern {
-  background-color: #064e3b;
-  background-image: radial-gradient(rgba(217, 119, 6, 0.18) 1px, transparent 1px), radial-gradient(rgba(255, 255, 255, 0.08) 1px, #064e3b 1px);
+.bg-emerald-pattern,
+.bg-indigo-pattern,
+.bg-purple-pattern {
+  background-color: #3b137b;
+  background-image: radial-gradient(rgba(217, 119, 6, 0.22) 1px, transparent 1px), radial-gradient(rgba(255, 255, 255, 0.08) 1px, #3b137b 1px);
   background-size: 32px 32px;
   background-position: 0 0, 16px 16px;
 }
 
 .bg-gold-pattern {
-  background-color: #fefce8;
-  background-image: radial-gradient(rgba(6, 78, 59, 0.1) 1px, transparent 1px);
+  background-color: #fffbeb;
+  background-image: radial-gradient(rgba(91, 33, 182, 0.1) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
 /* Glassmorphism Classes */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(221, 214, 254, 0.6);
 }
 
 .glass-dark {
-  background: rgba(6, 78, 59, 0.85);
+  background: rgba(28, 11, 56, 0.90);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.12);

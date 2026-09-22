@@ -8,17 +8,56 @@ export default {
     extend: {
       colors: {
         brand: {
-          50: '#f0fdf4',
-          100: '#dcfce7',
-          200: '#bbf7d0',
-          300: '#86efac',
-          400: '#4ade80',
-          500: '#22c55e',
-          600: '#16a34a',
-          700: '#15803d',
-          800: '#065f46', // Rich deep emerald
-          900: '#064e3b', // Deep forest emerald
-          950: '#022c22',
+          50: '#f5f3ff',
+          100: '#ede9fe',
+          200: '#ddd6fe',
+          300: '#c4b5fd',
+          400: '#a78bfa',
+          500: '#8b5cf6', // Vibrant royal purple
+          600: '#7c3aed', // Electric violet
+          700: '#6d28d9', // Deep royal purple
+          800: '#5b21b6', // Deep noble purple
+          900: '#3b137b', // Luxurious deep velvet purple
+          950: '#1c0b38', // Deepest midnight royal purple
+        },
+        emerald: {
+          50: '#f5f3ff',
+          100: '#ede9fe',
+          200: '#ddd6fe',
+          300: '#c4b5fd',
+          400: '#a78bfa',
+          500: '#8b5cf6',
+          600: '#7c3aed',
+          700: '#6d28d9',
+          800: '#5b21b6',
+          900: '#3b137b',
+          950: '#1c0b38',
+        },
+        indigo: {
+          50: '#f5f3ff',
+          100: '#ede9fe',
+          200: '#ddd6fe',
+          300: '#c4b5fd',
+          400: '#a78bfa',
+          500: '#8b5cf6',
+          600: '#7c3aed',
+          700: '#6d28d9',
+          800: '#5b21b6',
+          900: '#3b137b',
+          950: '#1c0b38',
+        },
+        purple: {
+          50: '#f5f3ff',
+          100: '#ede9fe',
+          200: '#ddd6fe',
+          300: '#c4b5fd',
+          400: '#a78bfa',
+          500: '#8b5cf6',
+          600: '#7c3aed',
+          700: '#6d28d9',
+          800: '#5b21b6',
+          900: '#3b137b',
+          950: '#1c0b38',
         },
         gold: {
           50: '#fffbeb',
@@ -27,7 +66,7 @@ export default {
           300: '#fcd34d',
           400: '#fbbf24',
           500: '#f59e0b',
-          600: '#d97706', // Warm Islamic amber gold
+          600: '#d97706', // Warm amber gold
           700: '#b45309',
           800: '#92400e',
           900: '#78350f',
@@ -39,10 +78,11 @@ export default {
         serif: ['"Amiri"', 'serif']
       },
       boxShadow: {
-        'soft': '0 4px 20px -2px rgba(6, 78, 59, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04)',
-        'card': '0 10px 30px -5px rgba(6, 78, 59, 0.1), 0 4px 12px -2px rgba(0, 0, 0, 0.05)',
+        'soft': '0 4px 20px -2px rgba(91, 33, 182, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04)',
+        'card': '0 10px 30px -5px rgba(59, 19, 123, 0.14), 0 4px 12px -2px rgba(0, 0, 0, 0.05)',
         'glow': '0 0 25px rgba(217, 119, 6, 0.35)',
-        'emerald-glow': '0 0 30px rgba(6, 95, 70, 0.3)'
+        'emerald-glow': '0 0 30px rgba(124, 58, 237, 0.4)',
+        'purple-glow': '0 0 30px rgba(124, 58, 237, 0.4)'
       }
     },
   },

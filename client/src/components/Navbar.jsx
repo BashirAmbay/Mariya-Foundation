@@ -36,21 +36,21 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 w-full transition-all duration-300">
       {/* Top micro-bar for quick contact */}
-      <div className="bg-brand-950 text-emerald-100/90 text-xs py-1.5 px-4 sm:px-8 border-b border-brand-800/40 hidden md:block">
+      <div className="bg-brand-950 text-pink-100/90 text-xs py-1.5 px-4 sm:px-8 border-b border-brand-800/40 hidden md:block">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5 text-gold-400 font-medium">
+            <span className="flex items-center gap-1.5 text-pink-400 font-medium">
               <Sparkles className="w-3.5 h-3.5" />
               Nurturing Qur'anic Education & Building Self-Reliance
             </span>
             <span className="text-white/20">|</span>
-            <a href="mailto:info@mariyafoundation.org" className="hover:text-gold-300 transition flex items-center gap-1">
-              <Mail className="w-3 h-3" /> info@mariyafoundation.org
+            <a href="mailto:info@mariyafoundation.org" className="hover:text-pink-300 transition flex items-center gap-1">
+              <Mail className="w-3 h-3" /> Mariyanuumanfoundation@gmail.com
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <Link to="/donate" className="text-gold-300 hover:text-gold-200 transition font-medium flex items-center gap-1">
-              <Heart className="w-3 h-3 fill-gold-400 text-gold-400" /> Support a Student
+            <Link to="/donate" className="text-pink-300 hover:text-gold-200 transition font-medium flex items-center gap-1">
+              <Heart className="w-3 h-3 fill-pink-400 text-gold-400" /> Support a Student
             </Link>
             <span className="text-white/20">|</span>
             <Link to="/admin/login" className="hover:text-white transition flex items-center gap-1 text-emerald-200/70">
@@ -63,7 +63,7 @@ export default function Navbar() {
       {/* Main Navbar */}
       <div className={`transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-md py-3' : 'bg-white py-4 border-b border-slate-100'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          
+
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-900 to-brand-700 flex items-center justify-center text-gold-400 shadow-md border border-brand-600/30 group-hover:scale-105 transition-transform">
@@ -87,10 +87,9 @@ export default function Navbar() {
                 to={link.path}
                 end={link.path === '/'}
                 className={({ isActive }) =>
-                  `px-3 py-2 text-[13.5px] font-medium rounded-lg transition-colors duration-150 ${
-                    isActive
-                      ? 'text-brand-900 bg-brand-50 font-semibold'
-                      : 'text-slate-600 hover:text-brand-800 hover:bg-slate-50'
+                  `px-3 py-2 text-[13.5px] font-medium rounded-lg transition-colors duration-150 ${isActive
+                    ? 'text-brand-900 bg-brand-50 font-semibold'
+                    : 'text-slate-600 hover:text-brand-800 hover:bg-slate-50'
                   }`
                 }
               >
@@ -153,10 +152,9 @@ export default function Navbar() {
                 to={link.path}
                 end={link.path === '/'}
                 className={({ isActive }) =>
-                  `flex items-center justify-between px-4 py-3 text-base font-medium rounded-xl transition ${
-                    isActive
-                      ? 'text-brand-900 bg-brand-50 font-bold border-l-4 border-brand-800'
-                      : 'text-slate-700 hover:text-brand-900 hover:bg-slate-50'
+                  `flex items-center justify-between px-4 py-3 text-base font-medium rounded-xl transition ${isActive
+                    ? 'text-brand-900 bg-brand-50 font-bold border-l-4 border-brand-800'
+                    : 'text-slate-700 hover:text-brand-900 hover:bg-slate-50'
                   }`
                 }
               >
