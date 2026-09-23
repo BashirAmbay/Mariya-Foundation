@@ -1,4 +1,4 @@
-const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
+const API_BASE = import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? 'https://mariya-foundation.onrender.com/api' : '/api');
 
 export async function apiRequest(endpoint, options = {}) {
   const token = localStorage.getItem('mariya_admin_token');
