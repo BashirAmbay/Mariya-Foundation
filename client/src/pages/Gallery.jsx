@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
   Image,
@@ -36,7 +36,7 @@ export default function Gallery() {
             <Image className="w-3.5 h-3.5" /> Photographic Archive
           </span>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-display tracking-tight text-white max-w-4xl mx-auto leading-tight">
-            Mariya Foundation Gallery
+            Mariya Nuuman Foundation Gallery
           </h1>
           <p className="text-base sm:text-xl text-emerald-100/90 font-light max-w-2xl mx-auto leading-relaxed">
             Witness our on-the-ground interventions: Qur'an distribution drives, vocational training workshops, and community welfare handovers.

@@ -27,10 +27,10 @@ export default function Footer() {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
               to="/donate"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 text-brand-950 font-bold hover:brightness-110 transition shadow-lg text-sm"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-brand-950 font-bold hover:brightness-110 transition shadow-lg text-sm"
             >
               <Heart className="w-4 h-4 fill-brand-950" />
-              Donate to Mariya Foundation
+              Donate to Mariya Nuuman Foundation
             </Link>
             <Link
               to="/get-involved"
@@ -46,15 +46,17 @@ export default function Footer() {
       {/* Main Footer Links */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-          
+
           {/* Brand Col (2 cols on lg) */}
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-800 to-brand-700 flex items-center justify-center text-gold-400 shadow-md border border-brand-600/40">
-                <BookOpen className="w-6 h-6 text-gold-400" />
-              </div>
+              <img
+                src="/logo.png"
+                alt="Mariya Nuuman Foundation Logo"
+                className="h-11 w-auto rounded-xl object-contain shadow-md"
+              />
               <span className="text-2xl font-bold text-white font-display tracking-tight">
-                Mariya Foundation
+                Mariya Nuuman Foundation
               </span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
@@ -110,15 +112,15 @@ export default function Footer() {
             <div className="space-y-2.5 text-sm text-slate-400">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-gold-400 mt-0.5 flex-shrink-0" />
-                <span>Plot 12, Community Development Crescent, Kaduna State, Nigeria (Placeholder)</span>
+                <span>Danbatta Local Government, Kano State</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-gold-400 flex-shrink-0" />
-                <a href="mailto:info@mariyafoundation.org" className="hover:text-white transition">info@mariyafoundation.org</a>
+                <a href="mailto:info@mariyafoundation.org" className="hover:text-white transition">mariyanuumanfoundation@gmail.com</a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-gold-400 flex-shrink-0" />
-                <span>+234 (0) 800 000 0000 (Placeholder)</span>
+                <span>+234  806 863 9972</span>
               </div>
               <div className="pt-2">
                 <a
@@ -138,7 +140,7 @@ export default function Footer() {
 
         {/* Bottom Disclaimer & Copyright */}
         <div className="mt-12 pt-8 border-t border-brand-900/80 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {currentYear} Mariya Foundation. All rights reserved.</p>
+          <p>© {currentYear} Mariya Nuuman Foundation. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <span>Non-Profit & Community Charitable Trust</span>
             <span>•</span>

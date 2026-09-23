@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
   Heart,
@@ -114,7 +114,7 @@ export default function Donate() {
             <Heart className="w-3.5 h-3.5 fill-gold-400" /> Sawaab-e-Jariyah
           </span>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-display tracking-tight text-white max-w-4xl mx-auto leading-tight">
-            Support Mariya Foundation
+            Support Mariya Nuuman Foundation
           </h1>
           <p className="text-base sm:text-xl text-emerald-100/90 font-light max-w-2xl mx-auto leading-relaxed">
             Your generous charitable donation helps empower people to become self-reliant and provides students with Qur'ans and education materials.
@@ -237,8 +237,8 @@ export default function Donate() {
           ))}
         </div>
 
-        <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-slate-800 text-xs text-center max-w-2xl mx-auto space-y-1">
-          <p className="font-semibold text-amber-900">
+        <div className="p-4 rounded-2xl bg-gold-50 border border-gold-200 text-slate-800 text-xs text-center max-w-2xl mx-auto space-y-1">
+          <p className="font-semibold text-gold-900">
             * Note on Official Foundation Bank Details:
           </p>
           <p className="text-slate-600">
@@ -251,7 +251,7 @@ export default function Donate() {
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-3xl border border-slate-200 shadow-card overflow-hidden">
           
-          <div className="bg-gradient-to-r from-gold-600 via-amber-600 to-gold-500 text-white p-8 text-center space-y-2">
+          <div className="bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400 text-white p-8 text-center space-y-2">
             <span className="text-xs font-bold uppercase tracking-wider bg-black/20 px-3 py-1 rounded-full">
               Donation Receipt & Confirmation
             </span>
@@ -297,7 +297,7 @@ export default function Donate() {
                   )}
                   <div className="flex justify-between pt-1">
                     <span className="text-slate-500 font-sans">Verification:</span>
-                    <span className="text-amber-600 font-bold uppercase font-sans">Logged / Awaiting Audit</span>
+                    <span className="text-gold-600 font-bold uppercase font-sans">Logged / Awaiting Audit</span>
                   </div>
                 </div>
 
@@ -422,7 +422,7 @@ export default function Donate() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-gold-600 via-amber-600 to-gold-500 text-white font-bold text-sm shadow-md hover:brightness-110 transition flex items-center justify-center gap-2 disabled:opacity-50"
+                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400 text-white font-bold text-sm shadow-md hover:brightness-110 transition flex items-center justify-center gap-2 disabled:opacity-50"
                   >
                     {loading ? (
                       <>

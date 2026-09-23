@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Sparkles,
@@ -131,15 +131,15 @@ export default function EmpowermentPrograms() {
 
             <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
               <p>
-                At <strong>Mariya Foundation</strong>, our empowerment initiatives are built on the foundational Islamic ethos of self-reliance. While emergency welfare is essential in crises, genuine social transformation demands that beneficiaries gain the technical skills, tools, and business acumen necessary to earn their own lawful livelihood.
+                At <strong>Mariya Nuuman Foundation</strong>, our empowerment initiatives are built on the foundational Islamic ethos of self-reliance. While emergency welfare is essential in crises, genuine social transformation demands that beneficiaries gain the technical skills, tools, and business acumen necessary to earn their own lawful livelihood.
               </p>
               <p>
                 We do not merely teach a trade and walk away. Every graduate of our vocational programs is gifted their own operational equipment (such as heavy-duty sewing machines or digital design systems) and connected to a one-year mentorship network.
               </p>
             </div>
 
-            <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-slate-800 space-y-1">
-              <span className="font-bold text-xs uppercase tracking-wider text-amber-800 block font-display">
+            <div className="p-4 rounded-2xl bg-gold-50 border border-gold-200 text-slate-800 space-y-1">
+              <span className="font-bold text-xs uppercase tracking-wider text-gold-800 block font-display">
                 The Islamic Standard of Work:
               </span>
               <p className="text-xs text-slate-700 italic">
@@ -208,7 +208,7 @@ export default function EmpowermentPrograms() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeader
           badge="Structured Methodology"
-          title="The Mariya Foundation Empowerment Model"
+          title="The Mariya Nuuman Foundation Empowerment Model"
           subtitle="A proven four-stage cycle that converts vulnerability into sustained commercial success."
           centered={true}
         />

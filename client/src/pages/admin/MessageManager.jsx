@@ -161,7 +161,7 @@ export default function MessageManager() {
                     </td>
                     <td className="p-4 whitespace-nowrap">
                       <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${
-                        msg.status === 'replied' ? 'bg-emerald-100 text-emerald-800' : 'bg-amber-100 text-amber-800'
+                        msg.status === 'replied' ? 'bg-emerald-100 text-emerald-800' : 'bg-gold-100 text-gold-800'
                       }`}>
                         {msg.status}
                       </span>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   TrendingUp,
@@ -308,7 +308,7 @@ export default function ImpactManager() {
                 <h3 className="text-lg font-bold font-display text-white">
                   {editingStory ? 'Edit Beneficiary Story' : 'Add Impact Story'}
                 </h3>
-                <p className="text-xs text-gold-400">Mariya Foundation Case Study</p>
+                <p className="text-xs text-gold-400">Mariya Nuuman Foundation Case Study</p>
               </div>
               <button onClick={() => setIsStoryModalOpen(false)} className="text-white/70 hover:text-white p-1">
                 <X className="w-5 h-5" />
@@ -396,7 +396,7 @@ export default function ImpactManager() {
                   type="text"
                   value={storyForm.quote}
                   onChange={e => setStoryForm({ ...storyForm, quote: e.target.value })}
-                  placeholder="Mariya Foundation gave me dignity and hope..."
+                  placeholder="Mariya Nuuman Foundation gave me dignity and hope..."
                   className="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs"
                 />
               </div>

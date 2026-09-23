@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   Settings,
@@ -19,7 +19,7 @@ export default function SettingsManager() {
   const { addToast } = useToast();
 
   const [form, setForm] = useState({
-    org_name: 'Mariya Foundation',
+    org_name: 'Mariya Nuuman Foundation',
     tagline: 'Empowering Communities, Nurturing Education & Building Self-Reliance',
     mission: '',
     vision: '',

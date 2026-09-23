@@ -78,7 +78,7 @@ export default function ApplicationManager() {
           <h2 className="text-2xl font-bold font-display text-slate-900 flex items-center gap-2.5">
             Program Beneficiary Applications
             {pendingCount > 0 && (
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500 text-brand-950">
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-gold-500 text-brand-950">
                 {pendingCount} Pending Admission
               </span>
             )}
@@ -151,7 +151,7 @@ export default function ApplicationManager() {
                       <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase ${
                         app.status === 'enrolled' ? 'bg-emerald-100 text-emerald-800' :
                         app.status === 'approved' ? 'bg-blue-100 text-blue-800' :
-                        app.status === 'pending' ? 'bg-amber-100 text-amber-800' :
+                        app.status === 'pending' ? 'bg-gold-100 text-gold-800' :
                         'bg-slate-100 text-slate-700'
                       }`}>
                         {app.status}

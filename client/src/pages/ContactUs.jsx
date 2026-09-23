@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import {
   MapPin,
   Phone,
@@ -34,7 +34,7 @@ export default function ContactUs() {
 
   const faqs = [
     {
-      q: "How does Mariya Foundation select beneficiaries for Qur'an and education support?",
+      q: "How does Mariya Nuuman Foundation select beneficiaries for Qur'an and education support?",
       a: "Our field coordinators conduct direct baseline visits to community Madrasahs, basic schools, and low-income settlements, partnering with trusted local imams, headteachers, and community elders to verify student need."
     },
     {
@@ -43,7 +43,7 @@ export default function ContactUs() {
     },
     {
       q: "Where does vocational skills training take place?",
-      a: "Our vocational courses (tailoring, digital literacy, crafts) run at community partner centers and dedicated Mariya Foundation workshops with full hands-on equipment."
+      a: "Our vocational courses (tailoring, digital literacy, crafts) run at community partner centers and dedicated Mariya Nuuman Foundation workshops with full hands-on equipment."
     },
     {
       q: "How can I receive verification of my donation's impact?",
@@ -78,7 +78,7 @@ export default function ContactUs() {
             <Mail className="w-3.5 h-3.5" /> Reach Out to Us
           </span>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-display tracking-tight text-white max-w-4xl mx-auto leading-tight">
-            Contact Mariya Foundation
+            Contact Mariya Nuuman Foundation
           </h1>
           <p className="text-base sm:text-xl text-emerald-100/90 font-light max-w-2xl mx-auto leading-relaxed">
             Have questions about our programs, partnerships, student sponsorships, or wish to visit our administrative secretariat? We are here to assist.
@@ -187,7 +187,7 @@ export default function ContactUs() {
                     Thank You! Your Message is Received.
                   </h4>
                   <p className="text-sm text-slate-600 max-w-md mx-auto">
-                    We appreciate your message to <strong>Mariya Foundation</strong>. Our team will review your inquiry and get in touch with you shortly.
+                    We appreciate your message to <strong>Mariya Nuuman Foundation</strong>. Our team will review your inquiry and get in touch with you shortly.
                   </p>
                   <div className="pt-2">
                     <button
@@ -358,7 +358,7 @@ export default function ContactUs() {
               <MapPin className="w-6 h-6" />
             </div>
             <h4 className="text-lg font-bold font-display text-slate-800">
-              Mariya Foundation Secretariat Location
+              Mariya Nuuman Foundation Secretariat Location
             </h4>
             <p className="text-xs text-slate-500 max-w-sm mx-auto">
               Plot 12, Community Development Crescent, Kaduna State, Nigeria (Placeholder location map).

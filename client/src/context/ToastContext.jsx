@@ -36,9 +36,9 @@ export function ToastProvider({ children }) {
             Icon = AlertCircle;
             iconColor = 'text-rose-400';
           } else if (toast.type === 'warning') {
-            bg = 'bg-amber-900 text-white border-amber-700';
+            bg = 'bg-gold-900 text-white border-gold-700';
             Icon = AlertTriangle;
-            iconColor = 'text-amber-400';
+            iconColor = 'text-gold-400';
           } else if (toast.type === 'info') {
             bg = 'bg-slate-900 text-white border-slate-700';
             Icon = Info;

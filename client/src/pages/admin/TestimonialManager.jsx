@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   Quote,
@@ -263,7 +263,7 @@ export default function TestimonialManager() {
                   rows="3"
                   value={formData.content}
                   onChange={e => setFormData({ ...formData, content: e.target.value })}
-                  placeholder="The impact Mariya Foundation made on our school..."
+                  placeholder="The impact Mariya Nuuman Foundation made on our school..."
                   className="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs"
                 />
               </div>

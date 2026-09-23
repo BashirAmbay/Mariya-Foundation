@@ -44,7 +44,7 @@ export default function AdminLayout() {
           </div>
           <h2 className="text-xl font-bold text-slate-800 font-display">Authentication Required</h2>
           <p className="text-sm text-slate-600">
-            You must be signed in as an authorized administrator to view the Mariya Foundation Management Portal.
+            You must be signed in as an authorized administrator to view the Mariya Nuuman Foundation Management Portal.
           </p>
           <Link
             to="/admin/login"
@@ -82,11 +82,13 @@ export default function AdminLayout() {
       {/* Mobile Topbar */}
       <div className="lg:hidden bg-brand-950 text-white p-4 flex items-center justify-between shadow-md sticky top-0 z-30">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-brand-800 flex items-center justify-center text-gold-400 border border-brand-700">
-            <BookOpen className="w-4 h-4 text-gold-400" />
-          </div>
+          <img
+            src="/logo.png"
+            alt="Mariya Nuuman Foundation Logo"
+            className="h-8 w-auto rounded-lg object-contain"
+          />
           <div>
-            <span className="font-bold text-sm block leading-none font-display">Mariya Foundation</span>
+            <span className="font-bold text-sm block leading-none font-display">Mariya Nuuman Foundation</span>
             <span className="text-[10px] text-gold-400 font-medium">Admin Portal</span>
           </div>
         </div>
@@ -106,11 +108,13 @@ export default function AdminLayout() {
         {/* Brand Header */}
         <div className="p-6 border-b border-brand-900 flex items-center justify-between">
           <Link to="/admin/dashboard" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-800 to-brand-700 flex items-center justify-center text-gold-400 shadow-md border border-brand-600/40">
-              <BookOpen className="w-5 h-5 text-gold-400" />
-            </div>
+            <img
+              src="/logo.png"
+              alt="Mariya Nuuman Foundation Logo"
+              className="h-10 w-auto rounded-xl object-contain shadow-md"
+            />
             <div>
-              <h1 className="text-base font-bold text-white font-display leading-tight">Mariya Foundation</h1>
+              <h1 className="text-base font-bold text-white font-display leading-tight">Mariya Nuuman Foundation</h1>
               <span className="text-xs text-gold-400 font-semibold tracking-wider uppercase">Admin Portal</span>
             </div>
           </Link>
@@ -145,7 +149,7 @@ export default function AdminLayout() {
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all ${
                     isActive
-                      ? 'bg-gradient-to-r from-gold-600 to-amber-600 text-white shadow-md font-bold'
+                      ? 'bg-gradient-to-r from-gold-600 to-gold-500 text-white shadow-md font-bold'
                       : 'text-slate-300 hover:text-white hover:bg-brand-900/70'
                   }`
                 }

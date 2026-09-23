@@ -73,7 +73,7 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=2000&q=80"
-            alt="Mariya Foundation Education and Community Support"
+            alt="Mariya Nuuman Foundation Education and Community Support"
             className="w-full h-full object-cover object-center opacity-30 mix-blend-luminosity scale-105 animate-in fade-in duration-1000"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/80 to-brand-950/60" />
@@ -90,8 +90,16 @@ export default function Home() {
 
           {/* Heading */}
           <div className="space-y-4 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
+            {/* Logo Image */}
+            <div className="flex justify-center mb-2">
+              <img
+                src="/logo.png"
+                alt="Mariya Nuuman Foundation Logo"
+                className="h-32 sm:h-40 w-auto object-contain drop-shadow-2xl"
+              />
+            </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-display tracking-tight text-white leading-tight">
-              Mariya Foundation
+              Mariya Nuuman Foundation
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-emerald-100/90 font-light leading-relaxed max-w-3xl mx-auto">
               Empowering people to become self-reliant and supporting students through sacred Qur'anic and general education.
@@ -146,7 +154,7 @@ export default function Home() {
           <div className="lg:col-span-6 space-y-6">
             <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-50 text-brand-900 border border-brand-200">
               <Sparkles className="w-3.5 h-3.5 text-gold-600" />
-              About Mariya Foundation
+              About Mariya Nuuman Foundation
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-display leading-tight">
@@ -154,7 +162,7 @@ export default function Home() {
             </h2>
 
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              <strong>Mariya Foundation</strong> is a community-focused charitable organization established to tackle two foundational pillars of social upliftment: **empowerment towards self-reliance** and **holistic educational support**.
+              <strong>Mariya Nuuman Foundation</strong> is a community-focused charitable organization established to tackle two foundational pillars of social upliftment: **empowerment towards self-reliance** and **holistic educational support**.
             </p>
 
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
@@ -203,7 +211,7 @@ export default function Home() {
                   "Knowledge illuminates the heart, while vocational mastery empowers the hands."
                 </p>
                 <span className="text-[11px] text-slate-500 block mt-1">
-                  — Mariya Foundation Guiding Philosophy
+                  — Mariya Nuuman Foundation Guiding Philosophy
                 </span>
               </div>
             </div>
@@ -409,7 +417,7 @@ export default function Home() {
           <SectionHeader
             badge="Voices of Gratitude"
             title="Words from Our Beneficiaries & Community"
-            subtitle="Real experiences of students, educators, and graduates empowered by Mariya Foundation."
+            subtitle="Real experiences of students, educators, and graduates empowered by Mariya Nuuman Foundation."
             centered={true}
           />
 
@@ -561,7 +569,7 @@ export default function Home() {
               <Users className="w-3.5 h-3.5" /> Be Part of the Movement
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-white leading-tight">
-              Lend Your Skills, Time, or Generosity to Mariya Foundation
+              Lend Your Skills, Time, or Generosity to Mariya Nuuman Foundation
             </h2>
             <p className="text-base text-emerald-100/80 leading-relaxed">
               Whether you wish to sponsor copies of the Holy Qur'an, fund vocational toolkits for widows, or volunteer as a teacher or mentor, your partnership is deeply valued.

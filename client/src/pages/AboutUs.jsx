@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   BookOpen,
@@ -82,7 +82,7 @@ export default function AboutUs() {
             <Sparkles className="w-3.5 h-3.5" /> Who We Are
           </span>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-display tracking-tight text-white max-w-4xl mx-auto leading-tight">
-            About Mariya Foundation
+            About Mariya Nuuman Foundation
           </h1>
           <p className="text-base sm:text-xl text-emerald-100/90 font-light max-w-2xl mx-auto leading-relaxed">
             A dedicated community charitable trust committed to illuminating lives with Qur'anic education and empowering people with vocational self-reliance.
@@ -104,7 +104,7 @@ export default function AboutUs() {
 
             <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
               <p>
-                <strong>Mariya Foundation</strong> was established in response to two persistent grassroots realities: the acute shortage of sacred texts and basic learning materials in community Madrasahs, and the rampant economic vulnerability facing young adults and women without vocational skills.
+                <strong>Mariya Nuuman Foundation</strong> was established in response to two persistent grassroots realities: the acute shortage of sacred texts and basic learning materials in community Madrasahs, and the rampant economic vulnerability facing young adults and women without vocational skills.
               </p>
               <p>
                 In many rural communities, students eager to memorize the Holy Qur'an share a single damaged Mushaf among several learners. Simultaneously, thousands of youth and female heads of household lack the marketable trades needed to support their households, leading to perpetual poverty.
@@ -233,7 +233,7 @@ export default function AboutUs() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <SectionHeader
           badge="Strategic Goals"
-          title="Key Objectives of Mariya Foundation"
+          title="Key Objectives of Mariya Nuuman Foundation"
           subtitle="Specific, actionable benchmarks we continuously pursue across our operations."
           centered={true}
         />
@@ -299,7 +299,7 @@ export default function AboutUs() {
             Our Commitment to Trust & Financial Amanah
           </h3>
           <p className="text-sm text-slate-700 leading-relaxed max-w-2xl mx-auto">
-            At Mariya Foundation, we hold ourselves accountable to both our donors and the Almighty. Every contribution is allocated strictly in alignment with specified donor intentions, with zero administrative waste.
+            At Mariya Nuuman Foundation, we hold ourselves accountable to both our donors and the Almighty. Every contribution is allocated strictly in alignment with specified donor intentions, with zero administrative waste.
           </p>
           <div className="pt-2 flex flex-wrap justify-center gap-4">
             <Link

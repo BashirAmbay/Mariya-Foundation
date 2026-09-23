@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
   BookOpen,
@@ -58,7 +58,7 @@ export default function Programs() {
             <Sparkles className="w-3.5 h-3.5" /> Our Initiatives
           </span>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-display tracking-tight text-white max-w-4xl mx-auto leading-tight">
-            Mariya Foundation Programs
+            Mariya Nuuman Foundation Programs
           </h1>
           <p className="text-base sm:text-xl text-emerald-100/90 font-light max-w-2xl mx-auto leading-relaxed">
             Discover our comprehensive educational assistance, Qur'anic outreach, vocational training hubs, and community welfare programs.

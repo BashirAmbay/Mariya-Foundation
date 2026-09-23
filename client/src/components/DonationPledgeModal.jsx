@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { X, Check, Copy, Heart, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { api } from '../api/client';
 import { useToast } from '../context/ToastContext';
@@ -63,7 +63,7 @@ export default function DonationPledgeModal({ isOpen, onClose, selectedPurpose =
       <div className="relative bg-white rounded-2xl max-w-2xl w-full shadow-2xl overflow-hidden border border-slate-100 animate-in fade-in zoom-in-95 duration-200">
         
         {/* Header */}
-        <div className="bg-gradient-to-r from-gold-600 via-amber-600 to-gold-500 text-white p-6 relative">
+        <div className="bg-gradient-to-r from-gold-600 via-gold-500 to-gold-400 text-white p-6 relative">
           <button
             onClick={handleClose}
             className="absolute top-4 right-4 text-white/80 hover:text-white bg-black/10 hover:bg-black/20 rounded-full p-1.5 transition"
@@ -78,7 +78,7 @@ export default function DonationPledgeModal({ isOpen, onClose, selectedPurpose =
             </span>
           </div>
           <h3 className="text-2xl font-bold font-display mt-1 text-white">
-            Support Mariya Foundation
+            Support Mariya Nuuman Foundation
           </h3>
           <p className="text-xs text-white/90 mt-1">
             Official bank transfer payment information and donation notification form.
@@ -112,7 +112,7 @@ export default function DonationPledgeModal({ isOpen, onClose, selectedPurpose =
                 )}
                 <div className="flex justify-between">
                   <span className="text-slate-500">Status:</span>
-                  <span className="text-amber-600 font-semibold uppercase">Pending Verification</span>
+                  <span className="text-gold-600 font-semibold uppercase">Pending Verification</span>
                 </div>
               </div>
 
@@ -150,7 +150,7 @@ export default function DonationPledgeModal({ isOpen, onClose, selectedPurpose =
                   </div>
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-sm">
                     <span className="text-slate-500 text-xs">Account Name:</span>
-                    <span className="font-semibold text-slate-800">Mariya Foundation</span>
+                    <span className="font-semibold text-slate-800">Mariya Nuuman Foundation</span>
                   </div>
                   <div className="flex items-center justify-between gap-2 pt-1 border-t border-slate-100">
                     <div>
@@ -287,7 +287,7 @@ export default function DonationPledgeModal({ isOpen, onClose, selectedPurpose =
                   <button
                     type="submit"
                     disabled={loading}
-                    className="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-gold-600 to-amber-600 text-white text-sm font-bold rounded-xl shadow hover:brightness-110 transition disabled:opacity-50"
+                    className="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-gold-600 to-gold-500 text-white text-sm font-bold rounded-xl shadow hover:brightness-110 transition disabled:opacity-50"
                   >
                     {loading ? (
                       <>

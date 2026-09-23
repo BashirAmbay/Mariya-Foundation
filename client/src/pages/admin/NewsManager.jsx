@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   Newspaper,
@@ -27,7 +27,7 @@ export default function NewsManager() {
     summary: '',
     content: '',
     category: 'Announcements',
-    author: 'Mariya Foundation Secretariat',
+    author: 'Mariya Nuuman Foundation Secretariat',
     is_published: true,
     published_at: new Date().toISOString().slice(0, 16),
     featured_image: ''
@@ -49,7 +49,7 @@ export default function NewsManager() {
       summary: '',
       content: '',
       category: 'Announcements',
-      author: 'Mariya Foundation Secretariat',
+      author: 'Mariya Nuuman Foundation Secretariat',
       is_published: true,
       published_at: new Date().toISOString().slice(0, 16),
       featured_image: ''
@@ -65,7 +65,7 @@ export default function NewsManager() {
       summary: art.summary,
       content: art.content,
       category: art.category,
-      author: art.author || 'Mariya Foundation Secretariat',
+      author: art.author || 'Mariya Nuuman Foundation Secretariat',
       is_published: Boolean(art.is_published),
       published_at: art.published_at ? art.published_at.slice(0, 16) : new Date().toISOString().slice(0, 16),
       featured_image: art.featured_image || ''
@@ -238,7 +238,7 @@ export default function NewsManager() {
                 <h3 className="text-lg font-bold font-display text-white">
                   {editingArticle ? 'Edit News Article' : 'Compose News Article'}
                 </h3>
-                <p className="text-xs text-gold-400">Mariya Foundation Newsroom</p>
+                <p className="text-xs text-gold-400">Mariya Nuuman Foundation Newsroom</p>
               </div>
               <button onClick={() => setIsModalOpen(false)} className="text-white/70 hover:text-white">
                 <X className="w-5 h-5" />
@@ -254,7 +254,7 @@ export default function NewsManager() {
                   required
                   value={formData.title}
                   onChange={e => setFormData({ ...formData, title: e.target.value })}
-                  placeholder="e.g. Mariya Foundation Launches 2026 Quran Distribution Drive"
+                  placeholder="e.g. Mariya Nuuman Foundation Launches 2026 Quran Distribution Drive"
                   className="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs"
                 />
               </div>

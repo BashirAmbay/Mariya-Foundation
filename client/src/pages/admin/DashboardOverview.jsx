@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -41,7 +41,7 @@ export default function DashboardOverview() {
       value: Number(metrics.totalBeneficiaries || 0).toLocaleString(),
       sub: 'Cumulative students & apprentices',
       icon: TrendingUp,
-      color: 'bg-amber-50 text-gold-700 border-amber-200',
+      color: 'bg-gold-50 text-gold-700 border-gold-200',
       link: '/admin/impact'
     },
     {
@@ -88,7 +88,7 @@ export default function DashboardOverview() {
       <div className="bg-gradient-to-r from-brand-950 via-brand-900 to-brand-800 text-white rounded-3xl p-6 sm:p-8 shadow-md border border-brand-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-gold-500/20 text-gold-300 border border-gold-500/30">
-            <Sparkles className="w-3.5 h-3.5" /> Mariya Foundation Management Console
+            <Sparkles className="w-3.5 h-3.5" /> Mariya Nuuman Foundation Management Console
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold font-display text-white">
             Welcome to the Administrator Dashboard
@@ -212,7 +212,7 @@ export default function DashboardOverview() {
                   <div className="flex justify-between items-center text-xs">
                     <span className="font-bold text-slate-800">{vol.full_name}</span>
                     <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${
-                      vol.status === 'pending' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'
+                      vol.status === 'pending' ? 'bg-gold-100 text-gold-800' : 'bg-emerald-100 text-emerald-800'
                     }`}>
                       {vol.status}
                     </span>
@@ -249,7 +249,7 @@ export default function DashboardOverview() {
                   <div className="flex justify-between items-center text-xs">
                     <span className="font-bold text-slate-800">{app.applicant_name}</span>
                     <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${
-                      app.status === 'pending' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'
+                      app.status === 'pending' ? 'bg-gold-100 text-gold-800' : 'bg-emerald-100 text-emerald-800'
                     }`}>
                       {app.status}
                     </span>

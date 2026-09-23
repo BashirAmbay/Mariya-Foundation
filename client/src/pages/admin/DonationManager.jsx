@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   HeartHandshake,
@@ -24,7 +24,7 @@ export default function DonationManager() {
   const [editingAccount, setEditingAccount] = useState(null);
   const [accountForm, setAccountForm] = useState({
     bank_name: '',
-    account_name: 'Mariya Foundation',
+    account_name: 'Mariya Nuuman Foundation',
     account_number: '',
     routing_or_iban: '',
     currency: 'NGN',
@@ -53,7 +53,7 @@ export default function DonationManager() {
     setEditingAccount(null);
     setAccountForm({
       bank_name: '',
-      account_name: 'Mariya Foundation',
+      account_name: 'Mariya Nuuman Foundation',
       account_number: '',
       routing_or_iban: '',
       currency: 'NGN',
@@ -252,7 +252,7 @@ export default function DonationManager() {
                         <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase ${
                           p.status === 'verified' ? 'bg-emerald-100 text-emerald-800' :
                           p.status === 'confirmed' ? 'bg-blue-100 text-blue-800' :
-                          'bg-amber-100 text-amber-800'
+                          'bg-gold-100 text-gold-800'
                         }`}>
                           {p.status}
                         </span>
@@ -316,7 +316,7 @@ export default function DonationManager() {
                   required
                   value={accountForm.account_name}
                   onChange={e => setAccountForm({ ...accountForm, account_name: e.target.value })}
-                  placeholder="Mariya Foundation"
+                  placeholder="Mariya Nuuman Foundation"
                   className="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs"
                 />
               </div>

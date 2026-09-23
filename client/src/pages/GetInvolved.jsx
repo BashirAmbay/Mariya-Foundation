@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Users,
@@ -71,7 +71,7 @@ export default function GetInvolved() {
     try {
       await api.post('/volunteers', formData);
       setSubmitted(true);
-      addToast('Volunteer application submitted! Thank you for joining hands with Mariya Foundation.');
+      addToast('Volunteer application submitted! Thank you for joining hands with Mariya Nuuman Foundation.');
     } catch (err) {
       setError(err.message || 'Failed to submit application. Please check your inputs.');
     } finally {
@@ -90,7 +90,7 @@ export default function GetInvolved() {
             <Users className="w-3.5 h-3.5" /> Collective Action
           </span>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-display tracking-tight text-white max-w-4xl mx-auto leading-tight">
-            Get Involved with Mariya Foundation
+            Get Involved with Mariya Nuuman Foundation
           </h1>
           <p className="text-base sm:text-xl text-emerald-100/90 font-light max-w-2xl mx-auto leading-relaxed">
             Every Qur'an delivered, every youth empowered with a trade, and every student kept in school happens because of caring people like you.
@@ -171,7 +171,7 @@ export default function GetInvolved() {
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
                 <h4 className="text-2xl font-bold text-slate-900 font-display">
-                  Welcome to the Mariya Foundation Volunteer Circle!
+                  Welcome to the Mariya Nuuman Foundation Volunteer Circle!
                 </h4>
                 <p className="text-sm text-slate-600 max-w-md mx-auto">
                   Your application has been logged. Our volunteer coordinator will review your profile and contact you for upcoming field drives and orientation.
@@ -321,7 +321,7 @@ export default function GetInvolved() {
 
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 mb-1">
-                    Why would you like to volunteer with Mariya Foundation? *
+                    Why would you like to volunteer with Mariya Nuuman Foundation? *
                   </label>
                   <textarea
                     required

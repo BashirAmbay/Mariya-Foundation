@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   BookOpen,
@@ -255,7 +255,7 @@ export default function ProgramManager() {
                 <h3 className="text-lg font-bold font-display text-white">
                   {editingProgram ? 'Edit Program' : 'Create New Program'}
                 </h3>
-                <p className="text-xs text-gold-400">Mariya Foundation Initiative Editor</p>
+                <p className="text-xs text-gold-400">Mariya Nuuman Foundation Initiative Editor</p>
               </div>
               <button onClick={() => setIsModalOpen(false)} className="text-white/70 hover:text-white p-1">
                 <X className="w-5 h-5" />

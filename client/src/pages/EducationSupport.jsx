@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   BookOpen,
@@ -106,7 +106,7 @@ export default function EducationSupport() {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <button
               onClick={() => setIsDonateOpen(true)}
-              className="px-6 py-3 bg-gradient-to-r from-gold-500 to-amber-600 text-brand-950 font-bold rounded-xl text-sm shadow-glow transition hover:brightness-110 flex items-center gap-2"
+              className="px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 text-brand-950 font-bold rounded-xl text-sm shadow-glow transition hover:brightness-110 flex items-center gap-2"
             >
               <Heart className="w-4 h-4 fill-brand-950" />
               Sponsor Qur'ans & Study Kits
@@ -138,7 +138,7 @@ export default function EducationSupport() {
                 In hundreds of grassroots Madrasahs and basic schools across our target communities, eager young students assemble each morning with deep enthusiasm but critically limited resources. Often, four or more children must cluster around a single worn copy of the Mushaf or a shared notebook.
               </p>
               <p>
-                <strong>Mariya Foundation</strong> firmly believes that poverty should never deprive a child of reciting the words of Allah or pursuing foundational academic literacy. Our comprehensive educational initiatives ensure that learners receive top-tier, long-lasting study materials.
+                <strong>Mariya Nuuman Foundation</strong> firmly believes that poverty should never deprive a child of reciting the words of Allah or pursuing foundational academic literacy. Our comprehensive educational initiatives ensure that learners receive top-tier, long-lasting study materials.
               </p>
             </div>
 
@@ -171,7 +171,7 @@ export default function EducationSupport() {
           
           <SectionHeader
             badge="Comprehensive Spectrum"
-            title="How Mariya Foundation Supports Students"
+            title="How Mariya Nuuman Foundation Supports Students"
             subtitle="Targeted interventions covering spiritual, academic, and material educational needs."
             centered={true}
           />
@@ -259,7 +259,7 @@ export default function EducationSupport() {
               Are You a Student or Madrasah Administrator in Need?
             </h3>
             <p className="text-xs sm:text-sm text-emerald-100/80 max-w-2xl mx-auto leading-relaxed">
-              Mariya Foundation accepts applications from community Madrasahs, teachers, and indigent parents seeking study packs, Mushafs, or academic support.
+              Mariya Nuuman Foundation accepts applications from community Madrasahs, teachers, and indigent parents seeking study packs, Mushafs, or academic support.
             </p>
             <div className="pt-2">
               <button

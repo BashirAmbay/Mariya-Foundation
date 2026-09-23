@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   Users,
@@ -78,7 +78,7 @@ export default function VolunteerManager() {
           <h2 className="text-2xl font-bold font-display text-slate-900 flex items-center gap-2.5">
             Volunteer Applications
             {pendingCount > 0 && (
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500 text-brand-950">
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-gold-500 text-brand-950">
                 {pendingCount} Pending Review
               </span>
             )}
@@ -149,7 +149,7 @@ export default function VolunteerManager() {
                     <td className="p-4">
                       <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase ${
                         vol.status === 'accepted' ? 'bg-emerald-100 text-emerald-800' :
-                        vol.status === 'pending' ? 'bg-amber-100 text-amber-800' :
+                        vol.status === 'pending' ? 'bg-gold-100 text-gold-800' :
                         'bg-slate-100 text-slate-700'
                       }`}>
                         {vol.status}
@@ -214,7 +214,7 @@ export default function VolunteerManager() {
                 </div>
                 <div>
                   <span className="text-slate-400 block text-[10px] uppercase font-bold">Current Status</span>
-                  <span className="font-bold text-amber-700 uppercase">{selectedVolunteer.status}</span>
+                  <span className="font-bold text-gold-700 uppercase">{selectedVolunteer.status}</span>
                 </div>
               </div>
 
@@ -267,7 +267,7 @@ export default function VolunteerManager() {
 
               <div className="pt-2 flex justify-between items-center">
                 <a
-                  href={`mailto:${selectedVolunteer.email}?subject=Mariya Foundation Volunteer Inquiry`}
+                  href={`mailto:${selectedVolunteer.email}?subject=Mariya Nuuman Foundation Volunteer Inquiry`}
                   className="inline-flex items-center gap-1.5 px-4 py-2 bg-brand-900 hover:bg-brand-800 text-white font-bold rounded-xl text-xs"
                 >
                   <Mail className="w-3.5 h-3.5" />

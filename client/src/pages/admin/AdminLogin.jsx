@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { BookOpen, Lock, Mail, Loader2, AlertCircle, Sparkles, ArrowRight, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
@@ -27,7 +27,7 @@ export default function AdminLogin() {
 
     try {
       await login(email, password);
-      addToast('Welcome back to Mariya Foundation Admin Portal!');
+      addToast('Welcome back to Mariya Nuuman Foundation Admin Portal!');
       navigate('/admin/dashboard');
     } catch (err) {
       setError(err.message || 'Invalid administrator credentials.');
@@ -52,7 +52,7 @@ export default function AdminLogin() {
           </Link>
           <div>
             <h1 className="text-2xl sm:text-3xl font-bold font-display text-white">
-              Mariya Foundation
+              Mariya Nuuman Foundation
             </h1>
             <p className="text-xs text-gold-400 uppercase tracking-wider font-semibold mt-1">
               Administrator Management Portal
@@ -147,7 +147,7 @@ export default function AdminLogin() {
 
           <div className="text-center pt-2">
             <Link to="/" className="text-xs font-semibold text-slate-500 hover:text-brand-900 transition">
-              ← Return to Mariya Foundation Homepage
+              ← Return to Mariya Nuuman Foundation Homepage
             </Link>
           </div>
         </div>

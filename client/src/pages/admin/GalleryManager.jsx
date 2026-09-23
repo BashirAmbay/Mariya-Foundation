@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   Image,
@@ -176,7 +176,7 @@ export default function GalleryManager() {
             <div className="bg-brand-950 text-white p-6 flex justify-between items-center">
               <div>
                 <h3 className="text-lg font-bold font-display text-white">Upload Gallery Image</h3>
-                <p className="text-xs text-gold-400">Mariya Foundation Media Center</p>
+                <p className="text-xs text-gold-400">Mariya Nuuman Foundation Media Center</p>
               </div>
               <button onClick={() => setIsModalOpen(false)} className="text-white/70 hover:text-white">
                 <X className="w-5 h-5" />

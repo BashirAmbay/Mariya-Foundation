@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
   TrendingUp,
@@ -185,7 +185,7 @@ export default function Impact() {
               Strict Accountability in Every Project
             </h3>
             <p className="text-xs sm:text-sm text-emerald-100/80 max-w-2xl mx-auto leading-relaxed">
-              Mariya Foundation operates with clear field documentation, photography, and community committee receipts for every distribution drive.
+              Mariya Nuuman Foundation operates with clear field documentation, photography, and community committee receipts for every distribution drive.
             </p>
           </div>
         </div>

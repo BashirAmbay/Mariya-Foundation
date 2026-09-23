@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { X, CheckCircle, AlertCircle, Loader2, Send } from 'lucide-react';
 import { api } from '../api/client';
 import { useToast } from '../context/ToastContext';
@@ -74,7 +74,7 @@ export default function ProgramApplyModal({ program, isOpen, onClose }) {
             <X className="w-5 h-5" />
           </button>
           <span className="text-xs font-bold uppercase tracking-wider text-gold-400 bg-gold-500/20 px-3 py-1 rounded-full border border-gold-500/30">
-            {program ? program.category_name || 'Program Application' : 'Mariya Foundation Program Application'}
+            {program ? program.category_name || 'Program Application' : 'Mariya Nuuman Foundation Program Application'}
           </span>
           <h3 className="text-xl font-bold font-display mt-2 text-white">
             {program ? `Apply for: ${program.title}` : 'Apply for Foundation Support'}
@@ -95,7 +95,7 @@ export default function ProgramApplyModal({ program, isOpen, onClose }) {
                 Application Received!
               </h4>
               <p className="text-sm text-slate-600 max-w-md mx-auto">
-                Thank you for applying to **Mariya Foundation**. Our admissions and verification committee will review your submission and contact you via phone/email shortly.
+                Thank you for applying to **Mariya Nuuman Foundation**. Our admissions and verification committee will review your submission and contact you via phone/email shortly.
               </p>
               <div className="pt-4">
                 <button

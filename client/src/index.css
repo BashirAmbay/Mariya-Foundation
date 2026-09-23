@@ -16,7 +16,7 @@
 /* Islamic Geometric Subtle Background Pattern */
 .bg-islamic-pattern {
   background-color: #fdfbff;
-  background-image: radial-gradient(#3b137b 0.65px, transparent 0.65px), radial-gradient(#d97706 0.65px, #fdfbff 0.65px);
+  background-image: radial-gradient(#3b137b 0.65px, transparent 0.65px), radial-gradient(#db2777 0.65px, #fdfbff 0.65px);
   background-size: 26px 26px;
   background-position: 0 0, 13px 13px;
   background-opacity: 0.05;
@@ -26,13 +26,13 @@
 .bg-indigo-pattern,
 .bg-purple-pattern {
   background-color: #3b137b;
-  background-image: radial-gradient(rgba(217, 119, 6, 0.22) 1px, transparent 1px), radial-gradient(rgba(255, 255, 255, 0.08) 1px, #3b137b 1px);
+  background-image: radial-gradient(rgba(219, 39, 119, 0.22) 1px, transparent 1px), radial-gradient(rgba(255, 255, 255, 0.08) 1px, #3b137b 1px);
   background-size: 32px 32px;
   background-position: 0 0, 16px 16px;
 }
 
 .bg-gold-pattern {
-  background-color: #fffbeb;
+  background-color: #fdf2f8;
   background-image: radial-gradient(rgba(91, 33, 182, 0.1) 1px, transparent 1px);
   background-size: 20px 20px;
 }
@@ -82,3 +82,95 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: #0f172a !important;
 }
 
+
+
+/* =====================================================
+   GOLD → PINK COLOUR OVERRIDE
+   Forces all Tailwind gold-* utility classes to pink
+   ===================================================== */
+
+/* --- text colours --- */
+.text-gold-50  { color: #fdf2f8 !important; }
+.text-gold-100 { color: #fce7f3 !important; }
+.text-gold-200 { color: #fbcfe8 !important; }
+.text-gold-300 { color: #f9a8d4 !important; }
+.text-gold-400 { color: #f472b6 !important; }
+.text-gold-500 { color: #ec4899 !important; }
+.text-gold-600 { color: #db2777 !important; }
+.text-gold-700 { color: #be185d !important; }
+.text-gold-800 { color: #9d174d !important; }
+.text-gold-900 { color: #831843 !important; }
+
+/* --- background colours --- */
+.bg-gold-50  { background-color: #fdf2f8 !important; }
+.bg-gold-100 { background-color: #fce7f3 !important; }
+.bg-gold-200 { background-color: #fbcfe8 !important; }
+.bg-gold-300 { background-color: #f9a8d4 !important; }
+.bg-gold-400 { background-color: #f472b6 !important; }
+.bg-gold-500 { background-color: #ec4899 !important; }
+.bg-gold-600 { background-color: #db2777 !important; }
+.bg-gold-700 { background-color: #be185d !important; }
+.bg-gold-800 { background-color: #9d174d !important; }
+.bg-gold-900 { background-color: #831843 !important; }
+
+/* --- border colours --- */
+.border-gold-50  { border-color: #fdf2f8 !important; }
+.border-gold-100 { border-color: #fce7f3 !important; }
+.border-gold-200 { border-color: #fbcfe8 !important; }
+.border-gold-300 { border-color: #f9a8d4 !important; }
+.border-gold-400 { border-color: #f472b6 !important; }
+.border-gold-500 { border-color: #ec4899 !important; }
+.border-gold-600 { border-color: #db2777 !important; }
+.border-gold-700 { border-color: #be185d !important; }
+.border-gold-800 { border-color: #9d174d !important; }
+.border-gold-900 { border-color: #831843 !important; }
+
+/* --- fill colours (SVG icons) --- */
+.fill-gold-50  { fill: #fdf2f8 !important; }
+.fill-gold-100 { fill: #fce7f3 !important; }
+.fill-gold-200 { fill: #fbcfe8 !important; }
+.fill-gold-300 { fill: #f9a8d4 !important; }
+.fill-gold-400 { fill: #f472b6 !important; }
+.fill-gold-500 { fill: #ec4899 !important; }
+.fill-gold-600 { fill: #db2777 !important; }
+.fill-gold-700 { fill: #be185d !important; }
+.fill-gold-800 { fill: #9d174d !important; }
+.fill-gold-900 { fill: #831843 !important; }
+
+/* --- stroke colours --- */
+.stroke-gold-400 { stroke: #f472b6 !important; }
+.stroke-gold-500 { stroke: #ec4899 !important; }
+.stroke-gold-600 { stroke: #db2777 !important; }
+
+/* --- hover text colours --- */
+.hover\:text-gold-400:hover { color: #f472b6 !important; }
+.hover\:text-gold-500:hover { color: #ec4899 !important; }
+.hover\:text-gold-600:hover { color: #db2777 !important; }
+
+/* --- hover background colours --- */
+.hover\:bg-gold-400:hover { background-color: #f472b6 !important; }
+.hover\:bg-gold-500:hover { background-color: #ec4899 !important; }
+.hover\:bg-gold-600:hover { background-color: #db2777 !important; }
+
+/* --- opacity variants (bg-gold-*/xx) --- */
+.bg-gold-50\/70  { background-color: rgba(253, 242, 248, 0.70) !important; }
+.bg-gold-500\/10 { background-color: rgba(236, 72, 153, 0.10) !important; }
+.bg-gold-500\/20 { background-color: rgba(236, 72, 153, 0.20) !important; }
+.bg-gold-500\/30 { background-color: rgba(236, 72, 153, 0.30) !important; }
+
+/* --- border opacity variants --- */
+.border-gold-500\/30 { border-color: rgba(236, 72, 153, 0.30) !important; }
+
+/* --- gradient from/via/to --- */
+.from-gold-400 { --tw-gradient-from: #f472b6 !important; }
+.from-gold-500 { --tw-gradient-from: #ec4899 !important; }
+.from-gold-600 { --tw-gradient-from: #db2777 !important; }
+.via-gold-400  { --tw-gradient-via: #f472b6 !important; }
+.via-gold-500  { --tw-gradient-via: #ec4899 !important; }
+.via-gold-600  { --tw-gradient-via: #db2777 !important; }
+.to-gold-400   { --tw-gradient-to: #f472b6 !important; }
+.to-gold-500   { --tw-gradient-to: #ec4899 !important; }
+.to-gold-600   { --tw-gradient-to: #db2777 !important; }
+
+/* --- shadow-gold (glow) --- */
+.shadow-gold { box-shadow: 0 0 25px rgba(219, 39, 119, 0.35) !important; }

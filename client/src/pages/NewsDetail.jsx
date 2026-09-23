@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -138,9 +138,9 @@ export default function NewsDetail() {
         </Link>
         <Link
           to="/donate"
-          className="px-6 py-2.5 bg-gradient-to-r from-gold-500 to-amber-600 text-brand-950 font-bold text-xs rounded-xl shadow hover:brightness-110 transition"
+          className="px-6 py-2.5 bg-gradient-to-r from-gold-500 to-gold-600 text-brand-950 font-bold text-xs rounded-xl shadow hover:brightness-110 transition"
         >
-          Support Mariya Foundation Programs
+          Support Mariya Nuuman Foundation Programs
         </Link>
       </div>
 
