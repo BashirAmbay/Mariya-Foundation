@@ -14,9 +14,6 @@ export default function Footer() {
       <div className="relative border-b border-brand-900/80 bg-brand-900/60 py-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <div>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-gold-500/20 text-gold-300 border border-gold-500/30 mb-2">
-              <Sparkles className="w-3.5 h-3.5" /> Join Hands for Sawaab-e-Jariyah
-            </span>
             <h3 className="text-2xl sm:text-3xl font-bold text-white font-display">
               Empower a Student. Uplift a Community.
             </h3>
@@ -51,7 +48,7 @@ export default function Footer() {
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="flex items-center gap-3">
               <img
-                src="/logo.png"
+                src="/logo.jpg"
                 alt="Mariya Nuuman Foundation Logo"
                 className="h-11 w-auto rounded-xl object-contain shadow-md"
               />

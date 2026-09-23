@@ -82,22 +82,10 @@ export default function Home() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center space-y-8">
 
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-pink-500/20 text-pink-300 border border-gold-500/30 shadow-sm backdrop-blur-md animate-in fade-in slide-in-from-bottom-3 duration-500">
-            <Sparkles className="w-4 h-4 text-gold-400" />
-            <span>Dedicated to Qur'anic Learning, Education & Self-Reliance</span>
-          </div>
+
 
           {/* Heading */}
           <div className="space-y-4 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
-            {/* Logo Image */}
-            <div className="flex justify-center mb-2">
-              <img
-                src="/logo.png"
-                alt="Mariya Nuuman Foundation Logo"
-                className="h-32 sm:h-40 w-auto object-contain drop-shadow-2xl"
-              />
-            </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-display tracking-tight text-white leading-tight">
               Mariya Nuuman Foundation
             </h1>
@@ -197,6 +185,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
+
 
           <div className="lg:col-span-6 relative">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
@@ -565,9 +554,6 @@ export default function Home() {
           <div className="absolute -right-10 -bottom-10 w-80 h-80 bg-gold-500/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="max-w-3xl space-y-6 relative z-10">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-gold-500/20 text-gold-300 border border-gold-500/30">
-              <Users className="w-3.5 h-3.5" /> Be Part of the Movement
-            </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold font-display text-white leading-tight">
               Lend Your Skills, Time, or Generosity to Mariya Nuuman Foundation
             </h2>
