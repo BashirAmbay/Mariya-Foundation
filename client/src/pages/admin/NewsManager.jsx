@@ -172,8 +172,12 @@ export default function NewsManager() {
                     <td className="p-4">
                       <div className="flex items-center gap-3">
                         <img
-                          src={getImageUrl(art.featured_image) || 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=150&q=80'}
+                          src={getImageUrl(art.featured_image)}
                           alt={art.title}
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=150&q=80';
+                          }}
                           className="w-12 h-9 rounded-lg object-cover border border-slate-200"
                         />
                         <div>

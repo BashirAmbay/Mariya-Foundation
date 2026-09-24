@@ -3,7 +3,6 @@ import { z } from 'zod';
 import { db } from '../db/database.js';
 import { authenticateAdmin } from '../middleware/auth.js';
 import { validateBody } from '../middleware/validate.js';
-import { submissionLimiter } from '../middleware/security.js';
 import { sendEmailNotification } from '../services/emailService.js';
 
 const router = express.Router();
@@ -16,8 +15,8 @@ const contactSchema = z.object({
   message: z.string().min(10, 'Message must be at least 10 characters')
 });
 
-// 1. Public: Submit Contact Message (Protected against spam/flooding)
-router.post('/', submissionLimiter, validateBody(contactSchema), async (req, res) => {
+// 1. Public: Submit Contact Message
+router.post('/', validateBody(contactSchema), async (req, res) => {
   try {
     const { fullName, email, phone, subject, message } = req.validatedBody;
 

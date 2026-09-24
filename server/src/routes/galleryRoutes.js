@@ -28,7 +28,7 @@ router.post('/', authenticateAdmin, upload.single('image'), (req, res) => {
 
     let finalImageUrl = bodyImageUrl || '';
     if (req.file) {
-      finalImageUrl = `/uploads/${req.file.filename}`;
+      finalImageUrl = req.file.dataUri || (req.file.filename ? `/uploads/${req.file.filename}` : '');
     }
 
     if (!finalImageUrl) {

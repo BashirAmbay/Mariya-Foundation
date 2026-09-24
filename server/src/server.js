@@ -6,10 +6,6 @@ import { fileURLToPath } from 'url';
 import { initDatabase, db } from './db/database.js';
 import { seedData } from './db/seed.js';
 
-import helmet from 'helmet';
-import hpp from 'hpp';
-import { apiLimiter, sanitizeInputs } from './middleware/security.js';
-
 // Import Routes
 import authRoutes from './routes/authRoutes.js';
 import programRoutes from './routes/programRoutes.js';
@@ -43,32 +39,15 @@ seedData();
 export const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Security Middleware
-app.disable('x-powered-by');
-app.use(helmet({
-  crossOriginResourcePolicy: { policy: 'cross-origin' },
-  crossOriginEmbedderPolicy: false
-}));
-
-// CORS Configuration
+// Middleware
 app.use(cors({
   origin: '*', // Allow frontend dev & prod access
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Body Parsing & DoS Payload Size Limiting
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
-
-// HTTP Parameter Pollution Protection
-app.use(hpp());
-
-// XSS Sanitization for all incoming requests
-app.use(sanitizeInputs);
-
-// General API Rate Limiting
-app.use('/api', apiLimiter);
 
 // Static uploads folder
 const uploadsPath = path.resolve(__dirname, '../uploads');

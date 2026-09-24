@@ -28,7 +28,7 @@ router.post('/', authenticateAdmin, upload.single('avatar'), (req, res) => {
 
     let finalAvatar = bodyAvatar || '';
     if (req.file) {
-      finalAvatar = `/uploads/${req.file.filename}`;
+      finalAvatar = req.file.dataUri || (req.file.filename ? `/uploads/${req.file.filename}` : '');
     }
 
     const stmt = db.prepare(`
@@ -66,7 +66,7 @@ router.put('/:id', authenticateAdmin, upload.single('avatar'), (req, res) => {
 
     let finalAvatar = existing.avatar_url;
     if (req.file) {
-      finalAvatar = `/uploads/${req.file.filename}`;
+      finalAvatar = req.file.dataUri || (req.file.filename ? `/uploads/${req.file.filename}` : '');
     } else if (bodyAvatar !== undefined) {
       finalAvatar = bodyAvatar;
     }

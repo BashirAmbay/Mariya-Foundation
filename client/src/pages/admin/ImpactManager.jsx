@@ -249,8 +249,12 @@ export default function ImpactManager() {
               <div>
                 <div className="aspect-16/9 bg-slate-100 relative">
                   <img
-                    src={getImageUrl(story.image_url) || 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80'}
+                    src={getImageUrl(story.image_url)}
                     alt={story.beneficiary_name}
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80';
+                    }}
                     className="w-full h-full object-cover"
                   />
                   <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10.5px] font-bold uppercase tracking-wider bg-brand-950/80 text-gold-300 backdrop-blur-md">

@@ -67,7 +67,7 @@ router.post('/stories', authenticateAdmin, upload.single('image'), (req, res) =>
 
     let finalImageUrl = bodyImageUrl || '';
     if (req.file) {
-      finalImageUrl = `/uploads/${req.file.filename}`;
+      finalImageUrl = req.file.dataUri || (req.file.filename ? `/uploads/${req.file.filename}` : '');
     }
 
     const stmt = db.prepare(`
@@ -110,7 +110,7 @@ router.put('/stories/:id', authenticateAdmin, upload.single('image'), (req, res)
 
     let finalImageUrl = existing.image_url;
     if (req.file) {
-      finalImageUrl = `/uploads/${req.file.filename}`;
+      finalImageUrl = req.file.dataUri || (req.file.filename ? `/uploads/${req.file.filename}` : '');
     } else if (bodyImageUrl !== undefined) {
       finalImageUrl = bodyImageUrl;
     }

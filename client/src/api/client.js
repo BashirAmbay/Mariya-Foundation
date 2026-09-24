@@ -1,4 +1,4 @@
-const API_BASE = import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? 'https://mariya-foundation.onrender.com/api' : '/api');
+const API_BASE = import.meta.env.VITE_API_BASE_URL || '/api';
 
 export async function apiRequest(endpoint, options = {}) {
   const token = localStorage.getItem('mariya_admin_token');
@@ -46,24 +46,26 @@ export async function apiRequest(endpoint, options = {}) {
   return data;
 }
 
-export function getImageUrl(url) {
-  if (!url) return '';
-  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:') || url.startsWith('blob:')) {
-    return url;
+export const DEFAULT_FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=800&q=80';
+
+export function getImageUrl(url, fallback = DEFAULT_FALLBACK_IMAGE) {
+  if (!url || typeof url !== 'string' || url.trim() === '') {
+    return fallback;
+  }
+  const cleanUrl = url.trim();
+  if (
+    cleanUrl.startsWith('http://') ||
+    cleanUrl.startsWith('https://') ||
+    cleanUrl.startsWith('data:') ||
+    cleanUrl.startsWith('blob:')
+  ) {
+    return cleanUrl;
   }
 
-  const cleanPath = url.startsWith('/') ? url : `/${url}`;
-
-  if (API_BASE.startsWith('http://') || API_BASE.startsWith('https://')) {
-    try {
-      const urlObj = new URL(API_BASE);
-      return `${urlObj.origin}${cleanPath}`;
-    } catch (e) {
-      return cleanPath;
-    }
-  }
-
-  return cleanPath;
+  const apiBase = import.meta.env.VITE_API_BASE_URL || '/api';
+  const baseUrl = apiBase.replace(/\/api\/?$/, '');
+  const path = cleanUrl.startsWith('/') ? cleanUrl : `/${cleanUrl}`;
+  return baseUrl ? `${baseUrl}${path}` : path;
 }
 
 export const api = {
@@ -73,3 +75,4 @@ export const api = {
   patch: (url, body) => apiRequest(url, { method: 'PATCH', body: body instanceof FormData ? body : JSON.stringify(body) }),
   delete: (url) => apiRequest(url, { method: 'DELETE' })
 };
+

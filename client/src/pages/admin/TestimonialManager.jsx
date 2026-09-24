@@ -174,8 +174,12 @@ export default function TestimonialManager() {
               <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
                   <img
-                    src={getImageUrl(t.avatar_url) || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'}
+                    src={getImageUrl(t.avatar_url)}
                     alt={t.name}
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80';
+                    }}
                     className="w-8 h-8 rounded-full object-cover border"
                   />
                   <div>

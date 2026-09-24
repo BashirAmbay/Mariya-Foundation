@@ -3,7 +3,6 @@ import { z } from 'zod';
 import { db } from '../db/database.js';
 import { authenticateAdmin } from '../middleware/auth.js';
 import { validateBody } from '../middleware/validate.js';
-import { submissionLimiter } from '../middleware/security.js';
 import { sendEmailNotification } from '../services/emailService.js';
 
 const router = express.Router();
@@ -108,8 +107,8 @@ router.delete('/accounts/:id', authenticateAdmin, (req, res) => {
   res.json({ success: true, message: 'Donation account deleted.' });
 });
 
-// 6. Public: Submit Donation Pledge / Notification (Protected against spam/flooding)
-router.post('/pledge', submissionLimiter, validateBody(pledgeSchema), async (req, res) => {
+// 6. Public: Submit Donation Pledge / Notification
+router.post('/pledge', validateBody(pledgeSchema), async (req, res) => {
   try {
     const { donorName, email, phone, purposeCategory, amount, currency, paymentMethod, referenceNo, notes } = req.validatedBody;
 

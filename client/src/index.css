@@ -152,7 +152,7 @@ input:-webkit-autofill:active {
 .hover\:bg-gold-500:hover { background-color: #ec4899 !important; }
 .hover\:bg-gold-600:hover { background-color: #db2777 !important; }
 
-/* --- opacity variants (bg-gold-*/xx) --- */
+/* --- opacity variants (bg-gold-xx) --- */
 .bg-gold-50\/70  { background-color: rgba(253, 242, 248, 0.70) !important; }
 .bg-gold-500\/10 { background-color: rgba(236, 72, 153, 0.10) !important; }
 .bg-gold-500\/20 { background-color: rgba(236, 72, 153, 0.20) !important; }

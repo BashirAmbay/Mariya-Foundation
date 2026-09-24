@@ -109,8 +109,12 @@ export default function News() {
                 <div>
                   <div className="aspect-16/10 bg-slate-100 overflow-hidden relative">
                     <img
-                      src={getImageUrl(article.featured_image) || 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=800&q=80'}
+                      src={getImageUrl(article.featured_image)}
                       alt={article.title}
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=800&q=80';
+                      }}
                       className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                     />
                     <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10.5px] font-bold uppercase tracking-wider bg-brand-950/85 text-gold-300 backdrop-blur-md border border-brand-800">

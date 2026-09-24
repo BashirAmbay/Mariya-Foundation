@@ -188,8 +188,12 @@ export default function ProgramManager() {
                     <td className="p-4">
                       <div className="flex items-center gap-3">
                         <img
-                          src={getImageUrl(prog.image_url) || 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=150&q=80'}
+                          src={getImageUrl(prog.image_url)}
                           alt={prog.title}
+                          onError={(e) => {
+                            e.currentTarget.onerror = null;
+                            e.currentTarget.src = 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=150&q=80';
+                          }}
                           className="w-12 h-9 rounded-lg object-cover border border-slate-200"
                         />
                         <div>

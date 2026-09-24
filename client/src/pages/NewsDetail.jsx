@@ -113,6 +113,10 @@ export default function NewsDetail() {
           <img
             src={getImageUrl(article.featured_image)}
             alt={article.title}
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=1200&q=80';
+            }}
             className="w-full h-full object-cover"
           />
         </div>

@@ -429,8 +429,12 @@ export default function Home() {
 
                 <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
                   <img
-                    src={getImageUrl(t.avatar_url) || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'}
+                    src={getImageUrl(t.avatar_url)}
                     alt={t.name}
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80';
+                    }}
                     className="w-11 h-11 rounded-full object-cover border-2 border-brand-100 shadow-sm"
                   />
                   <div>
@@ -472,6 +476,10 @@ export default function Home() {
                 <img
                   src={getImageUrl(item.image_url)}
                   alt={item.title}
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=600&q=80';
+                  }}
                   className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4 text-white">
@@ -510,8 +518,12 @@ export default function Home() {
               >
                 <div className="aspect-16/9 bg-slate-100 overflow-hidden relative">
                   <img
-                    src={getImageUrl(article.featured_image) || 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=800&q=80'}
+                    src={getImageUrl(article.featured_image)}
                     alt={article.title}
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=800&q=80';
+                    }}
                     className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                   />
                   <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10.5px] font-bold uppercase tracking-wider bg-brand-950/80 text-gold-300 backdrop-blur-md">

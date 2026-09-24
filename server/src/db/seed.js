@@ -1,9 +1,18 @@
 import bcrypt from 'bcryptjs';
 import { db, initDatabase } from './database.js';
 
-export function seedData() {
-  console.log('Initializing database schema...');
+export function seedData(force = false) {
   initDatabase();
+
+  try {
+    const isSeeded = db.prepare("SELECT value FROM site_settings WHERE key = 'database_seeded'").get();
+    if (isSeeded && isSeeded.value === '1' && !force) {
+      // Database is already initialized and seeded. Preserve all user changes and deletions.
+      return;
+    }
+  } catch (e) {
+    // If site_settings table doesn't exist yet, proceed with schema init and seeding
+  }
 
   console.log('Seeding initial data for Mariya Foundation...');
 
@@ -659,6 +668,9 @@ The village head expressed deep gratitude to Mariya Foundation and its generous 
   settings.forEach(s => {
     insertSetting.run(s.key, s.value, s.group_name);
   });
+
+  // Mark database as seeded
+  insertSetting.run('database_seeded', '1', 'system');
 
   console.log('Mariya Foundation seed data completed successfully!');
 }
