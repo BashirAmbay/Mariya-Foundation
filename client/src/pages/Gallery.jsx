@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
   Image,
@@ -9,7 +9,7 @@ import {
   ZoomIn,
   Filter
 } from 'lucide-react';
-import { api } from '../api/client';
+import { api, getImageUrl } from '../api/client';
 import SectionHeader from '../components/SectionHeader';
 import LightboxModal from '../components/LightboxModal';
 
@@ -88,7 +88,7 @@ export default function Gallery() {
                 className="group relative rounded-2xl overflow-hidden aspect-4/3 bg-slate-900 border border-slate-200 shadow-soft hover:shadow-card cursor-pointer transition-all duration-300 hover:-translate-y-1"
               >
                 <img
-                  src={item.image_url}
+                  src={getImageUrl(item.image_url)}
                   alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                 />

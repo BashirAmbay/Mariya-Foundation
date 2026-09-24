@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   BookOpen,
@@ -14,7 +14,7 @@ import {
   Eye,
   Star
 } from 'lucide-react';
-import { api } from '../../api/client';
+import { api, getImageUrl } from '../../api/client';
 import { useToast } from '../../context/ToastContext';
 
 export default function ProgramManager() {
@@ -188,7 +188,7 @@ export default function ProgramManager() {
                     <td className="p-4">
                       <div className="flex items-center gap-3">
                         <img
-                          src={prog.image_url || 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=150&q=80'}
+                          src={getImageUrl(prog.image_url) || 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=150&q=80'}
                           alt={prog.title}
                           className="w-12 h-9 rounded-lg object-cover border border-slate-200"
                         />

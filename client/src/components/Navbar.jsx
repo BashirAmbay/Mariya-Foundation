@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { Menu, X, Heart, Sparkles, ChevronRight, ChevronDown, Mail, User } from 'lucide-react';
+import { Menu, X, Heart, Sparkles, ChevronRight, ChevronDown, Mail } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -70,10 +70,6 @@ export default function Navbar() {
           <div className="flex items-center gap-4">
             <Link to="/donate" className="text-pink-300 hover:text-gold-200 transition font-medium flex items-center gap-1">
               <Heart className="w-3 h-3 fill-pink-400 text-gold-400" /> Support a Student
-            </Link>
-            <span className="text-white/20">|</span>
-            <Link to="/admin/login" className="hover:text-white transition flex items-center gap-1 text-emerald-200/70">
-              <User className="w-3 h-3" /> Admin Portal
             </Link>
           </div>
         </div>
@@ -297,11 +293,8 @@ export default function Navbar() {
                 <Heart className="w-5 h-5 fill-white" />
                 Donate &amp; Support Our Programs
               </Link>
-              <div className="flex justify-between items-center px-4 py-2 text-xs text-slate-500">
-                <span>admin@mariyafoundation.org</span>
-                <Link to="/admin/login" className="text-brand-800 font-semibold hover:underline">
-                  Admin Login
-                </Link>
+              <div className="flex justify-center items-center px-4 py-2 text-xs text-slate-500">
+                <span>Mariyanuumanfoundation@gmail.com</span>
               </div>
             </div>
           </div>

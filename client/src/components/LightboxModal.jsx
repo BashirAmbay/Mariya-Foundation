@@ -1,5 +1,6 @@
 import React from 'react';
 import { X, Calendar, MapPin, Tag } from 'lucide-react';
+import { getImageUrl } from '../api/client';
 
 export default function LightboxModal({ item, isOpen, onClose }) {
   if (!isOpen || !item) return null;
@@ -20,7 +21,7 @@ export default function LightboxModal({ item, isOpen, onClose }) {
         {/* Media */}
         <div className="relative aspect-video max-h-[70vh] bg-black flex items-center justify-center overflow-hidden">
           <img
-            src={item.image_url}
+            src={getImageUrl(item.image_url)}
             alt={item.title}
             className="w-full h-full object-contain"
           />

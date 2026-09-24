@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { db } from '../db/database.js';
 import { authenticateAdmin } from '../middleware/auth.js';
 import { validateBody } from '../middleware/validate.js';
+import { submissionLimiter } from '../middleware/security.js';
 import { sendEmailNotification } from '../services/emailService.js';
 
 const router = express.Router();
@@ -18,8 +19,8 @@ const volunteerSchema = z.object({
   motivation: z.string().min(10, 'Please tell us why you would like to volunteer with Mariya Foundation')
 });
 
-// 1. Public: Submit Volunteer Application
-router.post('/', validateBody(volunteerSchema), async (req, res) => {
+// 1. Public: Submit Volunteer Application (Protected against spam/flooding)
+router.post('/', submissionLimiter, validateBody(volunteerSchema), async (req, res) => {
   try {
     const { fullName, email, phone, location, skills, availability, areaOfInterest, motivation } = req.validatedBody;
 

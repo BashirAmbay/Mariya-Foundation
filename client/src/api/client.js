@@ -46,6 +46,26 @@ export async function apiRequest(endpoint, options = {}) {
   return data;
 }
 
+export function getImageUrl(url) {
+  if (!url) return '';
+  if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('data:') || url.startsWith('blob:')) {
+    return url;
+  }
+
+  const cleanPath = url.startsWith('/') ? url : `/${url}`;
+
+  if (API_BASE.startsWith('http://') || API_BASE.startsWith('https://')) {
+    try {
+      const urlObj = new URL(API_BASE);
+      return `${urlObj.origin}${cleanPath}`;
+    } catch (e) {
+      return cleanPath;
+    }
+  }
+
+  return cleanPath;
+}
+
 export const api = {
   get: (url) => apiRequest(url, { method: 'GET' }),
   post: (url, body) => apiRequest(url, { method: 'POST', body: body instanceof FormData ? body : JSON.stringify(body) }),

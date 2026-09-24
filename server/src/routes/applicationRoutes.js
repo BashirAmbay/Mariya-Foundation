@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { db } from '../db/database.js';
 import { authenticateAdmin } from '../middleware/auth.js';
 import { validateBody } from '../middleware/validate.js';
+import { submissionLimiter } from '../middleware/security.js';
 import { sendEmailNotification } from '../services/emailService.js';
 
 const router = express.Router();
@@ -19,8 +20,8 @@ const programAppSchema = z.object({
   statementOfNeed: z.string().min(10, 'Please describe your need or reason for applying for this program')
 });
 
-// 1. Public: Submit Program Application
-router.post('/', validateBody(programAppSchema), async (req, res) => {
+// 1. Public: Submit Program Application (Protected against spam/flooding)
+router.post('/', submissionLimiter, validateBody(programAppSchema), async (req, res) => {
   try {
     const { programId, applicantName, email, phone, age, gender, address, occupation, statementOfNeed } = req.validatedBody;
 

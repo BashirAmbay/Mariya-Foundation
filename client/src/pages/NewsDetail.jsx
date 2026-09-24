@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -10,7 +10,7 @@ import {
   Tag,
   Clock
 } from 'lucide-react';
-import { api } from '../api/client';
+import { api, getImageUrl } from '../api/client';
 import { useToast } from '../context/ToastContext';
 
 export default function NewsDetail() {
@@ -111,7 +111,7 @@ export default function NewsDetail() {
       {article.featured_image && (
         <div className="rounded-3xl overflow-hidden shadow-card border border-slate-200 aspect-16/9 bg-slate-900">
           <img
-            src={article.featured_image}
+            src={getImageUrl(article.featured_image)}
             alt={article.title}
             className="w-full h-full object-cover"
           />

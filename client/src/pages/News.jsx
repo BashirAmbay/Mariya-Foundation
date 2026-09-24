@@ -10,7 +10,7 @@ import {
   Tag,
   ChevronRight
 } from 'lucide-react';
-import { api } from '../api/client';
+import { api, getImageUrl } from '../api/client';
 import SectionHeader from '../components/SectionHeader';
 
 export default function News() {
@@ -109,7 +109,7 @@ export default function News() {
                 <div>
                   <div className="aspect-16/10 bg-slate-100 overflow-hidden relative">
                     <img
-                      src={article.featured_image || 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=800&q=80'}
+                      src={getImageUrl(article.featured_image) || 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=800&q=80'}
                       alt={article.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                     />

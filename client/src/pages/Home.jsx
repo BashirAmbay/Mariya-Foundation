@@ -18,7 +18,7 @@ import {
   Star,
   Quote
 } from 'lucide-react';
-import { api } from '../api/client';
+import { api, getImageUrl } from '../api/client';
 import SectionHeader from '../components/SectionHeader';
 import ProgramApplyModal from '../components/ProgramApplyModal';
 import DonationPledgeModal from '../components/DonationPledgeModal';
@@ -237,7 +237,7 @@ export default function Home() {
               >
                 <div className="relative aspect-16/10 overflow-hidden bg-slate-100">
                   <img
-                    src={prog.image_url || 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80'}
+                    src={getImageUrl(prog.image_url) || 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80'}
                     alt={prog.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -429,7 +429,7 @@ export default function Home() {
 
                 <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
                   <img
-                    src={t.avatar_url || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'}
+                    src={getImageUrl(t.avatar_url) || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'}
                     alt={t.name}
                     className="w-11 h-11 rounded-full object-cover border-2 border-brand-100 shadow-sm"
                   />
@@ -470,7 +470,7 @@ export default function Home() {
                 className="group relative rounded-2xl overflow-hidden aspect-square bg-slate-100 shadow-sm"
               >
                 <img
-                  src={item.image_url}
+                  src={getImageUrl(item.image_url)}
                   alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition duration-500"
                 />
@@ -510,7 +510,7 @@ export default function Home() {
               >
                 <div className="aspect-16/9 bg-slate-100 overflow-hidden relative">
                   <img
-                    src={article.featured_image || 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=800&q=80'}
+                    src={getImageUrl(article.featured_image) || 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=800&q=80'}
                     alt={article.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                   />

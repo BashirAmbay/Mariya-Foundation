@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   Newspaper,
@@ -13,7 +13,7 @@ import {
   Eye,
   EyeOff
 } from 'lucide-react';
-import { api } from '../../api/client';
+import { api, getImageUrl } from '../../api/client';
 import { useToast } from '../../context/ToastContext';
 
 export default function NewsManager() {
@@ -172,7 +172,7 @@ export default function NewsManager() {
                     <td className="p-4">
                       <div className="flex items-center gap-3">
                         <img
-                          src={art.featured_image || 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=150&q=80'}
+                          src={getImageUrl(art.featured_image) || 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=150&q=80'}
                           alt={art.title}
                           className="w-12 h-9 rounded-lg object-cover border border-slate-200"
                         />

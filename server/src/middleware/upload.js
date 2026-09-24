@@ -24,15 +24,21 @@ const storage = multer.diskStorage({
 
 const fileFilter = (req, file, cb) => {
   const allowedMimeTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/jpg', 'image/svg+xml'];
-  if (allowedMimeTypes.includes(file.mimetype)) {
+  const allowedExts = ['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg'];
+  const ext = path.extname(file.originalname).toLowerCase();
+
+  if (allowedMimeTypes.includes(file.mimetype) && allowedExts.includes(ext)) {
     cb(null, true);
   } else {
-    cb(new Error('Only image files (JPEG, PNG, WEBP, GIF, SVG) are allowed.'), false);
+    cb(new Error('Invalid file type. Only secure image formats (JPEG, PNG, WEBP, GIF, SVG) are permitted.'), false);
   }
 };
 
 export const upload = multer({
   storage: storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB limit
+  limits: { 
+    fileSize: 5 * 1024 * 1024, // 5MB limit
+    files: 1 // Max 1 file per upload
+  },
   fileFilter: fileFilter
 });

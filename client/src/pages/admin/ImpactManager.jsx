@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   TrendingUp,
@@ -12,7 +12,7 @@ import {
   Star,
   MapPin
 } from 'lucide-react';
-import { api } from '../../api/client';
+import { api, getImageUrl } from '../../api/client';
 import { useToast } from '../../context/ToastContext';
 
 export default function ImpactManager() {
@@ -249,7 +249,7 @@ export default function ImpactManager() {
               <div>
                 <div className="aspect-16/9 bg-slate-100 relative">
                   <img
-                    src={story.image_url || 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80'}
+                    src={getImageUrl(story.image_url) || 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=600&q=80'}
                     alt={story.beneficiary_name}
                     className="w-full h-full object-cover"
                   />

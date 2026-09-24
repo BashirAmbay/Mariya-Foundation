@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   Quote,
@@ -10,7 +10,7 @@ import {
   Star,
   Loader2
 } from 'lucide-react';
-import { api } from '../../api/client';
+import { api, getImageUrl } from '../../api/client';
 import { useToast } from '../../context/ToastContext';
 
 export default function TestimonialManager() {
@@ -174,7 +174,7 @@ export default function TestimonialManager() {
               <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
                   <img
-                    src={t.avatar_url || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'}
+                    src={getImageUrl(t.avatar_url) || 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80'}
                     alt={t.name}
                     className="w-8 h-8 rounded-full object-cover border"
                   />

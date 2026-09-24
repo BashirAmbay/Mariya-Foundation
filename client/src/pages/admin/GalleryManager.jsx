@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   Image,
@@ -11,7 +11,7 @@ import {
   Calendar,
   MapPin
 } from 'lucide-react';
-import { api } from '../../api/client';
+import { api, getImageUrl } from '../../api/client';
 import { useToast } from '../../context/ToastContext';
 
 export default function GalleryManager() {
@@ -129,7 +129,7 @@ export default function GalleryManager() {
                 <div>
                   <div className="aspect-4/3 bg-slate-900 relative">
                     <img
-                      src={item.image_url}
+                      src={getImageUrl(item.image_url)}
                       alt={item.title}
                       className="w-full h-full object-cover"
                     />

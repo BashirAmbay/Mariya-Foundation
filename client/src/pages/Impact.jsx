@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
   TrendingUp,
@@ -12,7 +12,7 @@ import {
   ShieldCheck,
   Heart
 } from 'lucide-react';
-import { api } from '../api/client';
+import { api, getImageUrl } from '../api/client';
 import SectionHeader from '../components/SectionHeader';
 
 export default function Impact() {
@@ -103,7 +103,7 @@ export default function Impact() {
               {/* Image Col */}
               <div className="lg:col-span-5 relative aspect-4/3 lg:aspect-auto lg:h-full bg-slate-100">
                 <img
-                  src={story.image_url || 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80'}
+                  src={getImageUrl(story.image_url) || 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80'}
                   alt={story.beneficiary_name}
                   className="w-full h-full object-cover"
                 />

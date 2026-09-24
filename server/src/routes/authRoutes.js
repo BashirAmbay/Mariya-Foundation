@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { db } from '../db/database.js';
 import { authenticateAdmin } from '../middleware/auth.js';
 import { validateBody } from '../middleware/validate.js';
+import { authLimiter } from '../middleware/security.js';
 
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET || 'mariya_foundation_secure_jwt_token_secret_key_2026';
@@ -19,8 +20,8 @@ const passwordUpdateSchema = z.object({
   newPassword: z.string().min(8, 'New password must be at least 8 characters')
 });
 
-// Admin Login
-router.post('/login', validateBody(loginSchema), (req, res) => {
+// Admin Login (Protected by authLimiter to prevent brute-force attacks)
+router.post('/login', authLimiter, validateBody(loginSchema), (req, res) => {
   const { email, password } = req.validatedBody;
 
   const admin = db.prepare('SELECT * FROM admins WHERE email = ?').get(email.toLowerCase().trim());

@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
   BookOpen,
@@ -14,7 +14,7 @@ import {
   X,
   ChevronRight
 } from 'lucide-react';
-import { api } from '../api/client';
+import { api, getImageUrl } from '../api/client';
 import SectionHeader from '../components/SectionHeader';
 import ProgramApplyModal from '../components/ProgramApplyModal';
 import DonationPledgeModal from '../components/DonationPledgeModal';
@@ -156,7 +156,7 @@ export default function Programs() {
                   {/* Image */}
                   <div className="relative aspect-16/10 bg-slate-100 overflow-hidden">
                     <img
-                      src={prog.image_url || 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80'}
+                      src={getImageUrl(prog.image_url) || 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80'}
                       alt={prog.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                     />
@@ -237,7 +237,7 @@ export default function Programs() {
             {/* Header Image Banner */}
             <div className="relative aspect-21/9 max-h-64 overflow-hidden bg-slate-900">
               <img
-                src={detailProgram.image_url || 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80'}
+                src={getImageUrl(detailProgram.image_url) || 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1200&q=80'}
                 alt={detailProgram.title}
                 className="w-full h-full object-cover opacity-80"
               />

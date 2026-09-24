@@ -142,8 +142,6 @@ export default function Footer() {
             <span>Non-Profit & Community Charitable Trust</span>
             <span>•</span>
             <Link to="/contact" className="hover:text-slate-300 transition">Privacy & Transparency</Link>
-            <span>•</span>
-            <Link to="/admin/login" className="text-gold-500/80 hover:text-gold-400 transition">Admin Portal</Link>
           </div>
         </div>
       </div>
