@@ -19,6 +19,7 @@ import applicationRoutes from './routes/applicationRoutes.js';
 import donationRoutes from './routes/donationRoutes.js';
 import settingsRoutes from './routes/settingsRoutes.js';
 import statsRoutes from './routes/statsRoutes.js';
+import heroSlideRoutes from './routes/heroSlideRoutes.js';
 
 process.on('uncaughtException', (err) => {
   console.error('[UNCAUGHT EXCEPTION]:', err);
@@ -66,6 +67,7 @@ app.use('/api/applications', applicationRoutes);
 app.use('/api/donations', donationRoutes);
 app.use('/api/settings', settingsRoutes);
 app.use('/api/stats', statsRoutes);
+app.use('/api/hero-slides', heroSlideRoutes);
 
 // Root & Health Check
 app.get('/', (req, res) => {

@@ -17,7 +17,8 @@ import {
   X,
   ShieldAlert,
   Sparkles,
-  Quote
+  Quote,
+  Sliders
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
@@ -64,6 +65,7 @@ export default function AdminLayout() {
 
   const navItems = [
     { name: 'Dashboard Overview', path: '/admin/dashboard', icon: LayoutDashboard },
+    { name: 'Hero Backgrounds', path: '/admin/hero-slides', icon: Sliders },
     { name: 'Program Management', path: '/admin/programs', icon: BookOpen },
     { name: 'Impact & Stories', path: '/admin/impact', icon: TrendingUp },
     { name: 'Gallery Management', path: '/admin/gallery', icon: Image },

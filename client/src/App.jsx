@@ -31,6 +31,7 @@ import VolunteerManager from './pages/admin/VolunteerManager';
 import ApplicationManager from './pages/admin/ApplicationManager';
 import DonationManager from './pages/admin/DonationManager';
 import SettingsManager from './pages/admin/SettingsManager';
+import HeroSlidesManager from './pages/admin/HeroSlidesManager';
 
 // Scroll to top helper on route navigation
 function ScrollToTop() {
@@ -92,6 +93,7 @@ export default function App() {
           <Route path="volunteers" element={<VolunteerManager />} />
           <Route path="applications" element={<ApplicationManager />} />
           <Route path="donations" element={<DonationManager />} />
+          <Route path="hero-slides" element={<HeroSlidesManager />} />
           <Route path="settings" element={<SettingsManager />} />
         </Route>
 

@@ -117,6 +117,15 @@ export function initDatabase() {
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
 
+    CREATE TABLE IF NOT EXISTS hero_slides (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT,
+      image_url TEXT NOT NULL,
+      display_order INTEGER DEFAULT 0,
+      is_active INTEGER DEFAULT 1,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
     CREATE TABLE IF NOT EXISTS news (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       title TEXT NOT NULL,
@@ -223,6 +232,19 @@ export function initDatabase() {
       group_name TEXT DEFAULT 'general'
     );
   `);
+
+  // Ensure default hero slides exist if empty
+  const heroSlideCheck = db.prepare('SELECT count(*) as count FROM hero_slides').get();
+  if (heroSlideCheck.count === 0) {
+    const insertSlide = db.prepare(`
+      INSERT INTO hero_slides (title, image_url, display_order, is_active)
+      VALUES (?, ?, ?, 1)
+    `);
+    insertSlide.run('Students Learning & Educational Support (Sample 1)', 'https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=2000&q=80', 1);
+    insertSlide.run('Students in Classroom Study Circle (Sample 2)', 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=2000&q=80', 2);
+    insertSlide.run('Youth Empowerment & School Supplies (Sample 3)', 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=2000&q=80', 3);
+    insertSlide.run('Children Learning & Community Care (Sample 4)', 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=2000&q=80', 4);
+  }
 
   // Ensure default admin exists if empty
   const adminCheck = db.prepare('SELECT count(*) as count FROM admins').get();

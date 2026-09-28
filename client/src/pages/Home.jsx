@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -27,6 +27,50 @@ export default function Home() {
   const [selectedProgram, setSelectedProgram] = useState(null);
   const [isApplyOpen, setIsApplyOpen] = useState(false);
   const [isDonateOpen, setIsDonateOpen] = useState(false);
+
+  // Fetch Hero Background Slides
+  const { data: heroSlidesData } = useQuery({
+    queryKey: ['hero-slides'],
+    queryFn: () => api.get('/hero-slides')
+  });
+
+  const defaultHeroSlides = [
+    {
+      id: 'default-1',
+      title: 'Students Learning & Educational Support',
+      image_url: 'https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=2000&q=80'
+    },
+    {
+      id: 'default-2',
+      title: 'Students in Classroom Study Circle',
+      image_url: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=2000&q=80'
+    },
+    {
+      id: 'default-3',
+      title: 'Youth Empowerment & School Supplies',
+      image_url: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=2000&q=80'
+    },
+    {
+      id: 'default-4',
+      title: 'Children Learning & Community Care',
+      image_url: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=2000&q=80'
+    }
+  ];
+
+  const hasLoadedSlides = Array.isArray(heroSlidesData?.data);
+  const heroSlides = hasLoadedSlides
+    ? (heroSlidesData.data.length > 0 ? heroSlidesData.data : [defaultHeroSlides[0]])
+    : defaultHeroSlides;
+
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
+  useEffect(() => {
+    if (heroSlides.length <= 1) return;
+    const interval = setInterval(() => {
+      setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [heroSlides.length]);
 
   // Fetch Featured Programs
   const { data: programsData } = useQuery({
@@ -69,14 +113,19 @@ export default function Home() {
 
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center justify-center bg-brand-950 overflow-hidden text-white">
-        {/* Background Image with Deep Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=2000&q=80"
-            alt="Mariya Nuuman Foundation Education and Community Support"
-            className="w-full h-full object-cover object-center opacity-30 mix-blend-luminosity scale-105 animate-in fade-in duration-1000"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/80 to-brand-950/60" />
+        {/* Background Slideshow with Deep Overlay (5s auto-transition) */}
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          {heroSlides.map((slide, idx) => (
+            <img
+              key={slide.id || idx}
+              src={getImageUrl(slide.image_url)}
+              alt={slide.title || 'Mariya Nuuman Foundation Background'}
+              className={`absolute inset-0 w-full h-full object-cover object-center mix-blend-luminosity scale-105 transition-opacity duration-1000 ease-in-out ${
+                idx === currentSlideIndex ? 'opacity-30' : 'opacity-0 pointer-events-none'
+              }`}
+            />
+          ))}
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/80 to-brand-950/60 pointer-events-none" />
           <div className="absolute inset-0 bg-emerald-pattern opacity-20 pointer-events-none" />
         </div>
 

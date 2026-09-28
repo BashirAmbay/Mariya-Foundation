@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -110,6 +110,12 @@ export default function DashboardOverview() {
             className="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs rounded-xl border border-white/20 transition"
           >
             Post News Update
+          </Link>
+          <Link
+            to="/admin/hero-slides"
+            className="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white font-semibold text-xs rounded-xl border border-white/20 transition flex items-center gap-1.5"
+          >
+            <Image className="w-4 h-4" /> Hero Slides
           </Link>
         </div>
       </div>
