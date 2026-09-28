@@ -15,8 +15,8 @@
 
 /* Islamic Geometric Subtle Background Pattern */
 .bg-islamic-pattern {
-  background-color: #fdfbff;
-  background-image: radial-gradient(#3b137b 0.65px, transparent 0.65px), radial-gradient(#db2777 0.65px, #fdfbff 0.65px);
+  background-color: #faf5ff;
+  background-image: radial-gradient(#350a58 0.65px, transparent 0.65px), radial-gradient(#7e22ce 0.65px, #faf5ff 0.65px);
   background-size: 26px 26px;
   background-position: 0 0, 13px 13px;
   background-opacity: 0.05;
@@ -25,15 +25,15 @@
 .bg-emerald-pattern,
 .bg-indigo-pattern,
 .bg-purple-pattern {
-  background-color: #3b137b;
-  background-image: radial-gradient(rgba(219, 39, 119, 0.22) 1px, transparent 1px), radial-gradient(rgba(255, 255, 255, 0.08) 1px, #3b137b 1px);
+  background-color: #1b0333;
+  background-image: radial-gradient(rgba(168, 85, 247, 0.22) 1px, transparent 1px), radial-gradient(rgba(255, 255, 255, 0.08) 1px, #1b0333 1px);
   background-size: 32px 32px;
   background-position: 0 0, 16px 16px;
 }
 
 .bg-gold-pattern {
-  background-color: #fdf2f8;
-  background-image: radial-gradient(rgba(91, 33, 182, 0.1) 1px, transparent 1px);
+  background-color: #faf5ff;
+  background-image: radial-gradient(rgba(126, 34, 206, 0.12) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -42,14 +42,14 @@
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(221, 214, 254, 0.6);
+  border: 1px solid rgba(216, 180, 254, 0.5);
 }
 
 .glass-dark {
-  background: rgba(28, 11, 56, 0.90);
+  background: rgba(27, 3, 51, 0.90);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(168, 85, 247, 0.2);
 }
 
 /* Smooth transitions */
@@ -85,11 +85,12 @@ input:-webkit-autofill:active {
 
 
 /* =====================================================
-   GOLD → PINK COLOUR OVERRIDE
-   Forces all Tailwind gold-* utility classes to pink
+   PINK TEXT & ACCENT COLOUR SYSTEM
+   Forces text, fills, and accents to glowing pink,
+   while backgrounds remain rich dark purple.
    ===================================================== */
 
-/* --- text colours --- */
+/* --- text colours (pink) --- */
 .text-gold-50  { color: #fdf2f8 !important; }
 .text-gold-100 { color: #fce7f3 !important; }
 .text-gold-200 { color: #fbcfe8 !important; }
@@ -125,7 +126,7 @@ input:-webkit-autofill:active {
 .border-gold-800 { border-color: #9d174d !important; }
 .border-gold-900 { border-color: #831843 !important; }
 
-/* --- fill colours (SVG icons) --- */
+/* --- fill colours (SVG icons - pink) --- */
 .fill-gold-50  { fill: #fdf2f8 !important; }
 .fill-gold-100 { fill: #fce7f3 !important; }
 .fill-gold-200 { fill: #fbcfe8 !important; }

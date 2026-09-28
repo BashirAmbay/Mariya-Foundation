@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   BookOpen,
@@ -41,22 +41,26 @@ export default function AboutUs() {
   ];
 
   const objectives = [
-    "Distribute authenticated, high-quality copies of the Holy Qur'an and Tajweed study guides to rural and indigent learning centers.",
-    "Eliminate financial barriers for impoverished primary, secondary, and Tahfeez students through study packs and tuition grants.",
-    "Provide accredited, intensive vocational training (garment construction, tech literacy, artisanal trades) to youth and women.",
-    "Supply graduating vocational apprentices with startup equipment and micro-capital to launch self-sustaining businesses.",
-    "Facilitate clean water access, seasonal food relief, and community welfare infrastructure in underserved settlements."
+    "To empower women and children to reach their full potential and break cycles of inequality and poverty.",
+    "To provide access to quality education and skills training, enabling women and children to achieve economic independence and self-sufficiency.",
+    "To support women's economic empowerment through entrepreneurship, job training, and microfinance initiatives, promoting financial stability and security.",
+    "To improve access to healthcare, mental health support, and social services, ensuring the well-being and dignity of women and children.",
+    "To protect women and children from violence, abuse, and exploitation, providing a safe and supportive environment for all.",
+    "To advocate for gender equality, child rights, and social justice, influencing policy and driving systemic change.",
+    "To build a sense of community and solidarity among women and children, promoting social connections and support networks.",
+    "To strengthen the capacity of local organizations, communities, and individuals to promote sustainable development and social change.",
+    "To do anything and everything that may be necessary towards achieving the aims and objectives of the foundation."
   ];
 
   const whoWeServe = [
     {
-      title: "Tahfeez & Madrasah Students",
-      desc: "Young learners committed to Qur'anic memorization and Islamic sciences in resource-constrained community schools.",
-      icon: BookOpen
+      title: "Women & Female Entrepreneurs",
+      desc: "Widows, single mothers, and grassroots women seeking vocational trades, business mentoring, and microfinance support.",
+      icon: Heart
     },
     {
-      title: "Underprivileged Basic School Pupils",
-      desc: "Children from low-income families in danger of school dropout due to a lack of notebooks, backpacks, and basic stationery.",
+      title: "Vulnerable Children & Students",
+      desc: "Pupils and learning center students receiving essential study supplies, backpacks, tuition grants, and Qur'an distribution.",
       icon: GraduationCap
     },
     {
@@ -65,9 +69,9 @@ export default function AboutUs() {
       icon: Users
     },
     {
-      title: "Widows & Grassroots Women Traders",
-      desc: "Female heads of household needing tailoring machinery, business mentoring, and micro-capital to provide for their children.",
-      icon: Heart
+      title: "Communities & Local Organizations",
+      desc: "Grassroots settlements benefiting from healthcare advocacy, community solidarity, safe water, and capacity building.",
+      icon: Sparkles
     }
   ];
 
@@ -85,7 +89,7 @@ export default function AboutUs() {
             About Mariya Nuuman Foundation
           </h1>
           <p className="text-base sm:text-xl text-emerald-100/90 font-light max-w-2xl mx-auto leading-relaxed">
-            A dedicated community charitable trust committed to illuminating lives with Qur'anic education and empowering people with vocational self-reliance.
+            A dedicated charitable foundation committed to empowering women and children to reach their full potential, providing quality education and skills training, and supporting students through Qur'an distribution and community development.
           </p>
         </div>
       </section>
@@ -104,13 +108,13 @@ export default function AboutUs() {
 
             <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
               <p>
-                <strong>Mariya Nuuman Foundation</strong> was established in response to two persistent grassroots realities: the acute shortage of sacred texts and basic learning materials in community Madrasahs, and the rampant economic vulnerability facing young adults and women without vocational skills.
+                <strong>Mariya Nuuman Foundation</strong> was established to empower women and children, break cycles of inequality and poverty, and foster sustainable self-reliance across communities.
               </p>
               <p>
-                In many rural communities, students eager to memorize the Holy Qur'an share a single damaged Mushaf among several learners. Simultaneously, thousands of youth and female heads of household lack the marketable trades needed to support their households, leading to perpetual poverty.
+                Across underserved communities, women and young adults face steep economic challenges without access to marketable skills or financial support, while children and students often lack basic educational tools and sacred scriptures. As part of our educational outreach, we provide authenticated copies of the Holy Qur'an, textbooks, and learning supplies to students.
               </p>
               <p>
-                We bridge this gap through structured, sustainable interventions: providing durable Qur'ans, school kits, and academic scholarships on one hand, while establishing intensive vocational workshops, gifting startup equipment, and offering micro-business grants on the other.
+                We bridge these divides through comprehensive interventions: quality education, skills training, entrepreneurship, healthcare access, social protection, and Qur'an distribution to build resilient and dignified communities.
               </p>
             </div>
 
@@ -118,7 +122,7 @@ export default function AboutUs() {
               <div className="p-4 rounded-2xl bg-brand-50 border border-brand-200 text-brand-950 space-y-1">
                 <span className="font-bold text-sm block font-display">Our Fundamental Motto:</span>
                 <p className="text-xs text-brand-800 italic">
-                  "Give a person knowledge, and you enlighten their soul. Give them a practical trade, and you secure their independence for a lifetime."
+                  "Empowering women and children, protecting human dignity, and building enduring self-sufficiency through education, skills, and community solidarity."
                 </p>
               </div>
             </div>
@@ -167,11 +171,11 @@ export default function AboutUs() {
               <span className="text-xs font-bold uppercase tracking-wider text-gold-400 block">Our Sacred Purpose</span>
               <h3 className="text-2xl sm:text-3xl font-bold font-display text-white">Our Mission</h3>
               <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed">
-                To empower underserved individuals and communities to become economically and socially self-reliant, while facilitating holistic Qur’anic and formal education support for students in need.
+                To empower women and children to reach their full potential and break cycles of inequality and poverty by providing access to quality education, healthcare, skills training, and economic opportunities, while supporting students through Qur'an distribution and community development.
               </p>
             </div>
             <div className="pt-4 border-t border-white/10 text-xs text-emerald-200/70">
-              Uplifting human dignity through education and sustainable livelihood generation.
+              Uplifting human dignity, promoting gender equality, and driving systemic social change.
             </div>
           </div>
 
@@ -184,11 +188,11 @@ export default function AboutUs() {
               <span className="text-xs font-bold uppercase tracking-wider text-gold-400 block">Our Long-Term Horizon</span>
               <h3 className="text-2xl sm:text-3xl font-bold font-display text-white">Our Vision</h3>
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
-                A resilient, ethical society where every individual has the educational opportunity, vocational dignity, and moral grounding to uplift themselves and contribute meaningfully to their communities.
+                A resilient, just, and equitable society where women and children achieve economic independence, well-being, and dignity, supported by thriving communities and sustainable development.
               </p>
             </div>
             <div className="pt-4 border-t border-white/10 text-xs text-slate-400">
-              Creating a sustainable ripple effect of knowledge, enterprise, and social justice.
+              Building lasting community solidarity, child protection, and self-reliance for all.
             </div>
           </div>
 
@@ -232,9 +236,9 @@ export default function AboutUs() {
       {/* 5. STRATEGIC OBJECTIVES */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <SectionHeader
-          badge="Strategic Goals"
-          title="Key Objectives of Mariya Nuuman Foundation"
-          subtitle="Specific, actionable benchmarks we continuously pursue across our operations."
+          badge="Aims & Objectives"
+          title="Aims and Objectives of Mariya Nuuman Foundation"
+          subtitle="The core aims and objectives driving our commitment to empower women, children, and communities."
           centered={true}
         />
 

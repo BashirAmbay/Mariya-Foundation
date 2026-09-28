@@ -8,29 +8,42 @@ export default {
     extend: {
       colors: {
         brand: {
-          50: '#f0fdf4',
-          100: '#dcfce7',
-          200: '#bbf7d0',
-          300: '#86efac',
-          400: '#4ade80',
-          500: '#22c55e',
-          600: '#16a34a',
-          700: '#15803d',
-          800: '#065f46', // Rich deep emerald
-          900: '#064e3b', // Deep forest emerald
-          950: '#022c22',
+          50: '#faf5ff',
+          100: '#f3e8ff',
+          200: '#e9d5ff',
+          300: '#d8b4fe',
+          400: '#c084fc',
+          500: '#a855f7',
+          600: '#9333ea',
+          700: '#7e22ce',
+          800: '#581c87', // Rich deep purple
+          900: '#350a58', // Deep dark royal purple
+          950: '#1b0333', // Deepest dark midnight purple
+        },
+        emerald: {
+          50: '#faf5ff',
+          100: '#f3e8ff',
+          200: '#e9d5ff',
+          300: '#d8b4fe',
+          400: '#c084fc',
+          500: '#a855f7',
+          600: '#9333ea',
+          700: '#7e22ce',
+          800: '#581c87',
+          900: '#350a58',
+          950: '#1b0333',
         },
         gold: {
-          50: '#fffbeb',
-          100: '#fef3c7',
-          200: '#fde68a',
-          300: '#fcd34d',
-          400: '#fbbf24',
-          500: '#f59e0b',
-          600: '#d97706', // Warm Islamic amber gold
-          700: '#b45309',
-          800: '#92400e',
-          900: '#78350f',
+          50: '#faf5ff',
+          100: '#f3e8ff',
+          200: '#e9d5ff',
+          300: '#d8b4fe',
+          400: '#c084fc',
+          500: '#a855f7',
+          600: '#9333ea',
+          700: '#7e22ce',
+          800: '#581c87',
+          900: '#350a58',
         }
       },
       fontFamily: {
@@ -39,10 +52,10 @@ export default {
         serif: ['"Amiri"', 'serif']
       },
       boxShadow: {
-        'soft': '0 4px 20px -2px rgba(6, 78, 59, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04)',
-        'card': '0 10px 30px -5px rgba(6, 78, 59, 0.1), 0 4px 12px -2px rgba(0, 0, 0, 0.05)',
-        'glow': '0 0 25px rgba(217, 119, 6, 0.35)',
-        'emerald-glow': '0 0 30px rgba(6, 95, 70, 0.3)'
+        'soft': '0 4px 20px -2px rgba(43, 7, 92, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04)',
+        'card': '0 10px 30px -5px rgba(43, 7, 92, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.05)',
+        'glow': '0 0 25px rgba(168, 85, 247, 0.45)',
+        'emerald-glow': '0 0 30px rgba(88, 28, 135, 0.4)'
       }
     },
   },

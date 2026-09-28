@@ -646,8 +646,8 @@ The village head expressed deep gratitude to Mariya Foundation and its generous 
   const settings = [
     { key: 'org_name', value: 'Mariya Foundation', group_name: 'general' },
     { key: 'tagline', value: 'Empowering Communities, Nurturing Education & Building Self-Reliance', group_name: 'general' },
-    { key: 'mission', value: 'To empower underserved individuals and communities to become economically and socially self-reliant, while facilitating holistic Qur’anic and formal education support for students in need.', group_name: 'about' },
-    { key: 'vision', value: 'A resilient, ethical society where every individual has the educational opportunity, vocational dignity, and moral grounding to uplift themselves and their communities.', group_name: 'about' },
+    { key: 'mission', value: 'To empower women and children to reach their full potential and break cycles of inequality and poverty by providing access to quality education, healthcare, skills training, and economic opportunities, while supporting students through Qur\'an distribution.', group_name: 'about' },
+    { key: 'vision', value: 'A resilient, just, and equitable society where women and children achieve economic independence, well-being, and dignity, supported by thriving communities and sustainable development.', group_name: 'about' },
     { key: 'contact_phone', value: '+234 (0) 800 000 0000 (Placeholder)', group_name: 'contact' },
     { key: 'contact_email', value: 'info@mariyafoundation.org (Placeholder)', group_name: 'contact' },
     { key: 'contact_whatsapp', value: '+234 (0) 800 000 0000 (Placeholder)', group_name: 'contact' },

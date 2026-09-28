@@ -60,10 +60,10 @@ export default function Navbar() {
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-1.5 text-pink-400 font-medium">
               <Sparkles className="w-3.5 h-3.5" />
-              Nurturing Qur'anic Education &amp; Building Self-Reliance
+              Empowering Women, Children &amp; Community Education
             </span>
             <span className="text-white/20">|</span>
-            <a href="mailto:info@mariyafoundation.org" className="hover:text-pink-300 transition flex items-center gap-1">
+            <a href="mailto:mariyanuumanfoundation@gmail.com" className="hover:text-pink-300 transition flex items-center gap-1">
               <Mail className="w-3 h-3" /> Mariyanuumanfoundation@gmail.com
             </a>
           </div>

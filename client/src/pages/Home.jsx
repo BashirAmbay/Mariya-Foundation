@@ -90,7 +90,7 @@ export default function Home() {
               Mariya Nuuman Foundation
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-emerald-100/90 font-light leading-relaxed max-w-3xl mx-auto">
-              Empowering people to become self-reliant and supporting students through sacred Qur'anic and general education.
+              Empowering women and children to reach their full potential, breaking cycles of poverty, and supporting students through quality education, skills training, and Qur'an distribution.
             </p>
           </div>
 
@@ -115,20 +115,20 @@ export default function Home() {
           {/* Value Pillars Badges */}
           <div className="pt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left border-t border-white/10">
             <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-              <span className="text-pink-400 font-bold block text-sm font-display">Qur'an Distribution</span>
-              <span className="text-[12px] text-slate-300">Supplying sacred texts & Tajweed kits</span>
+              <span className="text-pink-400 font-bold block text-sm font-display">Women & Children</span>
+              <span className="text-[12px] text-slate-300">Empowerment, protection & care</span>
             </div>
             <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-              <span className="text-pink-400 font-bold block text-sm font-display">Student Support</span>
-              <span className="text-[12px] text-slate-300">Books, study packs & scholarships</span>
+              <span className="text-pink-400 font-bold block text-sm font-display">Education & Skills</span>
+              <span className="text-[12px] text-slate-300">Quality schooling & trade training</span>
             </div>
             <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-              <span className="text-pink-400 font-bold block text-sm font-display">Vocational Skills</span>
-              <span className="text-[12px] text-slate-300">Fashion design, trades & tech hubs</span>
+              <span className="text-pink-400 font-bold block text-sm font-display">Economic Independence</span>
+              <span className="text-[12px] text-slate-300">Microfinance & entrepreneurship</span>
             </div>
             <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-              <span className="text-pink-400 font-bold block text-sm font-display">Self-Reliance</span>
-              <span className="text-[12px] text-slate-300">Micro-grants & business mentoring</span>
+              <span className="text-pink-400 font-bold block text-sm font-display">Student Qur'an Aid</span>
+              <span className="text-[12px] text-slate-300">Mushafs & learning kits for students</span>
             </div>
           </div>
 
@@ -150,11 +150,11 @@ export default function Home() {
             </h2>
 
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              <strong>Mariya Nuuman Foundation</strong> is a community-focused charitable organization established to tackle two foundational pillars of social upliftment: **empowerment towards self-reliance** and **holistic educational support**.
+              <strong>Mariya Nuuman Foundation</strong> is a community-focused charitable organization dedicated to empowering women and children to reach their full potential and break cycles of inequality and poverty.
             </p>
 
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-              We believe that long-term community transformation occurs when students are equipped with knowledge and sacred scripture, while vulnerable individuals are trained with practical vocational skills that remove dependency on hand-outs.
+              Through quality education, skills training, healthcare access, and women's economic empowerment, we help families achieve sustainable self-reliance. As part of our educational commitment, we also distribute copies of the Holy Qur'an and study materials to students across community Madrasahs.
             </p>
 
             {/* Core Values Bullets */}

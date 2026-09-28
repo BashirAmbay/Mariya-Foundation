@@ -15,10 +15,10 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <div>
             <h3 className="text-2xl sm:text-3xl font-bold text-white font-display">
-              Empower a Student. Uplift a Community.
+              Empower Women & Children. Uplift Communities.
             </h3>
             <p className="text-emerald-100/70 text-sm max-w-xl mt-1">
-              Your charitable support helps provide sacred Qur'ans, student study kits, and vocational equipment for sustainable self-reliance.
+              Your charitable support helps empower women and children, provide quality education and skills, and distribute Qur'ans and learning materials to students.
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-3">
@@ -57,7 +57,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
-              A community-focused charitable organization dedicated to empowering people to become self-reliant and supporting students through Qur'anic and general education.
+              A dedicated charitable organization empowering women and children to reach their full potential, breaking cycles of poverty through education, skills training, and supporting students through Qur'an distribution.
             </p>
             <div className="pt-2">
               <div className="text-xs text-gold-400 font-semibold uppercase tracking-wider mb-2">
