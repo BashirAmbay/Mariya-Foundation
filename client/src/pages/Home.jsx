@@ -120,9 +120,8 @@ export default function Home() {
               key={slide.id || idx}
               src={getImageUrl(slide.image_url)}
               alt={slide.title || 'Mariya Nuuman Foundation Background'}
-              className={`absolute inset-0 w-full h-full object-cover object-center mix-blend-luminosity scale-105 transition-opacity duration-1000 ease-in-out ${
-                idx === currentSlideIndex ? 'opacity-30' : 'opacity-0 pointer-events-none'
-              }`}
+              className={`absolute inset-0 w-full h-full object-cover object-center mix-blend-luminosity scale-105 transition-opacity duration-1000 ease-in-out ${idx === currentSlideIndex ? 'opacity-30' : 'opacity-0 pointer-events-none'
+                }`}
             />
           ))}
           <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/80 to-brand-950/60 pointer-events-none" />
@@ -362,7 +361,7 @@ export default function Home() {
             <div className="pt-8 relative z-10">
               <Link
                 to="/education"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-brand-950 font-bold text-xs uppercase tracking-wider transition"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-pink-950 font-bold text-xs uppercase tracking-wider transition"
               >
                 Learn More About Education Support
                 <ArrowRight className="w-3.5 h-3.5" />
