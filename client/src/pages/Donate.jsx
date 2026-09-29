@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import {
   Heart,
@@ -111,7 +111,7 @@ export default function Donate() {
         <div className="absolute inset-0 bg-emerald-pattern opacity-15 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
           <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-gold-500/20 text-gold-300 border border-gold-500/30">
-            <Heart className="w-3.5 h-3.5 fill-gold-400" /> Sawaab-e-Jariyah
+            Sawaab-e-Jariyah
           </span>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-display tracking-tight text-white max-w-4xl mx-auto leading-tight">
             Support Mariya Nuuman Foundation
@@ -430,10 +430,7 @@ export default function Donate() {
                         Logging Notification...
                       </>
                     ) : (
-                      <>
-                        <Heart className="w-4 h-4 fill-white" />
-                        Submit Donation Notification
-                      </>
+                      'Submit Donation Notification'
                     )}
                   </button>
                 </div>

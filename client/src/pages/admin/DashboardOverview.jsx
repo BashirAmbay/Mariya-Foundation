@@ -88,7 +88,7 @@ export default function DashboardOverview() {
       <div className="bg-gradient-to-r from-brand-950 via-brand-900 to-brand-800 text-white rounded-3xl p-6 sm:p-8 shadow-md border border-brand-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-gold-500/20 text-gold-300 border border-gold-500/30">
-            <Sparkles className="w-3.5 h-3.5" /> Mariya Nuuman Foundation Management Console
+            Mariya Nuuman Foundation Management Console
           </div>
           <h1 className="text-2xl sm:text-3xl font-bold font-display text-white">
             Welcome to the Administrator Dashboard

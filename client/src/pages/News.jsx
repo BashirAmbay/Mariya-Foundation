@@ -38,7 +38,7 @@ export default function News() {
         <div className="absolute inset-0 bg-emerald-pattern opacity-15 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
           <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-gold-500/20 text-gold-300 border border-gold-500/30">
-            <Newspaper className="w-3.5 h-3.5" /> Official Press & Updates
+            Official Press & Updates
           </span>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-display tracking-tight text-white max-w-4xl mx-auto leading-tight">
             News & Foundation Updates

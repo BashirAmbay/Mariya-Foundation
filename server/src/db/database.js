@@ -11,14 +11,31 @@ const isVercel = Boolean(process.env.VERCEL);
 let dbPath;
 
 if (isVercel) {
+  // On Vercel, the /tmp filesystem is ephemeral per function instance.
+  // Each cold start gets a fresh /tmp, so we always copy the bundled DB.
+  // Changes written in one invocation will NOT survive a cold start.
+  // This is a fundamental SQLite-on-serverless limitation.
+  // To fix permanently, use a remote persistent DB (e.g. Turso/LibSQL).
   dbPath = '/tmp/mariya_foundation.db';
   const sourceDbPath = path.resolve(__dirname, '../../data/mariya_foundation.db');
   if (!fs.existsSync(dbPath)) {
     if (fs.existsSync(sourceDbPath)) {
       try {
+        // Checkpoint WAL in source if it exists before copying
+        const walPath = sourceDbPath + '-wal';
+        const shmPath = sourceDbPath + '-shm';
+        // Copy source DB to /tmp
         fs.copyFileSync(sourceDbPath, dbPath);
+        // Also copy WAL/SHM if they exist so state is consistent
+        if (fs.existsSync(walPath)) {
+          try { fs.copyFileSync(walPath, dbPath + '-wal'); } catch (_) {}
+        }
+        if (fs.existsSync(shmPath)) {
+          try { fs.copyFileSync(shmPath, dbPath + '-shm'); } catch (_) {}
+        }
+        console.log('[DB] Copied bundled database to /tmp for this function instance.');
       } catch (err) {
-        console.warn('Could not copy bundled DB to /tmp, will initialize fresh:', err.message);
+        console.warn('[DB] Could not copy bundled DB to /tmp, will initialize fresh:', err.message);
       }
     }
   }
@@ -32,13 +49,21 @@ if (isVercel) {
 
 export const db = new Database(dbPath);
 
-// Enable foreign keys and WAL mode (or standard mode if in /tmp)
+// Use DELETE journal mode on Vercel /tmp for more reliable single-request writes.
+// Use WAL mode on local/persistent disk for better concurrent read performance.
 try {
-  db.pragma('journal_mode = WAL');
+  if (isVercel) {
+    db.pragma('journal_mode = DELETE');
+  } else {
+    db.pragma('journal_mode = WAL');
+    // Checkpoint WAL periodically to keep the DB file up-to-date on disk
+    db.pragma('wal_autocheckpoint = 100');
+  }
 } catch (e) {
   // Ignore journal mode failure on some serverless environments
 }
 db.pragma('foreign_keys = ON');
+
 
 export function initDatabase() {
   db.exec(`
@@ -233,20 +258,7 @@ export function initDatabase() {
     );
   `);
 
-  // Ensure default hero slides exist if empty
-  const heroSlideCheck = db.prepare('SELECT count(*) as count FROM hero_slides').get();
-  if (heroSlideCheck.count === 0) {
-    const insertSlide = db.prepare(`
-      INSERT INTO hero_slides (title, image_url, display_order, is_active)
-      VALUES (?, ?, ?, 1)
-    `);
-    insertSlide.run('Students Learning & Educational Support (Sample 1)', 'https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=2000&q=80', 1);
-    insertSlide.run('Students in Classroom Study Circle (Sample 2)', 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=2000&q=80', 2);
-    insertSlide.run('Youth Empowerment & School Supplies (Sample 3)', 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=2000&q=80', 3);
-    insertSlide.run('Children Learning & Community Care (Sample 4)', 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=2000&q=80', 4);
-  }
-
-  // Ensure default admin exists if empty
+  // Ensure default admin exists if empty (this is safe to run on every start)
   const adminCheck = db.prepare('SELECT count(*) as count FROM admins').get();
   if (adminCheck.count === 0) {
     const hashedPassword = bcrypt.hashSync('AdminPassword123!', 10);
@@ -256,3 +268,4 @@ export function initDatabase() {
     `).run('Mariya Foundation Administrator', 'admin@mariyafoundation.org', hashedPassword, 'superadmin');
   }
 }
+

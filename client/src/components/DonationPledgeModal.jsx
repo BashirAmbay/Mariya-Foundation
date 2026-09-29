@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { X, Check, Copy, Heart, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { api } from '../api/client';
 import { useToast } from '../context/ToastContext';
@@ -72,7 +72,6 @@ export default function DonationPledgeModal({ isOpen, onClose, selectedPurpose =
             <X className="w-5 h-5" />
           </button>
           <div className="flex items-center gap-2">
-            <Heart className="w-5 h-5 fill-white" />
             <span className="text-xs font-bold uppercase tracking-wider bg-black/20 px-2.5 py-0.5 rounded-full">
               Sadaqah & Education Sponsorship
             </span>
@@ -295,10 +294,7 @@ export default function DonationPledgeModal({ isOpen, onClose, selectedPurpose =
                         Submitting...
                       </>
                     ) : (
-                      <>
-                        <Heart className="w-4 h-4 fill-white" />
-                        Notify Foundation
-                      </>
+                      'Notify Foundation'
                     )}
                   </button>
                 </div>

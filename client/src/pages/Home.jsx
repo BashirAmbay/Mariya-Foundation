@@ -113,31 +113,29 @@ export default function Home() {
 
       {/* 1. HERO SECTION */}
       <section className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center justify-center bg-brand-950 overflow-hidden text-white">
-        {/* Background Slideshow with Deep Overlay (5s auto-transition) */}
+        {/* Background Slideshow with Clear Overlay (5s auto-transition) */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {heroSlides.map((slide, idx) => (
             <img
               key={slide.id || idx}
               src={getImageUrl(slide.image_url)}
               alt={slide.title || 'Mariya Nuuman Foundation Background'}
-              className={`absolute inset-0 w-full h-full object-cover object-center mix-blend-luminosity scale-105 transition-opacity duration-1000 ease-in-out ${idx === currentSlideIndex ? 'opacity-30' : 'opacity-0 pointer-events-none'
+              className={`absolute inset-0 w-full h-full object-cover object-center scale-105 transition-opacity duration-1000 ease-in-out ${idx === currentSlideIndex ? 'opacity-80' : 'opacity-0 pointer-events-none'
                 }`}
             />
           ))}
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/80 to-brand-950/60 pointer-events-none" />
-          <div className="absolute inset-0 bg-emerald-pattern opacity-20 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-950/90 via-brand-950/45 to-brand-950/35 pointer-events-none" />
+          <div className="absolute inset-0 bg-black/20 pointer-events-none" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center space-y-8">
 
-
-
           {/* Heading */}
           <div className="space-y-4 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-display tracking-tight text-white leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-display tracking-tight text-white leading-tight drop-shadow-md">
               Mariya Nuuman Foundation
             </h1>
-            <p className="text-lg sm:text-xl md:text-2xl text-emerald-100/90 font-light leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl text-emerald-100 font-normal leading-relaxed max-w-3xl mx-auto drop-shadow-sm">
               Empowering women and children to reach their full potential, breaking cycles of poverty, and supporting students through quality education, skills training, and Qur'an distribution.
             </p>
           </div>
@@ -148,7 +146,6 @@ export default function Home() {
               onClick={() => setIsDonateOpen(true)}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md rounded-2xl transition-all"
             >
-              <Heart className="w-5 h-5" />
               <span>Support Our Mission</span>
             </button>
             <Link
@@ -188,8 +185,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
           <div className="lg:col-span-6 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-50 text-brand-900 border border-brand-200">
-              <Sparkles className="w-3.5 h-3.5 text-gold-600" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-brand-50 text-pink-600 border border-brand-200">
               About Mariya Nuuman Foundation
             </div>
 
@@ -270,7 +266,7 @@ export default function Home() {
             />
             <Link
               to="/programs"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-brand-900 font-bold text-sm border border-slate-200 shadow-sm transition whitespace-nowrap self-start md:self-auto"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white hover:bg-slate-100 text-pink-600 hover:text-pink-700 font-bold text-sm border border-slate-200 shadow-sm transition whitespace-nowrap self-start md:self-auto"
             >
               <span>Explore All Programs</span>
               <ArrowRight className="w-4 h-4" />
@@ -338,7 +334,7 @@ export default function Home() {
           <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-brand-950 via-brand-900 to-brand-800 text-white p-8 sm:p-10 flex flex-col justify-between shadow-xl">
             <div className="space-y-4 relative z-10">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-gold-500/20 text-gold-300 border border-gold-500/30">
-                <BookOpen className="w-3.5 h-3.5" /> Education & Qur'anic Focus
+                Education & Qur'anic Focus
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold font-display text-white">
                 Supporting Students with Sacred Texts & Study Materials
@@ -373,7 +369,7 @@ export default function Home() {
           <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-brand-950 text-white p-8 sm:p-10 flex flex-col justify-between shadow-xl">
             <div className="space-y-4 relative z-10">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-gold-500/20 text-gold-300 border border-gold-500/30">
-                <Sparkles className="w-3.5 h-3.5" /> Empowerment & Self-Reliance
+                Empowerment & Self-Reliance
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold font-display text-white">
                 Vocational Mastery & Micro-Enterprise Toolkits
@@ -625,7 +621,6 @@ export default function Home() {
                 onClick={() => setIsDonateOpen(true)}
                 className="px-8 py-3.5 rounded-xl bg-gold-500 hover:bg-gold-400 text-brand-950 font-bold text-sm shadow-glow transition flex items-center gap-2"
               >
-                <Heart className="w-4 h-4 fill-brand-950" />
                 Make a Donation
               </button>
               <Link

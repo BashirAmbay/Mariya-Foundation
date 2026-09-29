@@ -132,7 +132,10 @@ if (!process.env.VERCEL) {
   const cleanup = () => {
     try {
       if (db && db.open) {
+        // Checkpoint WAL so all changes are written to the main .db file on disk
+        try { db.pragma('wal_checkpoint(TRUNCATE)'); } catch (_) {}
         db.close();
+        console.log('[DB] Database checkpointed and closed cleanly.');
       }
     } catch (e) {}
   };

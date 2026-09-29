@@ -14,7 +14,7 @@ export default function SectionHeader({
         <div className={`inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${
           dark 
             ? 'bg-gold-500/20 text-gold-300 border border-gold-500/30' 
-            : 'bg-brand-50 text-brand-900 border border-brand-200'
+            : 'bg-brand-50 text-pink-600 border border-brand-200'
         }`}>
           {badge}
         </div>

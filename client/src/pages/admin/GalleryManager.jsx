@@ -3,6 +3,7 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   Image,
   Plus,
+  Edit2,
   Trash2,
   Upload,
   X,
@@ -19,6 +20,7 @@ export default function GalleryManager() {
   const { addToast } = useToast();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [editingItem, setEditingItem] = useState(null);
   const [formData, setFormData] = useState({
     title: '',
     category: 'Quran',
@@ -36,6 +38,34 @@ export default function GalleryManager() {
   });
 
   const items = data?.data || [];
+
+  const openCreateModal = () => {
+    setEditingItem(null);
+    setFormData({
+      title: '',
+      category: 'Quran',
+      caption: '',
+      location: '',
+      event_date: new Date().toISOString().split('T')[0],
+      image_url: ''
+    });
+    setImageFile(null);
+    setIsModalOpen(true);
+  };
+
+  const openEditModal = (item) => {
+    setEditingItem(item);
+    setFormData({
+      title: item.title || '',
+      category: item.category || 'Quran',
+      caption: item.caption || '',
+      location: item.location || '',
+      event_date: item.event_date ? item.event_date.split('T')[0] : new Date().toISOString().split('T')[0],
+      image_url: item.image_url || ''
+    });
+    setImageFile(null);
+    setIsModalOpen(true);
+  };
 
   const handleDelete = async (id, title) => {
     if (!window.confirm(`Delete "${title}" from gallery?`)) return;
@@ -56,21 +86,28 @@ export default function GalleryManager() {
       const data = new FormData();
       data.append('title', formData.title);
       data.append('category', formData.category);
-      data.append('caption', formData.caption);
-      data.append('location', formData.location);
+      data.append('caption', formData.caption || '');
+      data.append('location', formData.location || '');
       data.append('event_date', formData.event_date);
 
       if (imageFile) {
         data.append('image', imageFile);
       } else if (formData.image_url) {
         data.append('image_url', formData.image_url);
-      } else {
+      } else if (!editingItem) {
         throw new Error('Please select an image file or provide an image URL.');
       }
 
-      await api.post('/gallery', data);
-      addToast('Image uploaded to gallery successfully.');
+      if (editingItem) {
+        await api.put(`/gallery/${editingItem.id}`, data);
+        addToast('Gallery image updated successfully.');
+      } else {
+        await api.post('/gallery', data);
+        addToast('Image uploaded to gallery successfully.');
+      }
+
       setIsModalOpen(false);
+      setEditingItem(null);
       setImageFile(null);
       setFormData({
         title: '',
@@ -82,7 +119,7 @@ export default function GalleryManager() {
       });
       queryClient.invalidateQueries({ queryKey: ['admin-gallery'] });
     } catch (err) {
-      addToast(err.message || 'Failed to add image', 'error');
+      addToast(err.message || (editingItem ? 'Failed to update image' : 'Failed to add image'), 'error');
     } finally {
       setSubmitting(false);
     }
@@ -102,7 +139,7 @@ export default function GalleryManager() {
           </p>
         </div>
         <button
-          onClick={() => setIsModalOpen(true)}
+          onClick={openCreateModal}
           className="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-900 hover:bg-brand-800 text-white font-bold text-xs rounded-xl shadow-sm transition self-start sm:self-auto"
         >
           <Plus className="w-4 h-4" />
@@ -158,13 +195,22 @@ export default function GalleryManager() {
                   <span className="text-[10px] text-slate-400">
                     {new Date(item.event_date || item.created_at).toLocaleDateString()}
                   </span>
-                  <button
-                    onClick={() => handleDelete(item.id, item.title)}
-                    className="p-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-600 transition"
-                    title="Delete Image"
-                  >
-                    <Trash2 className="w-3.5 h-3.5" />
-                  </button>
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      onClick={() => openEditModal(item)}
+                      className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 transition"
+                      title="Edit Image"
+                    >
+                      <Edit2 className="w-3.5 h-3.5" />
+                    </button>
+                    <button
+                      onClick={() => handleDelete(item.id, item.title)}
+                      className="p-1.5 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-600 transition"
+                      title="Delete Image"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -172,15 +218,19 @@ export default function GalleryManager() {
         )}
       </div>
 
-      {/* Upload Modal */}
+      {/* Upload/Edit Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="relative bg-white rounded-3xl max-w-lg w-full shadow-2xl overflow-hidden border border-slate-200 animate-in zoom-in-95 duration-200">
             
             <div className="bg-brand-950 text-white p-6 flex justify-between items-center">
               <div>
-                <h3 className="text-lg font-bold font-display text-white">Upload Gallery Image</h3>
-                <p className="text-xs text-gold-400">Mariya Nuuman Foundation Media Center</p>
+                <h3 className="text-lg font-bold font-display text-white">
+                  {editingItem ? 'Edit Gallery Image' : 'Upload Gallery Image'}
+                </h3>
+                <p className="text-xs text-gold-400">
+                  {editingItem ? 'Update details, category, or replace photo' : 'Mariya Nuuman Foundation Media Center'}
+                </p>
               </div>
               <button onClick={() => setIsModalOpen(false)} className="text-white/70 hover:text-white">
                 <X className="w-5 h-5" />
@@ -240,8 +290,23 @@ export default function GalleryManager() {
               </div>
 
               <div className="space-y-3 pt-2 border-t border-slate-100">
+                {editingItem && (formData.image_url || imageFile) && (
+                  <div className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200">
+                    <img
+                      src={imageFile ? URL.createObjectURL(imageFile) : getImageUrl(formData.image_url)}
+                      alt="Preview"
+                      className="w-16 h-12 rounded-lg object-cover border border-slate-200"
+                    />
+                    <div className="text-xs">
+                      <span className="font-semibold text-slate-700 block">Current Photo</span>
+                      <span className="text-slate-400 text-[11px]">Select a file below if you wish to replace it.</span>
+                    </div>
+                  </div>
+                )}
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Select Local Image File</label>
+                  <label className="block font-bold text-slate-700 mb-1">
+                    {editingItem ? 'Replace Local Image File (Optional)' : 'Select Local Image File'}
+                  </label>
                   <input
                     type="file"
                     accept="image/*"
@@ -250,7 +315,7 @@ export default function GalleryManager() {
                   />
                 </div>
                 <div>
-                  <label className="block font-bold text-slate-700 mb-1">Or Paste Direct Image URL</label>
+                  <label className="block font-bold text-slate-700 mb-1">Or Direct Image URL</label>
                   <input
                     type="url"
                     value={formData.image_url}
@@ -274,8 +339,14 @@ export default function GalleryManager() {
                   disabled={submitting}
                   className="px-6 py-2.5 bg-brand-900 hover:bg-brand-800 text-white font-bold rounded-xl shadow transition flex items-center gap-2"
                 >
-                  {submitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
-                  Upload Image
+                  {submitting ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : editingItem ? (
+                    <Check className="w-4 h-4" />
+                  ) : (
+                    <Upload className="w-4 h-4" />
+                  )}
+                  {editingItem ? 'Save Changes' : 'Upload Image'}
                 </button>
               </div>
 

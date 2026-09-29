@@ -26,7 +26,6 @@ export default function Footer() {
               to="/donate"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-brand-950 font-bold hover:brightness-110 transition shadow-lg text-sm"
             >
-              <Heart className="w-4 h-4 fill-brand-950" />
               Donate to Mariya Nuuman Foundation
             </Link>
             <Link
@@ -61,10 +60,12 @@ export default function Footer() {
             </p>
             <div className="pt-2">
               <div className="text-xs text-gold-400 font-semibold uppercase tracking-wider mb-2">
-                Subtle Islamic Humanitarian Values
+                Mariya Nuuman Foundation
               </div>
               <p className="text-xs text-emerald-200/60 leading-relaxed italic">
-                "The best among you are those who learn the Qur'an and teach it." — Prophetic Tradition
+                To support women's economic empowerment through entrepreneurship, job training, and microfinance initiatives, promoting financial stability and security
+
+
               </p>
             </div>
           </div>

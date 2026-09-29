@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Sparkles,
@@ -91,7 +91,7 @@ export default function EmpowermentPrograms() {
         <div className="absolute inset-0 bg-emerald-pattern opacity-15 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
           <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-gold-500/20 text-gold-300 border border-gold-500/30">
-            <Sparkles className="w-3.5 h-3.5" /> Building Self-Sufficiency
+            Building Self-Sufficiency
           </span>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-display tracking-tight text-white max-w-4xl mx-auto leading-tight">
             Empowerment & Self-Reliance
@@ -110,7 +110,6 @@ export default function EmpowermentPrograms() {
               onClick={() => setIsDonateOpen(true)}
               className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl text-sm border border-white/20 transition flex items-center gap-2"
             >
-              <Heart className="w-4 h-4 fill-white" />
               Sponsor an Apprentice's Toolkit
             </button>
           </div>
@@ -257,7 +256,6 @@ export default function EmpowermentPrograms() {
                 onClick={() => setIsDonateOpen(true)}
                 className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl text-sm border border-white/20 transition flex items-center gap-2"
               >
-                <Heart className="w-4 h-4 fill-white" />
                 Fund a Graduate's Tool
               </button>
             </div>
