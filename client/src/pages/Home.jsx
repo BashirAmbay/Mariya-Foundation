@@ -245,7 +245,7 @@ export default function Home() {
                   Knowledge illuminates the heart, while vocational mastery empowers the hands.
                 </p>
                 <span className="text-[11px] text-slate-500 block mt-1">
-                  —Mariya Nuuman Foundation Guiding Philosophy
+                  Mariya Nuuman Foundation Guiding Philosophy
                 </span>
               </div>
             </div>
