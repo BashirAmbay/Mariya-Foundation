@@ -29,72 +29,84 @@ function generateSlug(text) {
 }
 
 // 1. Get Categories
-router.get('/categories', (req, res) => {
-  const categories = db.prepare('SELECT * FROM program_categories ORDER BY display_order ASC').all();
-  res.json({ success: true, data: categories });
+router.get('/categories', async (req, res) => {
+  try {
+    const categories = await db.prepare('SELECT * FROM program_categories ORDER BY display_order ASC').all();
+    res.json({ success: true, data: categories });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to fetch categories: ' + err.message });
+  }
 });
 
 // 2. Get All Programs
-router.get('/', (req, res) => {
-  const { category, status, featured, search } = req.query;
+router.get('/', async (req, res) => {
+  try {
+    const { category, status, featured, search } = req.query;
 
-  let query = `
-    SELECT p.*, c.name as category_name, c.slug as category_slug
-    FROM programs p
-    JOIN program_categories c ON p.category_id = c.id
-    WHERE 1=1
-  `;
-  const params = [];
+    let query = `
+      SELECT p.*, c.name as category_name, c.slug as category_slug
+      FROM programs p
+      JOIN program_categories c ON p.category_id = c.id
+      WHERE 1=1
+    `;
+    const params = [];
 
-  if (category) {
-    query += ` AND (c.slug = ? OR c.name = ?)`;
-    params.push(category, category);
+    if (category) {
+      query += ` AND (c.slug = ? OR c.name = ?)`;
+      params.push(category, category);
+    }
+
+    if (status) {
+      query += ` AND p.status = ?`;
+      params.push(status);
+    }
+
+    if (featured === 'true' || featured === '1') {
+      query += ` AND p.is_featured = 1`;
+    }
+
+    if (search) {
+      query += ` AND (p.title LIKE ? OR p.short_description LIKE ? OR p.full_description LIKE ?)`;
+      params.push(`%${search}%`, `%${search}%`, `%${search}%`);
+    }
+
+    query += ` ORDER BY p.is_featured DESC, p.created_at DESC`;
+
+    const rows = await db.prepare(query).all(...params);
+    const programs = rows.map(formatProgram);
+
+    res.json({ success: true, data: programs });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to fetch programs: ' + err.message });
   }
-
-  if (status) {
-    query += ` AND p.status = ?`;
-    params.push(status);
-  }
-
-  if (featured === 'true' || featured === '1') {
-    query += ` AND p.is_featured = 1`;
-  }
-
-  if (search) {
-    query += ` AND (p.title LIKE ? OR p.short_description LIKE ? OR p.full_description LIKE ?)`;
-    params.push(`%${search}%`, `%${search}%`, `%${search}%`);
-  }
-
-  query += ` ORDER BY p.is_featured DESC, p.created_at DESC`;
-
-  const rows = db.prepare(query).all(...params);
-  const programs = rows.map(formatProgram);
-
-  res.json({ success: true, data: programs });
 });
 
 // 3. Get Single Program by ID or Slug
-router.get('/:idOrSlug', (req, res) => {
-  const { idOrSlug } = req.params;
-  const isId = !isNaN(idOrSlug);
+router.get('/:idOrSlug', async (req, res) => {
+  try {
+    const { idOrSlug } = req.params;
+    const isId = !isNaN(idOrSlug);
 
-  let query = `
-    SELECT p.*, c.name as category_name, c.slug as category_slug
-    FROM programs p
-    JOIN program_categories c ON p.category_id = c.id
-    WHERE ${isId ? 'p.id = ?' : 'p.slug = ?'}
-  `;
+    let query = `
+      SELECT p.*, c.name as category_name, c.slug as category_slug
+      FROM programs p
+      JOIN program_categories c ON p.category_id = c.id
+      WHERE ${isId ? 'p.id = ?' : 'p.slug = ?'}
+    `;
 
-  const row = db.prepare(query).get(idOrSlug);
-  if (!row) {
-    return res.status(404).json({ success: false, message: 'Program not found.' });
+    const row = await db.prepare(query).get(idOrSlug);
+    if (!row) {
+      return res.status(404).json({ success: false, message: 'Program not found.' });
+    }
+
+    res.json({ success: true, data: formatProgram(row) });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to fetch program: ' + err.message });
   }
-
-  res.json({ success: true, data: formatProgram(row) });
 });
 
 // 4. Admin: Create Program (with file upload or URL)
-router.post('/', authenticateAdmin, upload.single('image'), (req, res) => {
+router.post('/', authenticateAdmin, upload.single('image'), async (req, res) => {
   try {
     const {
       category_id,
@@ -120,7 +132,7 @@ router.post('/', authenticateAdmin, upload.single('image'), (req, res) => {
 
     let slug = generateSlug(title);
     // Check slug collision
-    const existing = db.prepare('SELECT id FROM programs WHERE slug = ?').get(slug);
+    const existing = await db.prepare('SELECT id FROM programs WHERE slug = ?').get(slug);
     if (existing) {
       slug = `${slug}-${Date.now().toString().slice(-4)}`;
     }
@@ -136,7 +148,7 @@ router.post('/', authenticateAdmin, upload.single('image'), (req, res) => {
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `);
 
-    const result = stmt.run(
+    const result = await stmt.run(
       parseInt(category_id, 10),
       title,
       slug,
@@ -150,7 +162,7 @@ router.post('/', authenticateAdmin, upload.single('image'), (req, res) => {
       is_featured === 'true' || is_featured === 1 || is_featured === '1' ? 1 : 0
     );
 
-    const created = db.prepare('SELECT * FROM programs WHERE id = ?').get(result.lastInsertRowid);
+    const created = await db.prepare('SELECT * FROM programs WHERE id = ?').get(result.lastInsertRowid);
     res.status(201).json({ success: true, message: 'Program created successfully.', data: formatProgram(created) });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Failed to create program: ' + err.message });
@@ -158,10 +170,10 @@ router.post('/', authenticateAdmin, upload.single('image'), (req, res) => {
 });
 
 // 5. Admin: Update Program
-router.put('/:id', authenticateAdmin, upload.single('image'), (req, res) => {
+router.put('/:id', authenticateAdmin, upload.single('image'), async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
-    const existing = db.prepare('SELECT * FROM programs WHERE id = ?').get(id);
+    const existing = await db.prepare('SELECT * FROM programs WHERE id = ?').get(id);
     if (!existing) {
       return res.status(404).json({ success: false, message: 'Program not found.' });
     }
@@ -198,7 +210,7 @@ router.put('/:id', authenticateAdmin, upload.single('image'), (req, res) => {
       ? (typeof activities === 'string' ? (activities.startsWith('[') ? activities : JSON.stringify(activities.split('\n').filter(Boolean))) : JSON.stringify(activities))
       : existing.activities;
 
-    db.prepare(`
+    await db.prepare(`
       UPDATE programs SET
         category_id = COALESCE(?, category_id),
         title = COALESCE(?, title),
@@ -226,7 +238,7 @@ router.put('/:id', authenticateAdmin, upload.single('image'), (req, res) => {
       id
     );
 
-    const updated = db.prepare('SELECT * FROM programs WHERE id = ?').get(id);
+    const updated = await db.prepare('SELECT * FROM programs WHERE id = ?').get(id);
     res.json({ success: true, message: 'Program updated successfully.', data: formatProgram(updated) });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Failed to update program: ' + err.message });
@@ -234,15 +246,19 @@ router.put('/:id', authenticateAdmin, upload.single('image'), (req, res) => {
 });
 
 // 6. Admin: Delete Program
-router.delete('/:id', authenticateAdmin, (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  const result = db.prepare('DELETE FROM programs WHERE id = ?').run(id);
+router.delete('/:id', authenticateAdmin, async (req, res) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const result = await db.prepare('DELETE FROM programs WHERE id = ?').run(id);
 
-  if (result.changes === 0) {
-    return res.status(404).json({ success: false, message: 'Program not found.' });
+    if (result.changes === 0) {
+      return res.status(404).json({ success: false, message: 'Program not found.' });
+    }
+
+    res.json({ success: true, message: 'Program deleted successfully.' });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to delete program: ' + err.message });
   }
-
-  res.json({ success: true, message: 'Program deleted successfully.' });
 });
 
 export default router;

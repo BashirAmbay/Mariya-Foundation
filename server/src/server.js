@@ -33,9 +33,9 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Initialize SQLite database
-initDatabase();
-seedData();
+// Initialize database (Turso cloud or local fallback)
+await initDatabase();
+await seedData();
 
 export const app = express();
 const PORT = process.env.PORT || 5000;

@@ -6,23 +6,27 @@ import { upload } from '../middleware/upload.js';
 const router = express.Router();
 
 // 1. Get Gallery Items
-router.get('/', (req, res) => {
-  const { category } = req.query;
-  let query = 'SELECT * FROM gallery WHERE 1=1';
-  const params = [];
+router.get('/', async (req, res) => {
+  try {
+    const { category } = req.query;
+    let query = 'SELECT * FROM gallery WHERE 1=1';
+    const params = [];
 
-  if (category && category !== 'All') {
-    query += ' AND category = ?';
-    params.push(category);
+    if (category && category !== 'All') {
+      query += ' AND category = ?';
+      params.push(category);
+    }
+
+    query += ' ORDER BY created_at DESC';
+    const items = await db.prepare(query).all(...params);
+    res.json({ success: true, data: items });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to fetch gallery items: ' + err.message });
   }
-
-  query += ' ORDER BY created_at DESC';
-  const items = db.prepare(query).all(...params);
-  res.json({ success: true, data: items });
 });
 
 // 2. Admin: Add Gallery Image
-router.post('/', authenticateAdmin, upload.single('image'), (req, res) => {
+router.post('/', authenticateAdmin, upload.single('image'), async (req, res) => {
   try {
     const { title, category, caption, location, event_date, image_url: bodyImageUrl } = req.body;
 
@@ -44,8 +48,8 @@ router.post('/', authenticateAdmin, upload.single('image'), (req, res) => {
       VALUES (?, ?, ?, ?, ?, ?)
     `);
 
-    const result = stmt.run(title, category, caption || '', finalImageUrl, location || '', event_date || new Date().toISOString().split('T')[0]);
-    const created = db.prepare('SELECT * FROM gallery WHERE id = ?').get(result.lastInsertRowid);
+    const result = await stmt.run(title, category, caption || '', finalImageUrl, location || '', event_date || new Date().toISOString().split('T')[0]);
+    const created = await db.prepare('SELECT * FROM gallery WHERE id = ?').get(result.lastInsertRowid);
 
     res.status(201).json({ success: true, message: 'Image added to gallery.', data: created });
   } catch (err) {
@@ -54,10 +58,10 @@ router.post('/', authenticateAdmin, upload.single('image'), (req, res) => {
 });
 
 // 3. Admin: Update Gallery Item
-router.put('/:id', authenticateAdmin, upload.single('image'), (req, res) => {
+router.put('/:id', authenticateAdmin, upload.single('image'), async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
-    const existing = db.prepare('SELECT * FROM gallery WHERE id = ?').get(id);
+    const existing = await db.prepare('SELECT * FROM gallery WHERE id = ?').get(id);
     if (!existing) {
       return res.status(404).json({ success: false, message: 'Gallery item not found.' });
     }
@@ -71,7 +75,7 @@ router.put('/:id', authenticateAdmin, upload.single('image'), (req, res) => {
       finalImageUrl = bodyImageUrl;
     }
 
-    db.prepare(`
+    await db.prepare(`
       UPDATE gallery SET
         title = COALESCE(?, title),
         category = COALESCE(?, category),
@@ -90,7 +94,7 @@ router.put('/:id', authenticateAdmin, upload.single('image'), (req, res) => {
       id
     );
 
-    const updated = db.prepare('SELECT * FROM gallery WHERE id = ?').get(id);
+    const updated = await db.prepare('SELECT * FROM gallery WHERE id = ?').get(id);
     res.json({ success: true, message: 'Gallery item updated successfully.', data: updated });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Failed to update image: ' + err.message });
@@ -98,15 +102,19 @@ router.put('/:id', authenticateAdmin, upload.single('image'), (req, res) => {
 });
 
 // 4. Admin: Delete Gallery Item
-router.delete('/:id', authenticateAdmin, (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  const result = db.prepare('DELETE FROM gallery WHERE id = ?').run(id);
+router.delete('/:id', authenticateAdmin, async (req, res) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const result = await db.prepare('DELETE FROM gallery WHERE id = ?').run(id);
 
-  if (result.changes === 0) {
-    return res.status(404).json({ success: false, message: 'Gallery item not found.' });
+    if (result.changes === 0) {
+      return res.status(404).json({ success: false, message: 'Gallery item not found.' });
+    }
+
+    res.json({ success: true, message: 'Image removed from gallery.' });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to delete gallery item: ' + err.message });
   }
-
-  res.json({ success: true, message: 'Image removed from gallery.' });
 });
 
 export default router;

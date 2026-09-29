@@ -1,11 +1,11 @@
 import bcrypt from 'bcryptjs';
 import { db, initDatabase } from './database.js';
 
-export function seedData(force = false) {
-  initDatabase();
+export async function seedData(force = false) {
+  await initDatabase();
 
   try {
-    const isSeeded = db.prepare("SELECT value FROM site_settings WHERE key = 'database_seeded'").get();
+    const isSeeded = await db.prepare("SELECT value FROM site_settings WHERE key = 'database_seeded'").get();
     if (isSeeded && isSeeded.value === '1' && !force) {
       // Database is already initialized and seeded. Preserve all user changes and deletions.
       return;

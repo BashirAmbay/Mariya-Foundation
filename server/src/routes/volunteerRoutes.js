@@ -29,7 +29,7 @@ router.post('/', validateBody(volunteerSchema), async (req, res) => {
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending')
     `);
 
-    const result = stmt.run(fullName, email, phone, location, skills, availability, areaOfInterest, motivation);
+    await stmt.run(fullName, email, phone, location, skills, availability, areaOfInterest, motivation);
 
     sendEmailNotification({
       to: 'admin@mariyafoundation.org',
@@ -47,65 +47,77 @@ router.post('/', validateBody(volunteerSchema), async (req, res) => {
 });
 
 // 2. Admin: Get Volunteer Applications
-router.get('/', authenticateAdmin, (req, res) => {
-  const { status, area, search } = req.query;
-  let query = 'SELECT * FROM volunteer_applications WHERE 1=1';
-  const params = [];
+router.get('/', authenticateAdmin, async (req, res) => {
+  try {
+    const { status, area, search } = req.query;
+    let query = 'SELECT * FROM volunteer_applications WHERE 1=1';
+    const params = [];
 
-  if (status) {
-    query += ' AND status = ?';
-    params.push(status);
+    if (status) {
+      query += ' AND status = ?';
+      params.push(status);
+    }
+
+    if (area) {
+      query += ' AND area_of_interest = ?';
+      params.push(area);
+    }
+
+    if (search) {
+      query += ' AND (full_name LIKE ? OR email LIKE ? OR skills LIKE ? OR location LIKE ?)';
+      params.push(`%${search}%`, `%${search}%`, `%${search}%`, `%${search}%`);
+    }
+
+    query += ' ORDER BY created_at DESC';
+    const applications = await db.prepare(query).all(...params);
+
+    const pendingCount = (await db.prepare("SELECT count(*) as count FROM volunteer_applications WHERE status = 'pending'").get()).count;
+
+    res.json({ success: true, data: applications, pendingCount });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to fetch volunteer applications: ' + err.message });
   }
-
-  if (area) {
-    query += ' AND area_of_interest = ?';
-    params.push(area);
-  }
-
-  if (search) {
-    query += ' AND (full_name LIKE ? OR email LIKE ? OR skills LIKE ? OR location LIKE ?)';
-    params.push(`%${search}%`, `%${search}%`, `%${search}%`, `%${search}%`);
-  }
-
-  query += ' ORDER BY created_at DESC';
-  const applications = db.prepare(query).all(...params);
-
-  const pendingCount = db.prepare("SELECT count(*) as count FROM volunteer_applications WHERE status = 'pending'").get().count;
-
-  res.json({ success: true, data: applications, pendingCount });
 });
 
 // 3. Admin: Update Volunteer Status / Notes
-router.put('/:id', authenticateAdmin, (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  const { status, admin_notes } = req.body;
+router.put('/:id', authenticateAdmin, async (req, res) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const { status, admin_notes } = req.body;
 
-  const existing = db.prepare('SELECT * FROM volunteer_applications WHERE id = ?').get(id);
-  if (!existing) {
-    return res.status(404).json({ success: false, message: 'Application not found.' });
+    const existing = await db.prepare('SELECT * FROM volunteer_applications WHERE id = ?').get(id);
+    if (!existing) {
+      return res.status(404).json({ success: false, message: 'Application not found.' });
+    }
+
+    await db.prepare(`
+      UPDATE volunteer_applications SET
+        status = COALESCE(?, status),
+        admin_notes = COALESCE(?, admin_notes)
+      WHERE id = ?
+    `).run(status || null, admin_notes !== undefined ? admin_notes : null, id);
+
+    const updated = await db.prepare('SELECT * FROM volunteer_applications WHERE id = ?').get(id);
+    res.json({ success: true, message: 'Application updated.', data: updated });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to update application: ' + err.message });
   }
-
-  db.prepare(`
-    UPDATE volunteer_applications SET
-      status = COALESCE(?, status),
-      admin_notes = COALESCE(?, admin_notes)
-    WHERE id = ?
-  `).run(status || null, admin_notes !== undefined ? admin_notes : null, id);
-
-  const updated = db.prepare('SELECT * FROM volunteer_applications WHERE id = ?').get(id);
-  res.json({ success: true, message: 'Application updated.', data: updated });
 });
 
 // 4. Admin: Delete Volunteer Application
-router.delete('/:id', authenticateAdmin, (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  const result = db.prepare('DELETE FROM volunteer_applications WHERE id = ?').run(id);
+router.delete('/:id', authenticateAdmin, async (req, res) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const result = await db.prepare('DELETE FROM volunteer_applications WHERE id = ?').run(id);
 
-  if (result.changes === 0) {
-    return res.status(404).json({ success: false, message: 'Application not found.' });
+    if (result.changes === 0) {
+      return res.status(404).json({ success: false, message: 'Application not found.' });
+    }
+
+    res.json({ success: true, message: 'Volunteer application deleted.' });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to delete application: ' + err.message });
   }
-
-  res.json({ success: true, message: 'Volunteer application deleted.' });
 });
 
 export default router;

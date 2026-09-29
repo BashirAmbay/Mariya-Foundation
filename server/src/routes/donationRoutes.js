@@ -20,91 +20,111 @@ const pledgeSchema = z.object({
 });
 
 // 1. Public: Get Active Donation Bank Accounts
-router.get('/accounts', (req, res) => {
-  const accounts = db.prepare('SELECT * FROM donation_accounts WHERE is_active = 1 ORDER BY is_primary DESC, id ASC').all();
-  res.json({ success: true, data: accounts });
+router.get('/accounts', async (req, res) => {
+  try {
+    const accounts = await db.prepare('SELECT * FROM donation_accounts WHERE is_active = 1 ORDER BY is_primary DESC, id ASC').all();
+    res.json({ success: true, data: accounts });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to fetch accounts: ' + err.message });
+  }
 });
 
 // 2. Admin: Get All Donation Accounts
-router.get('/accounts/all', authenticateAdmin, (req, res) => {
-  const accounts = db.prepare('SELECT * FROM donation_accounts ORDER BY is_primary DESC, id ASC').all();
-  res.json({ success: true, data: accounts });
+router.get('/accounts/all', authenticateAdmin, async (req, res) => {
+  try {
+    const accounts = await db.prepare('SELECT * FROM donation_accounts ORDER BY is_primary DESC, id ASC').all();
+    res.json({ success: true, data: accounts });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to fetch accounts: ' + err.message });
+  }
 });
 
 // 3. Admin: Create Donation Account
-router.post('/accounts', authenticateAdmin, (req, res) => {
-  const { bank_name, account_name, account_number, routing_or_iban, currency, instructions, is_primary, is_active } = req.body;
+router.post('/accounts', authenticateAdmin, async (req, res) => {
+  try {
+    const { bank_name, account_name, account_number, routing_or_iban, currency, instructions, is_primary, is_active } = req.body;
 
-  if (!bank_name || !account_name || !account_number) {
-    return res.status(400).json({ success: false, message: 'Bank name, account name, and account number are required.' });
+    if (!bank_name || !account_name || !account_number) {
+      return res.status(400).json({ success: false, message: 'Bank name, account name, and account number are required.' });
+    }
+
+    // If setting primary, unset others
+    if (is_primary) {
+      await db.prepare('UPDATE donation_accounts SET is_primary = 0').run();
+    }
+
+    const stmt = db.prepare(`
+      INSERT INTO donation_accounts (bank_name, account_name, account_number, routing_or_iban, currency, instructions, is_primary, is_active)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `);
+
+    const result = await stmt.run(
+      bank_name,
+      account_name,
+      account_number,
+      routing_or_iban || '',
+      currency || 'NGN',
+      instructions || '',
+      is_primary ? 1 : 0,
+      is_active !== undefined ? (is_active ? 1 : 0) : 1
+    );
+
+    const created = await db.prepare('SELECT * FROM donation_accounts WHERE id = ?').get(result.lastInsertRowid);
+    res.status(201).json({ success: true, message: 'Donation account added.', data: created });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to create donation account: ' + err.message });
   }
-
-  // If setting primary, unset others
-  if (is_primary) {
-    db.prepare('UPDATE donation_accounts SET is_primary = 0').run();
-  }
-
-  const stmt = db.prepare(`
-    INSERT INTO donation_accounts (bank_name, account_name, account_number, routing_or_iban, currency, instructions, is_primary, is_active)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-  `);
-
-  const result = stmt.run(
-    bank_name,
-    account_name,
-    account_number,
-    routing_or_iban || '',
-    currency || 'NGN',
-    instructions || '',
-    is_primary ? 1 : 0,
-    is_active !== undefined ? (is_active ? 1 : 0) : 1
-  );
-
-  const created = db.prepare('SELECT * FROM donation_accounts WHERE id = ?').get(result.lastInsertRowid);
-  res.status(201).json({ success: true, message: 'Donation account added.', data: created });
 });
 
 // 4. Admin: Update Donation Account
-router.put('/accounts/:id', authenticateAdmin, (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  const { bank_name, account_name, account_number, routing_or_iban, currency, instructions, is_primary, is_active } = req.body;
+router.put('/accounts/:id', authenticateAdmin, async (req, res) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const { bank_name, account_name, account_number, routing_or_iban, currency, instructions, is_primary, is_active } = req.body;
 
-  if (is_primary) {
-    db.prepare('UPDATE donation_accounts SET is_primary = 0 WHERE id != ?').run(id);
+    if (is_primary) {
+      await db.prepare('UPDATE donation_accounts SET is_primary = 0 WHERE id != ?').run(id);
+    }
+
+    await db.prepare(`
+      UPDATE donation_accounts SET
+        bank_name = COALESCE(?, bank_name),
+        account_name = COALESCE(?, account_name),
+        account_number = COALESCE(?, account_number),
+        routing_or_iban = COALESCE(?, routing_or_iban),
+        currency = COALESCE(?, currency),
+        instructions = COALESCE(?, instructions),
+        is_primary = COALESCE(?, is_primary),
+        is_active = COALESCE(?, is_active)
+      WHERE id = ?
+    `).run(
+      bank_name || null,
+      account_name || null,
+      account_number || null,
+      routing_or_iban !== undefined ? routing_or_iban : null,
+      currency || null,
+      instructions !== undefined ? instructions : null,
+      is_primary !== undefined ? (is_primary ? 1 : 0) : null,
+      is_active !== undefined ? (is_active ? 1 : 0) : null,
+      id
+    );
+
+    const updated = await db.prepare('SELECT * FROM donation_accounts WHERE id = ?').get(id);
+    res.json({ success: true, message: 'Donation account updated.', data: updated });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to update donation account: ' + err.message });
   }
-
-  db.prepare(`
-    UPDATE donation_accounts SET
-      bank_name = COALESCE(?, bank_name),
-      account_name = COALESCE(?, account_name),
-      account_number = COALESCE(?, account_number),
-      routing_or_iban = COALESCE(?, routing_or_iban),
-      currency = COALESCE(?, currency),
-      instructions = COALESCE(?, instructions),
-      is_primary = COALESCE(?, is_primary),
-      is_active = COALESCE(?, is_active)
-    WHERE id = ?
-  `).run(
-    bank_name || null,
-    account_name || null,
-    account_number || null,
-    routing_or_iban !== undefined ? routing_or_iban : null,
-    currency || null,
-    instructions !== undefined ? instructions : null,
-    is_primary !== undefined ? (is_primary ? 1 : 0) : null,
-    is_active !== undefined ? (is_active ? 1 : 0) : null,
-    id
-  );
-
-  const updated = db.prepare('SELECT * FROM donation_accounts WHERE id = ?').get(id);
-  res.json({ success: true, message: 'Donation account updated.', data: updated });
 });
 
 // 5. Admin: Delete Donation Account
-router.delete('/accounts/:id', authenticateAdmin, (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  db.prepare('DELETE FROM donation_accounts WHERE id = ?').run(id);
-  res.json({ success: true, message: 'Donation account deleted.' });
+router.delete('/accounts/:id', authenticateAdmin, async (req, res) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    await db.prepare('DELETE FROM donation_accounts WHERE id = ?').run(id);
+    res.json({ success: true, message: 'Donation account deleted.' });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to delete donation account: ' + err.message });
+  }
 });
 
 // 6. Public: Submit Donation Pledge / Notification
@@ -121,7 +141,7 @@ router.post('/pledge', validateBody(pledgeSchema), async (req, res) => {
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pledged', ?)
     `);
 
-    const result = stmt.run(donorName, email, phone || '', purposeCategory, parsedAmount, currency || 'NGN', paymentMethod || 'Bank Transfer', ref, notes || '');
+    await stmt.run(donorName, email, phone || '', purposeCategory, parsedAmount, currency || 'NGN', paymentMethod || 'Bank Transfer', ref, notes || '');
 
     sendEmailNotification({
       to: 'admin@mariyafoundation.org',
@@ -140,41 +160,49 @@ router.post('/pledge', validateBody(pledgeSchema), async (req, res) => {
 });
 
 // 7. Admin: Get Donation Pledges / Notices
-router.get('/pledges', authenticateAdmin, (req, res) => {
-  const { status, search } = req.query;
-  let query = 'SELECT * FROM donation_pledges WHERE 1=1';
-  const params = [];
+router.get('/pledges', authenticateAdmin, async (req, res) => {
+  try {
+    const { status, search } = req.query;
+    let query = 'SELECT * FROM donation_pledges WHERE 1=1';
+    const params = [];
 
-  if (status) {
-    query += ' AND status = ?';
-    params.push(status);
+    if (status) {
+      query += ' AND status = ?';
+      params.push(status);
+    }
+
+    if (search) {
+      query += ' AND (donor_name LIKE ? OR email LIKE ? OR reference_no LIKE ? OR purpose_category LIKE ?)';
+      params.push(`%${search}%`, `%${search}%`, `%${search}%`, `%${search}%`);
+    }
+
+    query += ' ORDER BY created_at DESC';
+    const pledges = await db.prepare(query).all(...params);
+
+    res.json({ success: true, data: pledges });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to fetch pledges: ' + err.message });
   }
-
-  if (search) {
-    query += ' AND (donor_name LIKE ? OR email LIKE ? OR reference_no LIKE ? OR purpose_category LIKE ?)';
-    params.push(`%${search}%`, `%${search}%`, `%${search}%`, `%${search}%`);
-  }
-
-  query += ' ORDER BY created_at DESC';
-  const pledges = db.prepare(query).all(...params);
-
-  res.json({ success: true, data: pledges });
 });
 
 // 8. Admin: Update Donation Pledge Status
-router.put('/pledges/:id', authenticateAdmin, (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  const { status, notes } = req.body;
+router.put('/pledges/:id', authenticateAdmin, async (req, res) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const { status, notes } = req.body;
 
-  db.prepare(`
-    UPDATE donation_pledges SET
-      status = COALESCE(?, status),
-      notes = COALESCE(?, notes)
-    WHERE id = ?
-  `).run(status || null, notes !== undefined ? notes : null, id);
+    await db.prepare(`
+      UPDATE donation_pledges SET
+        status = COALESCE(?, status),
+        notes = COALESCE(?, notes)
+      WHERE id = ?
+    `).run(status || null, notes !== undefined ? notes : null, id);
 
-  const updated = db.prepare('SELECT * FROM donation_pledges WHERE id = ?').get(id);
-  res.json({ success: true, message: 'Donation pledge status updated.', data: updated });
+    const updated = await db.prepare('SELECT * FROM donation_pledges WHERE id = ?').get(id);
+    res.json({ success: true, message: 'Donation pledge status updated.', data: updated });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to update pledge: ' + err.message });
+  }
 });
 
 export default router;

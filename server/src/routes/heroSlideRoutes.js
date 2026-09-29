@@ -6,7 +6,7 @@ import { upload } from '../middleware/upload.js';
 const router = express.Router();
 
 // 1. Get Slides (Public: active only, Admin: ?all=true includes inactive)
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const { all } = req.query;
     let query = 'SELECT * FROM hero_slides';
@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
     }
     query += ' ORDER BY display_order ASC, id ASC';
 
-    const slides = db.prepare(query).all();
+    const slides = await db.prepare(query).all();
     res.json({ success: true, data: slides });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Failed to fetch hero slides: ' + err.message });
@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 });
 
 // 2. Admin: Add new Hero Background Slide
-router.post('/', authenticateAdmin, upload.single('image'), (req, res) => {
+router.post('/', authenticateAdmin, upload.single('image'), async (req, res) => {
   try {
     const { title, display_order, image_url: bodyImageUrl } = req.body;
 
@@ -43,8 +43,8 @@ router.post('/', authenticateAdmin, upload.single('image'), (req, res) => {
       VALUES (?, ?, ?, 1)
     `);
 
-    const result = stmt.run(title || 'Mariya Foundation Hero Slide', finalImageUrl, order);
-    const created = db.prepare('SELECT * FROM hero_slides WHERE id = ?').get(result.lastInsertRowid);
+    const result = await stmt.run(title || 'Mariya Foundation Hero Slide', finalImageUrl, order);
+    const created = await db.prepare('SELECT * FROM hero_slides WHERE id = ?').get(result.lastInsertRowid);
 
     res.status(201).json({ success: true, message: 'Hero background slide added.', data: created });
   } catch (err) {
@@ -53,10 +53,10 @@ router.post('/', authenticateAdmin, upload.single('image'), (req, res) => {
 });
 
 // 3. Admin: Update / Replace Slide Image and Details
-router.put('/:id', authenticateAdmin, upload.single('image'), (req, res) => {
+router.put('/:id', authenticateAdmin, upload.single('image'), async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
-    const existing = db.prepare('SELECT * FROM hero_slides WHERE id = ?').get(id);
+    const existing = await db.prepare('SELECT * FROM hero_slides WHERE id = ?').get(id);
 
     if (!existing) {
       return res.status(404).json({ success: false, message: 'Hero slide not found.' });
@@ -75,13 +75,13 @@ router.put('/:id', authenticateAdmin, upload.single('image'), (req, res) => {
     const newOrder = display_order !== undefined && display_order !== '' ? parseInt(display_order, 10) : existing.display_order;
     const newActive = is_active !== undefined ? (is_active === '1' || is_active === 1 || is_active === true ? 1 : 0) : existing.is_active;
 
-    db.prepare(`
+    await db.prepare(`
       UPDATE hero_slides 
       SET title = ?, image_url = ?, display_order = ?, is_active = ?
       WHERE id = ?
     `).run(newTitle, finalImageUrl, newOrder, newActive, id);
 
-    const updated = db.prepare('SELECT * FROM hero_slides WHERE id = ?').get(id);
+    const updated = await db.prepare('SELECT * FROM hero_slides WHERE id = ?').get(id);
 
     res.json({ success: true, message: 'Hero background image replaced successfully.', data: updated });
   } catch (err) {
@@ -90,17 +90,17 @@ router.put('/:id', authenticateAdmin, upload.single('image'), (req, res) => {
 });
 
 // 4. Admin: Toggle Active State
-router.patch('/:id/toggle', authenticateAdmin, (req, res) => {
+router.patch('/:id/toggle', authenticateAdmin, async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
-    const slide = db.prepare('SELECT * FROM hero_slides WHERE id = ?').get(id);
+    const slide = await db.prepare('SELECT * FROM hero_slides WHERE id = ?').get(id);
 
     if (!slide) {
       return res.status(404).json({ success: false, message: 'Hero slide not found.' });
     }
 
     const newStatus = slide.is_active === 1 ? 0 : 1;
-    db.prepare('UPDATE hero_slides SET is_active = ? WHERE id = ?').run(newStatus, id);
+    await db.prepare('UPDATE hero_slides SET is_active = ? WHERE id = ?').run(newStatus, id);
 
     res.json({ success: true, message: `Slide set to ${newStatus === 1 ? 'active' : 'inactive'}.`, is_active: newStatus });
   } catch (err) {
@@ -109,19 +109,19 @@ router.patch('/:id/toggle', authenticateAdmin, (req, res) => {
 });
 
 // 5. Admin: Reset to Default Sample Slides
-router.post('/reset-defaults', authenticateAdmin, (req, res) => {
+router.post('/reset-defaults', authenticateAdmin, async (req, res) => {
   try {
-    db.prepare('DELETE FROM hero_slides').run();
+    await db.prepare('DELETE FROM hero_slides').run();
     const insertSlide = db.prepare(`
       INSERT INTO hero_slides (title, image_url, display_order, is_active)
       VALUES (?, ?, ?, 1)
     `);
-    insertSlide.run('Students Learning & Educational Support (Sample 1)', 'https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=2000&q=80', 1);
-    insertSlide.run('Students in Classroom Study Circle (Sample 2)', 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=2000&q=80', 2);
-    insertSlide.run('Youth Empowerment & School Supplies (Sample 3)', 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=2000&q=80', 3);
-    insertSlide.run('Children Learning & Community Care (Sample 4)', 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=2000&q=80', 4);
+    await insertSlide.run('Students Learning & Educational Support (Sample 1)', 'https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=2000&q=80', 1);
+    await insertSlide.run('Students in Classroom Study Circle (Sample 2)', 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=2000&q=80', 2);
+    await insertSlide.run('Youth Empowerment & School Supplies (Sample 3)', 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=2000&q=80', 3);
+    await insertSlide.run('Children Learning & Community Care (Sample 4)', 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=2000&q=80', 4);
 
-    const slides = db.prepare('SELECT * FROM hero_slides ORDER BY display_order ASC, id ASC').all();
+    const slides = await db.prepare('SELECT * FROM hero_slides ORDER BY display_order ASC, id ASC').all();
     res.json({ success: true, message: 'Default sample background slides restored.', data: slides });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Failed to reset slides: ' + err.message });
@@ -129,9 +129,9 @@ router.post('/reset-defaults', authenticateAdmin, (req, res) => {
 });
 
 // 6. Admin: Clear All Slides
-router.delete('/clear-all', authenticateAdmin, (req, res) => {
+router.delete('/clear-all', authenticateAdmin, async (req, res) => {
   try {
-    db.prepare('DELETE FROM hero_slides').run();
+    await db.prepare('DELETE FROM hero_slides').run();
     res.json({ success: true, message: 'All hero background slides removed.' });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Failed to clear slides: ' + err.message });
@@ -139,10 +139,10 @@ router.delete('/clear-all', authenticateAdmin, (req, res) => {
 });
 
 // 7. Admin: Delete Single Slide
-router.delete('/:id', authenticateAdmin, (req, res) => {
+router.delete('/:id', authenticateAdmin, async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
-    const result = db.prepare('DELETE FROM hero_slides WHERE id = ?').run(id);
+    const result = await db.prepare('DELETE FROM hero_slides WHERE id = ?').run(id);
 
     if (result.changes === 0) {
       return res.status(404).json({ success: false, message: 'Hero slide not found.' });

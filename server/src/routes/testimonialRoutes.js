@@ -6,19 +6,27 @@ import { upload } from '../middleware/upload.js';
 const router = express.Router();
 
 // 1. Get Published Testimonials
-router.get('/', (req, res) => {
-  const testimonials = db.prepare('SELECT * FROM testimonials WHERE is_published = 1 ORDER BY created_at DESC').all();
-  res.json({ success: true, data: testimonials });
+router.get('/', async (req, res) => {
+  try {
+    const testimonials = await db.prepare('SELECT * FROM testimonials WHERE is_published = 1 ORDER BY created_at DESC').all();
+    res.json({ success: true, data: testimonials });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to fetch testimonials: ' + err.message });
+  }
 });
 
 // 2. Admin: Get All Testimonials
-router.get('/all', authenticateAdmin, (req, res) => {
-  const testimonials = db.prepare('SELECT * FROM testimonials ORDER BY created_at DESC').all();
-  res.json({ success: true, data: testimonials });
+router.get('/all', authenticateAdmin, async (req, res) => {
+  try {
+    const testimonials = await db.prepare('SELECT * FROM testimonials ORDER BY created_at DESC').all();
+    res.json({ success: true, data: testimonials });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to fetch testimonials: ' + err.message });
+  }
 });
 
 // 3. Admin: Create Testimonial
-router.post('/', authenticateAdmin, upload.single('avatar'), (req, res) => {
+router.post('/', authenticateAdmin, upload.single('avatar'), async (req, res) => {
   try {
     const { name, role_title, location, content, rating, is_published, avatar_url: bodyAvatar } = req.body;
 
@@ -36,7 +44,7 @@ router.post('/', authenticateAdmin, upload.single('avatar'), (req, res) => {
       VALUES (?, ?, ?, ?, ?, ?, ?)
     `);
 
-    const result = stmt.run(
+    const result = await stmt.run(
       name,
       role_title || '',
       location || '',
@@ -46,7 +54,7 @@ router.post('/', authenticateAdmin, upload.single('avatar'), (req, res) => {
       is_published === 'false' || is_published === 0 || is_published === '0' ? 0 : 1
     );
 
-    const created = db.prepare('SELECT * FROM testimonials WHERE id = ?').get(result.lastInsertRowid);
+    const created = await db.prepare('SELECT * FROM testimonials WHERE id = ?').get(result.lastInsertRowid);
     res.status(201).json({ success: true, message: 'Testimonial added.', data: created });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Failed to add testimonial: ' + err.message });
@@ -54,10 +62,10 @@ router.post('/', authenticateAdmin, upload.single('avatar'), (req, res) => {
 });
 
 // 4. Admin: Update Testimonial
-router.put('/:id', authenticateAdmin, upload.single('avatar'), (req, res) => {
+router.put('/:id', authenticateAdmin, upload.single('avatar'), async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
-    const existing = db.prepare('SELECT * FROM testimonials WHERE id = ?').get(id);
+    const existing = await db.prepare('SELECT * FROM testimonials WHERE id = ?').get(id);
     if (!existing) {
       return res.status(404).json({ success: false, message: 'Testimonial not found.' });
     }
@@ -71,7 +79,7 @@ router.put('/:id', authenticateAdmin, upload.single('avatar'), (req, res) => {
       finalAvatar = bodyAvatar;
     }
 
-    db.prepare(`
+    await db.prepare(`
       UPDATE testimonials SET
         name = COALESCE(?, name),
         role_title = COALESCE(?, role_title),
@@ -92,7 +100,7 @@ router.put('/:id', authenticateAdmin, upload.single('avatar'), (req, res) => {
       id
     );
 
-    const updated = db.prepare('SELECT * FROM testimonials WHERE id = ?').get(id);
+    const updated = await db.prepare('SELECT * FROM testimonials WHERE id = ?').get(id);
     res.json({ success: true, message: 'Testimonial updated.', data: updated });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Failed to update testimonial: ' + err.message });
@@ -100,15 +108,19 @@ router.put('/:id', authenticateAdmin, upload.single('avatar'), (req, res) => {
 });
 
 // 5. Admin: Delete Testimonial
-router.delete('/:id', authenticateAdmin, (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  const result = db.prepare('DELETE FROM testimonials WHERE id = ?').run(id);
+router.delete('/:id', authenticateAdmin, async (req, res) => {
+  try {
+    const id = parseInt(req.params.id, 10);
+    const result = await db.prepare('DELETE FROM testimonials WHERE id = ?').run(id);
 
-  if (result.changes === 0) {
-    return res.status(404).json({ success: false, message: 'Testimonial not found.' });
+    if (result.changes === 0) {
+      return res.status(404).json({ success: false, message: 'Testimonial not found.' });
+    }
+
+    res.json({ success: true, message: 'Testimonial deleted.' });
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Failed to delete testimonial: ' + err.message });
   }
-
-  res.json({ success: true, message: 'Testimonial deleted.' });
 });
 
 export default router;
