@@ -22,6 +22,7 @@ import { api, getImageUrl } from '../api/client';
 import SectionHeader from '../components/SectionHeader';
 import ProgramApplyModal from '../components/ProgramApplyModal';
 import DonationPledgeModal from '../components/DonationPledgeModal';
+import philosophyImage from '../../image/image 4.jpg';
 
 export default function Home() {
   const [selectedProgram, setSelectedProgram] = useState(null);
@@ -234,17 +235,17 @@ export default function Home() {
           <div className="lg:col-span-6 relative">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
               <img
-                src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1000&q=80"
+                src={philosophyImage}
                 alt="Students studying with devotion"
                 className="w-full h-auto object-cover aspect-4/3"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-white/95 backdrop-blur-md shadow-lg border border-white/60">
                 <p className="text-xs font-semibold text-brand-950 font-display">
-                  "Knowledge illuminates the heart, while vocational mastery empowers the hands."
+                  Knowledge illuminates the heart, while vocational mastery empowers the hands.
                 </p>
                 <span className="text-[11px] text-slate-500 block mt-1">
-                  — Mariya Nuuman Foundation Guiding Philosophy
+                  —Mariya Nuuman Foundation Guiding Philosophy
                 </span>
               </div>
             </div>
