@@ -3,6 +3,7 @@ import { Routes, Route, useLocation, Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AdminLayout from './components/AdminLayout';
+import Preloader from './components/Preloader';
 
 // Public Pages
 import Home from './pages/Home';
@@ -58,6 +59,7 @@ function PublicLayout() {
 export default function App() {
   return (
     <>
+      <Preloader />
       <ScrollToTop />
       <Routes>
         
