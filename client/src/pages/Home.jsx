@@ -137,7 +137,7 @@ export default function Home() {
               Mariya Nuuman Foundation
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-emerald-100 font-normal leading-relaxed max-w-3xl mx-auto drop-shadow-sm">
-              Empowering women and children to reach their full potential, breaking cycles of poverty, and supporting students through quality education, skills training, and Qur'an distribution.
+              Empowering women and children to reach their full potential, breaking cycles of poverty, and supporting students through quality education and skills training.
             </p>
           </div>
 
@@ -173,9 +173,10 @@ export default function Home() {
               <span className="text-[12px] text-slate-300">Microfinance & entrepreneurship</span>
             </div>
             <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-              <span className="text-pink-400 font-bold block text-sm font-display">Student Qur'an Aid</span>
-              <span className="text-[12px] text-slate-300">Mushafs & learning kits for students</span>
+              <span className="text-pink-400 font-bold block text-sm font-display">To Improve Access to HealthCare</span>
+              <span className="text-[12px] text-slate-300">Mental Health Support & Social Services</span>
             </div>
+
           </div>
 
         </div>
@@ -191,15 +192,23 @@ export default function Home() {
             </div>
 
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 font-display leading-tight">
-              Nurturing Minds, Building Dignity & Fostering Independence
+              Meet the Founder & Executive Director
+
             </h2>
 
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-              <strong>Mariya Nuuman Foundation</strong> is a community-focused charitable organization dedicated to empowering women and children to reach their full potential and break cycles of inequality and poverty.
+              <strong>Mariya Nuuman Foundation</strong> Is the founder of Mariya Nuuman Foundation, an organisation committed to empowering women, supporting vulnerable communities, and creating opportunities for sustainable livelihoods.
             </p>
 
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-              Through quality education, skills training, healthcare access, and women's economic empowerment, we help families achieve sustainable self-reliance. As part of our educational commitment, we also distribute copies of the Holy Qur'an and study materials to students across community Madrasahs.
+
+              Her work focuses on women’s empowerment, climate-smart agriculture, skills development, food security, and community development. She is particularly interested in initiatives that help women build practical skills, improve their livelihoods, and become more economically independent.
+
+            </p>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+
+              Through the foundation, Mariya works to support community based initiatives that respond to local needs and create opportunities for lasting progress. Her approach recognises the importance of equipping people with the knowledge, resources, and support they need to build better futures for themselves and their families.
+
             </p>
 
             {/* Core Values Bullets */}
@@ -207,7 +216,7 @@ export default function Home() {
               <div className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
                 <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-bold text-slate-800 text-sm block">Amanah (Trust)</span>
+                  <span className="font-bold text-slate-800 text-sm block">Mariya Nuuman foundation (Trust)</span>
                   <span className="text-xs text-slate-500">Every donation accounted for transparently</span>
                 </div>
               </div>
@@ -335,17 +344,17 @@ export default function Home() {
           <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-brand-950 via-brand-900 to-brand-800 text-white p-8 sm:p-10 flex flex-col justify-between shadow-xl">
             <div className="space-y-4 relative z-10">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-gold-500/20 text-gold-300 border border-gold-500/30">
-                Education & Qur'anic Focus
+                Education Support
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold font-display text-white">
                 Supporting Students with Sacred Texts & Study Materials
               </h3>
               <p className="text-sm text-emerald-100/80 leading-relaxed">
-                Madrasahs and basic community schools receive durable Mushafs, Tajweed aids, backpacks, and stationery kits to ensure every student learns with dignity and enthusiasm.
+                basic community schools receive backpacks and stationery kits to ensure every student learns with dignity and enthusiasm.
               </p>
               <ul className="space-y-2 text-xs text-emerald-200/90 pt-2">
                 <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-gold-400" /> Tahfeez & Tajweed learning kits
+                  <CheckCircle2 className="w-4 h-4 text-gold-400" /> Learning Kits
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-gold-400" /> Back-to-school backpacks & writing sets
@@ -615,7 +624,7 @@ export default function Home() {
               Lend Your Skills, Time, or Generosity to Mariya Nuuman Foundation
             </h2>
             <p className="text-base text-emerald-100/80 leading-relaxed">
-              Whether you wish to sponsor copies of the Holy Qur'an, fund vocational toolkits for widows, or volunteer as a teacher or mentor, your partnership is deeply valued.
+              Whether you wish to sponsor fund vocational toolkits for widows, or volunteer as a teacher or mentor, your partnership is deeply valued.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               <button

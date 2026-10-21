@@ -11,34 +11,12 @@ import {
   Compass,
   CheckCircle2,
   ArrowRight,
-  GraduationCap,
-  Award
+  GraduationCap
 } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
+import founderImage from '../../image/image 4.jpg';
 
 export default function AboutUs() {
-  const values = [
-    {
-      title: 'Ihsan (Excellence & Sincerity)',
-      desc: 'We perform all educational and humanitarian outreach with sincere intention and the highest standard of execution.',
-      icon: Award
-    },
-    {
-      title: 'Amanah (Trust & Integrity)',
-      desc: 'Every donor contribution, sponsorship penny, and educational asset is treated as a sacred trust with complete accountability.',
-      icon: ShieldCheck
-    },
-    {
-      title: 'Empowerment over Dependency',
-      desc: 'Our fundamental goal is to equip beneficiaries with skills, toolkits, and knowledge that lead to sustainable self-sufficiency.',
-      icon: Sparkles
-    },
-    {
-      title: 'Rahmah (Compassion & Inclusivity)',
-      desc: 'Serving the vulnerable, orphans, widows, and underserved students with genuine love, empathy, and respect.',
-      icon: Heart
-    }
-  ];
 
   const objectives = [
     "To empower women and children to reach their full potential and break cycles of inequality and poverty.",
@@ -77,7 +55,7 @@ export default function AboutUs() {
 
   return (
     <div className="space-y-20 sm:space-y-28 pb-16">
-      
+
       {/* 1. HERO / BANNER */}
       <section className="relative bg-brand-950 text-white py-20 lg:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-emerald-pattern opacity-15 pointer-events-none" />
@@ -89,7 +67,7 @@ export default function AboutUs() {
             About Mariya Nuuman Foundation
           </h1>
           <p className="text-base sm:text-xl text-emerald-100/90 font-light max-w-2xl mx-auto leading-relaxed">
-            A dedicated charitable foundation committed to empowering women and children to reach their full potential, providing quality education and skills training, and supporting students through Qur'an distribution and community development.
+            A dedicated charitable foundation committed to empowering women and children to reach their full potential, providing quality education and skills training, and supporting students through community development.
           </p>
         </div>
       </section>
@@ -97,24 +75,24 @@ export default function AboutUs() {
       {/* 2. OUR STORY & BACKGROUND */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           <div className="lg:col-span-6 space-y-6">
             <SectionHeader
-              badge="Our Genesis & Philosophy"
-              title="Building a Legacy of Hope, Knowledge & Dignity"
+              badge="ABOUT US"
+              title="MEET THE FOUNDER"
               subtitle="Founded on the timeless belief that true charity elevates a person to independence."
               centered={false}
             />
 
             <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
               <p>
-                <strong>Mariya Nuuman Foundation</strong> was established to empower women and children, break cycles of inequality and poverty, and foster sustainable self-reliance across communities.
+                <strong>Mariya Nuuman Founder & Executive Director</strong> Mariya Nuuman is the founder of Mariya Nuuman Foundation, an organisation committed to empowering women, supporting vulnerable communities, and creating opportunities for sustainable livelihoods.
               </p>
               <p>
-                Across underserved communities, women and young adults face steep economic challenges without access to marketable skills or financial support, while children and students often lack basic educational tools and sacred scriptures. As part of our educational outreach, we provide authenticated copies of the Holy Qur'an, textbooks, and learning supplies to students.
+                Her work focuses on women’s empowerment, climate-smart agriculture, skills development, food security, and community development. She is particularly interested in initiatives that help women build practical skills, improve their livelihoods, and become more economically independent.
               </p>
               <p>
-                We bridge these divides through comprehensive interventions: quality education, skills training, entrepreneurship, healthcare access, social protection, and Qur'an distribution to build resilient and dignified communities.
+                Through the foundation, Mariya works to support community based initiatives that respond to local needs and create opportunities for lasting progress. Her approach recognises the importance of equipping people with the knowledge, resources, and support they need to build better futures for themselves and their families.
               </p>
             </div>
 
@@ -128,29 +106,21 @@ export default function AboutUs() {
             </div>
           </div>
 
-          <div className="lg:col-span-6">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="space-y-4">
-                <img
-                  src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=600&q=80"
-                  alt="Quran student"
-                  className="rounded-2xl shadow-md aspect-4/5 object-cover w-full"
-                />
-                <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm text-center">
-                  <span className="text-2xl font-bold font-display text-gold-600 block">3,450+</span>
-                  <span className="text-xs text-slate-500 font-medium">Qur'ans Distributed</span>
-                </div>
-              </div>
-              <div className="space-y-4 pt-8">
-                <div className="p-4 rounded-2xl bg-brand-900 text-white shadow-sm text-center">
-                  <span className="text-2xl font-bold font-display text-gold-400 block">640+</span>
-                  <span className="text-xs text-emerald-200 font-medium">Vocational Graduates</span>
-                </div>
-                <img
-                  src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=600&q=80"
-                  alt="Vocational garment training"
-                  className="rounded-2xl shadow-md aspect-4/5 object-cover w-full"
-                />
+          <div className="lg:col-span-6 relative">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+              <img
+                src={founderImage}
+                alt="Mariya Nuuman - Founder"
+                className="w-full h-auto object-cover aspect-4/3"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-2xl bg-white/95 backdrop-blur-md shadow-lg border border-white/60">
+                <p className="text-xs font-semibold text-brand-950 font-display">
+                  Empowering women and children, protecting human dignity, and building enduring self-sufficiency.
+                </p>
+                <span className="text-[11px] text-slate-500 block mt-1">
+                  Mariya Nuuman — Founder & Executive Director
+                </span>
               </div>
             </div>
           </div>
@@ -161,14 +131,14 @@ export default function AboutUs() {
       {/* 3. MISSION & VISION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          
+
           {/* Mission Card */}
           <div className="bg-gradient-to-br from-brand-950 via-brand-900 to-brand-800 text-white p-8 sm:p-10 rounded-3xl shadow-xl space-y-4 border border-brand-800 flex flex-col justify-between">
             <div className="space-y-4">
               <div className="w-12 h-12 rounded-xl bg-gold-500/20 border border-gold-500/30 flex items-center justify-center text-gold-400">
                 <Target className="w-6 h-6" />
               </div>
-              <span className="text-xs font-bold uppercase tracking-wider text-gold-400 block">Our Sacred Purpose</span>
+
               <h3 className="text-2xl sm:text-3xl font-bold font-display text-white">Our Mission</h3>
               <p className="text-sm sm:text-base text-emerald-100/90 leading-relaxed">
                 To empower women and children to reach their full potential and break cycles of inequality and poverty by providing access to quality education, healthcare, skills training, and economic opportunities, while supporting students through Qur'an distribution and community development.
@@ -185,7 +155,7 @@ export default function AboutUs() {
               <div className="w-12 h-12 rounded-xl bg-gold-500/20 border border-gold-500/30 flex items-center justify-center text-gold-400">
                 <Eye className="w-6 h-6" />
               </div>
-              <span className="text-xs font-bold uppercase tracking-wider text-gold-400 block">Our Long-Term Horizon</span>
+
               <h3 className="text-2xl sm:text-3xl font-bold font-display text-white">Our Vision</h3>
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
                 A resilient, just, and equitable society where women and children achieve economic independence, well-being, and dignity, supported by thriving communities and sustainable development.
@@ -199,39 +169,6 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* 4. CORE VALUES */}
-      <section className="bg-slate-50 py-16 px-4 sm:px-6 lg:px-8 border-y border-slate-200/60">
-        <div className="max-w-7xl mx-auto space-y-12">
-          <SectionHeader
-            badge="Guiding Principles"
-            title="Our Core Values"
-            subtitle="The ethical standards that govern every program, disbursement, and community engagement."
-            centered={true}
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((v, i) => {
-              const Icon = v.icon;
-              return (
-                <div
-                  key={i}
-                  className="p-6 bg-white rounded-2xl border border-slate-200/80 shadow-soft hover:shadow-card transition space-y-3"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-brand-50 text-brand-900 flex items-center justify-center border border-brand-200">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <h4 className="text-base font-bold text-slate-900 font-display">
-                    {v.title}
-                  </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {v.desc}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
       {/* 5. STRATEGIC OBJECTIVES */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">

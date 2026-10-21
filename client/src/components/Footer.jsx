@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, Heart, Mail, Phone, MapPin, Sparkles, ArrowUpRight, MessageSquare } from 'lucide-react';
+import logoImg from '../../image/image 5.jpg';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -18,7 +19,7 @@ export default function Footer() {
               Empower Women & Children. Uplift Communities.
             </h3>
             <p className="text-emerald-100/70 text-sm max-w-xl mt-1">
-              Your charitable support helps empower women and children, provide quality education and skills, and distribute Qur'ans and learning materials to students.
+              Your charitable support helps empower women and children, provide quality education and skills and learning materials to students.
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-3">
@@ -47,7 +48,7 @@ export default function Footer() {
           <div className="lg:col-span-2 space-y-4">
             <Link to="/" className="flex items-center gap-3">
               <img
-                src="/logo.jpg"
+                src={logoImg}
                 alt="Mariya Nuuman Foundation Logo"
                 className="h-11 w-auto rounded-xl object-contain shadow-md"
               />
@@ -56,7 +57,7 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm">
-              A dedicated charitable organization empowering women and children to reach their full potential, breaking cycles of poverty through education, skills training, and supporting students through Qur'an distribution.
+              A dedicated charitable organization empowering women and children to reach their full potential, breaking cycles of poverty through education, skills training and supporting students.
             </p>
             <div className="pt-2">
               <div className="text-xs text-gold-400 font-semibold uppercase tracking-wider mb-2">
@@ -110,7 +111,7 @@ export default function Footer() {
             <div className="space-y-2.5 text-sm text-slate-400">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-gold-400 mt-0.5 flex-shrink-0" />
-                <span>Danbatta Local Government, Kano State</span>
+                <span>Dambatta Local Government, Kano State</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-gold-400 flex-shrink-0" />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   BookOpen,
@@ -11,9 +11,12 @@ import {
   Award,
   ArrowRight,
   HelpCircle,
-  Users
+  Users,
+  Stethoscope,
+  ShieldCheck
 } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
+import empowermentImage from '../../image/image 7.jfif';
 import ProgramApplyModal from '../components/ProgramApplyModal';
 import DonationPledgeModal from '../components/DonationPledgeModal';
 
@@ -23,61 +26,61 @@ export default function EducationSupport() {
 
   const pillars = [
     {
-      title: "Noble Qur'an Distribution",
-      desc: "Delivering durable, clear-font Tajweed copies of the Holy Qur'an to community Madrasahs, Tahfeez circles, and students who have never owned their personal Mushaf.",
-      icon: BookOpen,
-      badge: "Spiritual Literacy"
-    },
-    {
-      title: "Qur'anic Learning Aids & Tajweed Guides",
-      desc: "Equipping learning halls with wooden book rests (rehal), recitation audio aids, Qa'idah learning charts, and teacher instruction manuals.",
+      title: "Women's Empowerment Programs",
+      desc: "Providing women with vocational training, entrepreneurship mentoring, and microfinance support to achieve economic independence and break cycles of poverty.",
       icon: Sparkles,
-      badge: "Tahfeez Acceleration"
+      badge: "Empowerment"
     },
     {
-      title: "School Backpacks & Textbooks",
-      desc: "Supplying standardized curriculum textbooks, durable backpacks, exercise notebooks, and mathematical sets to children from vulnerable families.",
-      icon: Package,
-      badge: "Basic Education"
+      title: "Child Protection & Development",
+      desc: "Creating safe environments for children to grow, learn, and thrive through nutrition support, mentorship programs, and community-based child welfare initiatives.",
+      icon: ShieldCheck,
+      badge: "Child Welfare"
     },
     {
-      title: "Writing & Classroom Materials",
-      desc: "Providing pens, pencils, erasers, sharpeners, drawing pads, and classroom blackboards/whiteboards to underserved rural schools.",
-      icon: Layers,
-      badge: "Classroom Supply"
+      title: "Quality Education Access",
+      desc: "Supplying standardized curriculum textbooks, durable backpacks, exercise notebooks, and covering tuition fees for children from vulnerable families.",
+      icon: BookOpen,
+      badge: "Education"
     },
     {
-      title: "Student Financial Assistance",
-      desc: "Covering termly tuition fees, PTA levies, and uniform costs for children at risk of being sent away from school due to non-payment.",
-      icon: Users,
-      badge: "Direct Student Aid"
-    },
-    {
-      title: "Merit & Need Scholarships",
-      desc: "Funding final year examination fees (e.g. WAEC, NECO, BECE) and higher education tuition for brilliant students from indigent backgrounds.",
+      title: "Vocational Skills Training",
+      desc: "Equipping women and youth with market-ready trade skills including tailoring, digital literacy, agriculture, and small business management.",
       icon: GraduationCap,
-      badge: "Academic Excellence"
+      badge: "Skills Development"
+    },
+    {
+      title: "Primary Healthcare Access",
+      desc: "Organizing community health outreach, maternal and child health clinics, immunization drives, and health education workshops in underserved areas.",
+      icon: Stethoscope,
+      badge: "Healthcare"
+    },
+    {
+      title: "Mental Health & Social Services",
+      desc: "Providing counselling support, psychosocial services, and wellness programs to women and children affected by trauma, violence, or displacement.",
+      icon: Heart,
+      badge: "Wellbeing"
     }
   ];
 
   const sponsorshipTiers = [
     {
-      title: "Mushaf & Tajweed Pack",
+      title: "Women's Starter Kit",
       amount: "₦15,000",
-      impact: "Supplies 5 durable Holy Qur'ans and 5 Tajweed practice workbooks to young Tahfeez students in a rural Madrasah.",
-      purpose: "Quran Distribution"
+      impact: "Provides a woman with basic vocational training materials, startup tools, and mentorship resources to begin her journey to self-reliance.",
+      purpose: "Women Empowerment"
     },
     {
       title: "Back-to-School Student Kit",
       amount: "₦25,000",
       impact: "Provides a full year of exercise books, standard curriculum textbooks, writing materials, and a durable backpack for one pupil.",
-      purpose: "Student Books & Supplies"
+      purpose: "Education Support"
     },
     {
-      title: "Madrasah Classroom Toolkit",
+      title: "Community Health Outreach",
       amount: "₦75,000",
-      impact: "Equips an entire rural classroom with 30 Mushafs, wooden reading desks, classroom charts, and teacher reference materials.",
-      purpose: "Quran Distribution"
+      impact: "Funds a full-day community health clinic providing free check-ups, maternal care consultations, and health education for 50 women and children.",
+      purpose: "Healthcare Access"
     },
     {
       title: "Full Academic Term Sponsorship",
@@ -89,32 +92,32 @@ export default function EducationSupport() {
 
   return (
     <div className="space-y-20 sm:space-y-28 pb-16">
-      
+
       {/* 1. HERO BANNER */}
       <section className="relative bg-brand-950 text-white py-20 lg:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-emerald-pattern opacity-15 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-6">
           <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-gold-500/20 text-gold-300 border border-gold-500/30">
-            Nurturing Minds & Hearts
+            Empowerment, Education & Healthcare
           </span>
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold font-display tracking-tight text-white max-w-4xl mx-auto leading-tight">
-            Education & Qur'anic Support
+            Empowering Lives Through Action
           </h1>
           <p className="text-base sm:text-xl text-emerald-100/90 font-light max-w-2xl mx-auto leading-relaxed">
-            Eliminating barriers to learning by equipping students with the Holy Qur'an, textbooks, stationery, and academic sponsorships.
+            Empowering women and children to reach their full potential through quality education, skills training, and improved access to healthcare.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <button
               onClick={() => setIsDonateOpen(true)}
               className="px-6 py-3 bg-gradient-to-r from-gold-500 to-gold-600 text-brand-950 font-bold rounded-xl text-sm shadow-glow transition hover:brightness-110 flex items-center gap-2"
             >
-              Sponsor Qur'ans & Study Kits
+              Support Our Initiatives
             </button>
             <button
               onClick={() => setIsApplyOpen(true)}
               className="px-6 py-3 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-xl text-sm border border-white/20 transition"
             >
-              Apply for Educational Support
+              Apply for Support
             </button>
           </div>
         </div>
@@ -123,21 +126,21 @@ export default function EducationSupport() {
       {/* 2. THE CORE PROBLEM & OUR MISSION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
+
           <div className="lg:col-span-6 space-y-6">
             <SectionHeader
-              badge="Our Sacred Mandate"
-              title="Every Child Deserves the Dignity of Learning"
-              subtitle="When children have their own books and sacred texts, learning is transformed from a struggle into an inspiration."
+              badge="Our Core Mission"
+              title="Building Brighter Futures for Women & Children"
+              subtitle="When women are empowered and children are educated and healthy, entire communities are transformed."
               centered={false}
             />
 
             <div className="space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
               <p>
-                In hundreds of grassroots Madrasahs and basic schools across our target communities, eager young students assemble each morning with deep enthusiasm but critically limited resources. Often, four or more children must cluster around a single worn copy of the Mushaf or a shared notebook.
+                Across underserved communities, women and children face steep barriers to economic independence, quality education, and basic healthcare. Without access to marketable skills, learning resources, or medical services, entire families remain trapped in cycles of poverty.
               </p>
               <p>
-                <strong>Mariya Nuuman Foundation</strong> firmly believes that poverty should never deprive a child of reciting the words of Allah or pursuing foundational academic literacy. Our comprehensive educational initiatives ensure that learners receive top-tier, long-lasting study materials.
+                <strong>Mariya Nuuman Foundation</strong> firmly believes that every woman deserves the tools to build her own livelihood, every child deserves a quality education, and every family deserves access to healthcare. Our comprehensive programs bridge these critical gaps.
               </p>
             </div>
 
@@ -145,7 +148,7 @@ export default function EducationSupport() {
               <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-brand-950 flex items-center gap-3">
                 <Award className="w-8 h-8 text-gold-600 flex-shrink-0" />
                 <p className="text-xs text-brand-900 leading-relaxed font-medium">
-                  Over <strong>3,450+</strong> Holy Qur'ans and <strong>1,820+</strong> Back-to-School study packs have been distributed directly to verified community students.
+                  Over <strong>640+</strong> vocational graduates, <strong>1,820+</strong> students supported with study materials, and <strong>500+</strong> women and children served through community health outreach.
                 </p>
               </div>
             </div>
@@ -154,8 +157,8 @@ export default function EducationSupport() {
           <div className="lg:col-span-6">
             <div className="rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
               <img
-                src="https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=1000&q=80"
-                alt="Quran study circle"
+                src={empowermentImage}
+                alt="Women and children empowerment"
                 className="w-full h-auto object-cover aspect-4/3"
               />
             </div>
@@ -167,11 +170,11 @@ export default function EducationSupport() {
       {/* 3. SIX PILLARS OF EDUCATIONAL ASSISTANCE */}
       <section className="bg-slate-50 py-16 px-4 sm:px-6 lg:px-8 border-y border-slate-200/60">
         <div className="max-w-7xl mx-auto space-y-12">
-          
+
           <SectionHeader
-            badge="Comprehensive Spectrum"
-            title="How Mariya Nuuman Foundation Supports Students"
-            subtitle="Targeted interventions covering spiritual, academic, and material educational needs."
+            badge="Our Approach"
+            title="How Mariya Nuuman Foundation Creates Lasting Impact"
+            subtitle="Targeted interventions empowering women and children through education, skills training, and healthcare."
             centered={true}
           />
 
@@ -211,8 +214,8 @@ export default function EducationSupport() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <SectionHeader
           badge="Sponsorship Opportunities"
-          title="Sponsor a Student or Qur'an Distribution"
-          subtitle="Directly fund educational kits that leave a lasting legacy (Sadaqah Jariyah)."
+          title="Sponsor a Woman, Child, or Community Health Drive"
+          subtitle="Directly fund empowerment programs that create lasting, sustainable change."
           centered={true}
         />
 
@@ -251,20 +254,20 @@ export default function EducationSupport() {
           <div className="absolute inset-0 bg-emerald-pattern opacity-10 pointer-events-none" />
           <div className="relative z-10 space-y-4">
             <span className="text-xs font-bold uppercase tracking-wider text-gold-400 bg-gold-500/20 px-3 py-1 rounded-full border border-gold-500/30">
-              Student Assistance Desk
+              Community Support Desk
             </span>
             <h3 className="text-2xl sm:text-3xl font-bold font-display text-white">
-              Are You a Student or Madrasah Administrator in Need?
+              Are You a Woman, Parent, or Community Leader in Need?
             </h3>
             <p className="text-xs sm:text-sm text-emerald-100/80 max-w-2xl mx-auto leading-relaxed">
-              Mariya Nuuman Foundation accepts applications from community Madrasahs, teachers, and indigent parents seeking study packs, Mushafs, or academic support.
+              Mariya Nuuman Foundation accepts applications from women seeking empowerment programs, parents seeking educational support for their children, and communities in need of healthcare outreach.
             </p>
             <div className="pt-2">
               <button
                 onClick={() => setIsApplyOpen(true)}
                 className="px-6 py-3 bg-gold-500 hover:bg-gold-400 text-brand-950 font-bold rounded-xl text-sm transition"
               >
-                Submit an Educational Support Request
+                Submit a Support Request
               </button>
             </div>
           </div>

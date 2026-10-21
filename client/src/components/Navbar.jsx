@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Menu, X, Heart, Sparkles, ChevronRight, ChevronDown, Mail } from 'lucide-react';
+import logoImg from '../../image/image 5.jpg';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -81,7 +82,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <img
-              src="/logo.jpg"
+              src={logoImg}
               alt="Mariya Nuuman Foundation Logo"
               className="h-10 w-auto rounded-xl object-contain shadow-md group-hover:scale-105 transition-transform"
             />

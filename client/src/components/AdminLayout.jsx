@@ -21,6 +21,7 @@ import {
   Sliders
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import logoImg from '../../image/image 5.jpg';
 
 export default function AdminLayout() {
   const { admin, logout, isAuthenticated, loading } = useAuth();
@@ -85,7 +86,7 @@ export default function AdminLayout() {
       <div className="lg:hidden bg-brand-950 text-white p-4 flex items-center justify-between shadow-md sticky top-0 z-30">
         <div className="flex items-center gap-2.5">
           <img
-            src="/logo.jpg"
+            src={logoImg}
             alt="Mariya Nuuman Foundation Logo"
             className="h-8 w-auto rounded-lg object-contain"
           />
@@ -111,7 +112,7 @@ export default function AdminLayout() {
         <div className="p-6 border-b border-brand-900 flex items-center justify-between">
           <Link to="/admin/dashboard" className="flex items-center gap-3">
             <img
-              src="/logo.jpg"
+              src={logoImg}
               alt="Mariya Nuuman Foundation Logo"
               className="h-10 w-auto rounded-xl object-contain shadow-md"
             />
