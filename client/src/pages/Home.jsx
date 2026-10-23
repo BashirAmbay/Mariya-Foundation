@@ -116,15 +116,19 @@ export default function Home() {
       <section className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center justify-center bg-brand-950 overflow-hidden text-white">
         {/* Background Slideshow with Clear Overlay (5s auto-transition) */}
         <div className="absolute inset-0 z-0 overflow-hidden">
-          {heroSlides.map((slide, idx) => (
-            <img
-              key={slide.id || idx}
-              src={getImageUrl(slide.image_url)}
-              alt={slide.title || 'Mariya Nuuman Foundation Background'}
-              className={`absolute inset-0 w-full h-full object-cover object-center scale-105 transition-opacity duration-1000 ease-in-out ${idx === currentSlideIndex ? 'opacity-80' : 'opacity-0 pointer-events-none'
-                }`}
-            />
-          ))}
+          {heroSlides.map((slide, idx) => {
+            const imgSrc = getImageUrl(slide.image_url, '');
+            if (!imgSrc) return null;
+            return (
+              <img
+                key={slide.id || idx}
+                src={imgSrc}
+                alt={slide.title || 'Mariya Nuuman Foundation Background'}
+                className={`absolute inset-0 w-full h-full object-cover object-center scale-105 transition-opacity duration-1000 ease-in-out ${idx === currentSlideIndex ? 'opacity-80' : 'opacity-0 pointer-events-none'
+                  }`}
+              />
+            );
+          })}
           <div className="absolute inset-0 bg-gradient-to-t from-brand-950/90 via-brand-950/45 to-brand-950/35 pointer-events-none" />
           <div className="absolute inset-0 bg-black/20 pointer-events-none" />
         </div>
