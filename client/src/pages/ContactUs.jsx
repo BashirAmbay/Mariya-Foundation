@@ -113,7 +113,7 @@ export default function ContactUs() {
                 <div className="space-y-1">
                   <h4 className="text-sm font-bold text-slate-900 font-display">Office Address</h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Plot 12, Community Development Crescent, Kaduna State, Nigeria (Placeholder)
+                    Plot 12, Dambatta Local Government, Kano State, Nigeria.
                   </p>
                 </div>
               </div>
@@ -126,7 +126,7 @@ export default function ContactUs() {
                   <h4 className="text-sm font-bold text-slate-900 font-display">Email Address</h4>
                   <p className="text-xs text-slate-600">
                     <a href="mailto:info@mariyafoundation.org" className="hover:text-brand-900 font-semibold">
-                      info@mariyafoundation.org (Placeholder)
+                      info@mariyafoundation.org
                     </a>
                   </p>
                 </div>
@@ -361,7 +361,7 @@ export default function ContactUs() {
               Mariya Nuuman Foundation Secretariat Location
             </h4>
             <p className="text-xs text-slate-500 max-w-sm mx-auto">
-              Plot 12, Community Development Crescent, Kaduna State, Nigeria (Placeholder location map).
+              Plot 12, Dambatta Local Government, Kano State, Nigeria.
             </p>
           </div>
           {/* Subtle background grid */}
