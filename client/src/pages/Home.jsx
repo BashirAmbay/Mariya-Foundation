@@ -163,25 +163,6 @@ export default function Home() {
           </div>
 
           {/* Value Pillars Badges */}
-          <div className="pt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left border-t border-white/10">
-            <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-              <span className="text-pink-400 font-bold block text-sm font-display">Women & Children</span>
-              <span className="text-[12px] text-slate-300">Empowerment, protection & care</span>
-            </div>
-            <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-              <span className="text-pink-400 font-bold block text-sm font-display">Education & Skills</span>
-              <span className="text-[12px] text-slate-300">Quality schooling & trade training</span>
-            </div>
-            <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-              <span className="text-pink-400 font-bold block text-sm font-display">Economic Independence</span>
-              <span className="text-[12px] text-slate-300">Microfinance & entrepreneurship</span>
-            </div>
-            <div className="p-3 rounded-xl bg-white/5 border border-white/10">
-              <span className="text-pink-400 font-bold block text-sm font-display">To Improve Access to HealthCare</span>
-              <span className="text-[12px] text-slate-300">Mental Health Support & Social Services</span>
-            </div>
-
-          </div>
 
         </div>
       </section>
