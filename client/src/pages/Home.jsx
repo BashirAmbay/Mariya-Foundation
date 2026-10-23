@@ -39,22 +39,22 @@ export default function Home() {
     {
       id: 'default-1',
       title: 'Students Learning & Educational Support',
-      image_url: 'https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&w=2000&q=80'
+      image_url: ''
     },
     {
       id: 'default-2',
       title: 'Students in Classroom Study Circle',
-      image_url: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=2000&q=80'
+      image_url: ''
     },
     {
       id: 'default-3',
       title: 'Youth Empowerment & School Supplies',
-      image_url: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=2000&q=80'
+      image_url: ''
     },
     {
       id: 'default-4',
       title: 'Children Learning & Community Care',
-      image_url: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=2000&q=80'
+      image_url: ''
     }
   ];
 
@@ -271,7 +271,7 @@ export default function Home() {
             <SectionHeader
               badge="Our Core Programs"
               title="Transformative Initiatives in Action"
-              subtitle="From distributing the Holy Qur'an to equipping aspiring fashion designers and tech creators with life-changing skills."
+              subtitle="From distributing the equipping aspiring fashion designers and tech creators with life-changing skills."
               centered={false}
             />
             <Link
