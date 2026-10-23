@@ -216,7 +216,7 @@ export default function Home() {
               <div className="flex items-start gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-200/80">
                 <CheckCircle2 className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-bold text-slate-800 text-sm block">Mariya Nuuman foundation (Trust)</span>
+                  <span className="font-bold text-slate-800 text-sm block">Trust</span>
                   <span className="text-xs text-slate-500">Every donation accounted for transparently</span>
                 </div>
               </div>

@@ -93,7 +93,6 @@ export default function Footer() {
               Focus Areas
             </h4>
             <ul className="space-y-2 text-sm text-slate-400">
-              <li><Link to="/education" className="hover:text-gold-400 transition">Qur'an Distribution</Link></li>
               <li><Link to="/education" className="hover:text-gold-400 transition">School Supplies & Kits</Link></li>
               <li><Link to="/education" className="hover:text-gold-400 transition">Student Assistance</Link></li>
               <li><Link to="/empowerment" className="hover:text-gold-400 transition">Vocational Skills Training</Link></li>
